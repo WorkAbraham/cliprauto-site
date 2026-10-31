@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CliprAuto – Shorts, Reels &amp; TikTok on Autopilot</title>
+<link rel="preload" as="image" fetchpriority="high">
+<meta name="description" content="Runs your TikTok, Reels and YouTube Shorts accounts: finds videos you may reuse, makes the clips, posts on your times and learns what works. Runs on your own computer.">
+<!-- SEO (7 okt 2026): adressen och delningskortet. Delningstexten (og/twitter) namner ALDRIG priset -
+     den syns nar lanken delas i sociala medier, och priset star bara pa hemsidan. -->
+<link rel="canonical" href="https://cliprauto.com/">
+<meta name="google-site-verification" content="sVU3ex6DvpX37E9-GINnRnKozVeemQQ9hIs48Hm5ZC8" />
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="bilder/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="bilder/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CliprAuto">
+<meta property="og:url" content="https://cliprauto.com/">
+<meta property="og:title" content="CliprAuto – your short-video accounts, running themselves">
+<meta property="og:description" content="Finds material, makes the clips, checks every one, posts to TikTok, Instagram and YouTube on your times and learns what works. Runs on your own computer, with the AI you already have.">
+<meta property="og:image" content="https://cliprauto.com/bilder/dela.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CliprAuto: your account, running itself">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CliprAuto – your short-video accounts, running themselves">
+<meta name="twitter:description" content="Finds material, makes the clips, checks every one, posts to TikTok, Instagram and YouTube on your times and learns what works. Runs on your own computer, with the AI you already have.">
+<meta name="twitter:image" content="https://cliprauto.com/bilder/dela.jpg">
+<!--JSONLD-START-->
+
+<!--JSONLD-END-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- LADDNINGSTIDEN (11 okt 2026): typsnittsfilen (latin) borjar laddas direkt, i stallet for forst efter Googles stilfil. Utseendet ar oforandrat. -->
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --white:#ffffff; --paper:#f5f5f7; --ink:#0b0f19; --ink-2:#4a5160; --line:#e6e7eb;
+  --navy:#070c18; --navy-2:#0b1220; --card:#0f1830; --card-line:#1b2743;
+  --blue:#2f7cf6; --blue-2:#5aa8ff; --glow:rgba(47,124,246,.35);
+  --fg-on-dark:#f5f7fb; --mute-on-dark:#9aa5bd;
+  --gutter:24px; --max:1180px; --r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+.center{text-align:center}
+h1,h2,h3{margin:0;letter-spacing:-.025em;text-wrap:balance;line-height:1.06}
+.h-xl{font-size:clamp(44px,7.4vw,92px);font-weight:800}
+.h-l{font-size:clamp(34px,5vw,60px);font-weight:800}
+.h-m{font-size:clamp(28px,3.6vw,44px);font-weight:700}
+.sub{font-size:clamp(18px,1.6vw,22px);color:var(--ink-2);margin:20px auto 0;max-width:640px}
+.dark .sub{color:var(--mute-on-dark)}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.dark .kicker{color:var(--blue-2)}
+section{padding:112px 0}
+/* MJUKA OVERGANGAR (agaren 26 sep 2026): inga harda kanter mellan morkt och ljust - en
+   tonad remsa pa 160 px bar fargen over, och sektionen efter borjar med mindre luft. */
+.fade{height:160px;pointer-events:none}
+.fade.navy-paper{background:linear-gradient(180deg,var(--navy-2) 0%,#0f1a33 35%,#3a4a6e 70%,var(--paper) 100%)}
+.fade.paper-navy{background:linear-gradient(180deg,var(--paper) 0%,#c9cfdc 30%,#3a4a6e 65%,var(--navy) 100%)}
+.fade.navy-white{background:linear-gradient(180deg,var(--navy) 0%,#3a4a6e 35%,#c9cfdc 70%,var(--white) 100%)}
+.after-fade{padding-top:48px}
+@media (max-width:767px){.fade{height:96px}.after-fade{padding-top:32px}}
+@media (max-width:767px){section{padding:72px 0}}
+.paper{background:var(--paper)}
+.dark{background:var(--navy);color:var(--fg-on-dark)}
+
+/* ---------- nav ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:10;backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);background:rgba(7,12,24,.72);border-bottom:1px solid rgba(255,255,255,.08);color:#fff}
+.bar{height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo .mark{width:30px;height:30px;border-radius:8px;background:#0b1220;display:grid;place-items:center;flex:none}
+.logo .mark svg{width:22px;height:22px;display:block}
+.links{display:flex;gap:28px;align-items:center;font-size:14px;color:rgba(255,255,255,.82)}
+.links a:hover{color:#fff}
+.nav-buy{background:var(--blue);color:#fff;padding:7px 14px;border-radius:999px;font-weight:600}
+@media (max-width:767px){.links a:not(.nav-buy){display:none}}
+
+/* ---------- buttons ---------- */
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:17px;line-height:1;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 30px var(--glow)}
+.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.28)}
+.btn-ghost.on-light{color:var(--ink);border-color:var(--line)}
+
+/* ---------- hero ---------- */
+.hero{padding:140px 0 0;background:radial-gradient(1200px 600px at 50% -10%,#16316b 0%,var(--navy) 60%);color:#fff;overflow:hidden}
+@media (max-width:767px){.hero{padding-top:104px}}
+.hero .sub{color:#c9d3ea}
+.stage{position:relative;max-width:1080px;margin:64px auto 0;padding:0 var(--gutter)}
+.stage::before{content:"";position:absolute;inset:auto 10% -40px 10%;height:220px;background:radial-gradient(closest-side,var(--glow),transparent 70%);filter:blur(30px);z-index:0}
+.window{position:relative;z-index:1;border-radius:18px 18px 0 0;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-bottom:0;background:#0b1220;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.window .top{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;background:#101a31;border-bottom:1px solid rgba(255,255,255,.08)}
+.window .top i{width:11px;height:11px;border-radius:50%;background:#2a3856;display:block}
+.window .top i:nth-child(1){background:#ff5f57}.window .top i:nth-child(2){background:#febc2e}.window .top i:nth-child(3){background:#28c840}
+.window img{width:100%;height:auto}
+.hero-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.1);margin-top:0;background:var(--navy-2);color:#fff}
+.hero-facts div{padding:28px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.hero-facts div:last-child{border-right:0}
+.hero-facts b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.hero-facts span{font-size:14px;color:var(--mute-on-dark)}
+@media (max-width:767px){.hero-facts{grid-template-columns:1fr}.hero-facts div{border-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding:18px}}
+
+/* ---------- six jobs ---------- */
+
+/* SIX STEPS, DARK FLOW (8 Oct 2026, preview) */
+.six{padding:96px 0 104px}
+.six .wrap{max-width:1320px}
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);border:1px solid #cfe0ff;background:#e8f0ff;border-radius:999px;padding:7px 15px;margin:0 0 20px}
+.six .h-l{color:var(--ink)}
+.flow6{display:flex;align-items:stretch;justify-content:center;gap:0;margin-top:56px;text-align:left}
+.flow6 .arw{flex:none;align-self:center;width:30px;text-align:center;color:var(--blue-2);font-style:normal;font-size:20px}
+.s6c{flex:1 1 0;min-width:0;background:var(--white);border:1px solid var(--line);box-shadow:0 18px 50px rgba(11,15,25,.07);border-radius:20px;padding:20px 16px 16px;display:flex;flex-direction:column}
+.s6c .ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.s6c .ic svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c1 .ic{background:linear-gradient(135deg,#6a7dff,#3d5af1)} .c2 .ic{background:linear-gradient(135deg,#38b6ff,#1f86e6)} .c3 .ic{background:linear-gradient(135deg,#3ed598,#1f9d6b)}
+.c4 .ic{background:linear-gradient(135deg,#9a7bff,#6b4be6)} .c5 .ic{background:linear-gradient(135deg,#ffb04a,#f2850f)} .c6 .ic{background:linear-gradient(135deg,#f07be0,#c24fd0)}
+.s6c .no{font-size:13px;font-weight:600;color:#8a93a6;letter-spacing:.04em}
+.s6c h3{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:2px 0 8px}
+.s6c p{margin:0 0 16px;font-size:13.5px;line-height:1.45;color:var(--ink-2);flex:1}
+.pn{background:#091022;border:1px solid #1a2542;border-radius:12px;padding:10px;height:164px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.pn .lb{font-size:10.5px;color:#8d9ab9;letter-spacing:.02em}
+.th3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.th3 img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block}
+.clipbox{position:relative}
+.clipbox img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 78%;border-radius:8px;display:block}
+.chip{position:absolute;left:6px;top:6px;font-size:10px;font-weight:700;background:rgba(9,16,34,.82);color:#7be3b0;border-radius:999px;padding:3px 8px}
+.ck{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;color:#d9e0f0}
+.ck li{display:flex;gap:8px;align-items:center}
+.ck li::before{content:"";flex:none;width:15px;height:15px;border-radius:50%;background:#2bb673 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3.5 7.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.pl{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;color:#d9e0f0}
+.pl li{display:flex;align-items:center;gap:8px}
+.pl b{margin-left:auto;font-weight:600;color:#fff}
+.pl .lg{flex:none;width:20px;height:20px;display:block}
+.p-ig{background:linear-gradient(135deg,#fdc468,#df4996 55%,#4f5bd5)} .p-tt{background:#000;box-shadow:inset 0 0 0 1px #2c3550} .p-yt{background:#ff2a2a}
+.bars{display:flex;align-items:flex-end;gap:7px;height:74px;padding:0 4px;border-bottom:1px solid #1f2b4a}
+.bars i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#ffb04a,#f2850f)}
+.bars i:nth-child(odd){background:linear-gradient(180deg,#5aa8ff,#2f7cf6)}
+.ax{display:flex;justify-content:space-between;font-size:10px;color:#7f8db0;padding:0 4px}
+.b2{display:flex;gap:10px;align-items:center}.b2 img{flex:none;width:54px;aspect-ratio:9/16;object-fit:cover;border-radius:7px;display:block}.tg{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;color:#d9e0f0;white-space:nowrap}.tg li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#38b6ff;margin-right:6px;vertical-align:middle}
+
+/* REAL RESULTS + FACTS BAR (8 Oct 2026, preview) */
+.resultat{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:center;margin-top:84px;text-align:left}
+.res-win{border-radius:18px;overflow:hidden;border:1px solid #1d2230;background:#0b0f19;box-shadow:0 30px 80px rgba(11,15,25,.18)}
+.res-win img{display:block;width:100%;height:auto}
+.pill-l{margin-bottom:16px}
+.res-text h3{font-size:clamp(34px,3.4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--ink);margin:0 0 14px}
+.res-text>p:not(.pill){font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:420px}
+.res-case{display:flex;gap:22px;align-items:center}
+.res-case img{flex:none;width:210px;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:0 20px 50px rgba(11,15,25,.14)}
+.res-case ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.res-case li{border-bottom:1px solid var(--line);padding-bottom:10px}
+.res-case li b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.res-case li span{font-size:14px;color:var(--ink-2)}
+.factsbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:72px;background:var(--white);border:1px solid var(--line);border-radius:20px;text-align:left}
+.fx{display:flex;gap:12px;align-items:center;padding:22px 20px;border-right:1px solid var(--line)}
+.fx:last-child{border-right:0}
+.fx svg{flex:none;width:30px;height:30px;fill:none;stroke:var(--blue);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fx b{display:block;font-size:14px;font-weight:700;color:var(--ink)}
+.fx span{display:block;font-size:13px;color:var(--ink-2);line-height:1.35;margin-top:2px}
+@media(max-width:1000px){.resultat{grid-template-columns:1fr}.factsbar{grid-template-columns:repeat(2,minmax(0,1fr))}.fx{border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.factsbar{grid-template-columns:1fr}.fx{border-right:0}.res-case{flex-direction:column;align-items:flex-start}}
+/* SUPPORT (10 okt 2026): tre punkter under pris, samma stil som faktaraden */
+.factsbar.sup3{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px}
+/* GARANTI (10 okt 2026): 14 dagar, ur villkoren avsnitt 8 */
+.garanti-rad{margin:10px 0 0;font-size:13px;font-weight:600;color:#16a34a;text-align:center}
+.garanti{display:flex;gap:18px;align-items:center;max-width:820px;margin:34px auto 0;padding:22px 26px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:18px;text-align:left}
+.garanti svg{flex:none;width:44px;height:44px;fill:none;stroke:#16a34a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.garanti b{display:block;font-size:19px;color:var(--ink)}
+.garanti span{display:block;font-size:16px;color:var(--ink-2);margin-top:4px;line-height:1.45}
+.garanti a{color:var(--blue);text-decoration:none;font-weight:600}
+@media(max-width:560px){.garanti{flex-direction:column;align-items:flex-start;padding:20px}}
+@media(max-width:800px){.factsbar.sup3{grid-template-columns:1fr}.factsbar.sup3 .fx{border-right:0;border-bottom:1px solid var(--line)}.factsbar.sup3 .fx:last-child{border-bottom:0}}
+
+/* REFERENCE LAYOUT IN THE SITE'S LIGHT THEME (8 Oct 2026, preview 3) */
+.six6{position:relative;overflow:hidden;color:var(--ink);padding:96px 0 0;background:radial-gradient(900px 460px at 6% -8%,rgba(47,124,246,.13) 0%,rgba(245,245,247,0) 62%),radial-gradient(800px 480px at 100% 38%,rgba(90,168,255,.12) 0%,rgba(245,245,247,0) 62%),var(--paper)}
+.six6 .wrap{max-width:1320px}
+.head6{text-align:left;max-width:780px}
+.six6 .pill{color:var(--blue);border:1px solid #cfe0ff;background:#e8f0ff;margin-bottom:22px}
+.six6 .h-l{color:var(--ink);text-align:left;margin:0}
+.sub6{font-size:19px;color:var(--ink-2);margin:16px 0 0;max-width:560px}
+.six6 .flow6{margin-top:52px}
+.six6 .s6c{background:var(--white);border:1px solid var(--line);box-shadow:0 20px 60px rgba(11,15,25,.08)}
+.six6 .s6c .no{color:#8a93a6}
+.six6 .s6c h3{color:var(--ink)}
+.six6 .s6c p{color:var(--ink-2)}
+.six6 .flow6 .arw{color:var(--blue-2)}
+.six6 .pn{background:#0b1220;border:1px solid #1b2743}
+.six6 .resultat{margin-top:76px;grid-template-columns:1.75fr 1fr;gap:40px}
+.six6 .res-win{border:1px solid #1d2230;box-shadow:0 30px 80px rgba(11,15,25,.18)}
+.six6 .pill-l{margin-bottom:16px}
+.six6 .res-text h3{color:var(--ink)}
+.six6 .res-text>p:not(.pill){color:var(--ink-2)}
+.six6 .res-case{gap:26px}
+.six6 .res-case img{border:1px solid var(--line);box-shadow:0 20px 50px rgba(11,15,25,.16);width:200px}
+.six6 .rs{list-style:none;margin:0;padding:0;display:grid;gap:12px;align-content:center}
+.six6 .rs li{display:flex;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.six6 .rs li.note{border:0;color:#8a93a6;font-size:13px;padding:0}
+.six6 .rs i{flex:none;width:44px;height:44px;border-radius:12px;background:#e8f0ff;border:1px solid #cfe0ff;display:grid;place-items:center}
+.six6 .rs svg{width:22px;height:22px;fill:none;stroke:var(--blue);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.six6 .rs b{display:block;font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+.six6 .rs span{font-size:14px;color:var(--ink-2)}
+.six6 .factsbar{margin:80px -9999px 0;padding:0 9999px;background:var(--white);border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none}
+.six6 .fx{border-right:1px solid var(--line);padding:26px 20px}
+.six6 .fx:last-child{border-right:0}
+.six6 .fx svg{stroke:var(--blue)}
+.six6 .fx b{color:var(--ink)}
+.six6 .fx span{color:var(--ink-2)}
+@media(max-width:1000px){.six6 .resultat{grid-template-columns:1fr}.six6 .fx{border-bottom:1px solid var(--line)}}
+
+/* ALIGNMENT: window and results block share top and bottom edges (owner, 8 Oct) */
+.six6 .resultat{align-items:stretch}
+.six6 .res-win{height:100%;display:block}
+.six6 .res-win img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.six6 .res-text{display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.six6 .res-text .pill-l{align-self:flex-start;margin:0}
+.six6 .res-text h3{margin:0}
+.six6 .res-text>p:not(.pill){margin:0}
+.six6 .res-case img{width:170px}
+.six6 .res-case{align-items:stretch}
+.six6 .rs{align-content:space-between}
+@media(max-width:1000px){.six6 .res-win{height:auto}.six6 .res-win img{height:auto}}
+.sp{width:100%;height:auto}
+@media(max-width:1180px){.flow6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.flow6 .arw{display:none}}
+@media(max-width:820px){.flow6{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.flow6{grid-template-columns:1fr}.six{padding:72px 0 80px}}
+.grid{display:grid;gap:18px;margin-top:56px}
+@media (min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
+.job{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;text-align:left}
+.job .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#e8f0ff;color:var(--blue);font-weight:800;font-size:15px;margin-bottom:18px}
+.job h3{font-size:21px;font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+.job p{margin:0;color:var(--ink-2);font-size:16px}
+
+/* ---------- feature (screenshot + text) ---------- */
+.feature{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.feature{grid-template-columns:1fr 1.25fr;gap:64px}.feature.flip .text{order:2}}
+.feature .text h2{margin-bottom:16px}
+.feature .text p{color:var(--ink-2);font-size:18px;margin:0 0 22px}
+.dark .feature .text p{color:var(--mute-on-dark)}
+.rail{display:grid;gap:12px;font-size:16px}
+.rail div{display:flex;gap:12px;align-items:flex-start}
+.rail div::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:9px}
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(11,15,25,.14)}
+.dark .shot{border-color:var(--card-line);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.shot img{width:100%;height:auto}
+
+/* ---------- rules ---------- */
+.rules{display:grid;gap:18px;margin-top:56px}
+@media (min-width:768px){.rules{grid-template-columns:repeat(3,1fr)}}
+.rule{background:var(--card);border:1px solid var(--card-line);border-radius:var(--r);padding:32px 28px;text-align:left}
+.rule .n{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-2);margin-bottom:14px}
+.rule h3{font-size:22px;margin-bottom:12px}
+.rule p{margin:0;color:var(--mute-on-dark);font-size:16px}
+.rule .bar{height:auto;display:block;margin-top:22px}
+.meter{height:8px;border-radius:99px;background:#1b2743;overflow:hidden}
+.meter i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+
+/* ---------- price ---------- */
+.paket{display:grid;gap:18px;margin-top:48px;align-items:stretch}
+@media (min-width:900px){.paket{grid-template-columns:repeat(3,1fr)}}
+.paket .price-card{max-width:none;margin:0;padding:36px 30px;display:flex;flex-direction:column}
+.paket .price-card .amount{font-size:56px}
+.paket .price-card .includes{flex:1;align-content:start}
+.paket .price-card.vald{border-color:var(--blue);box-shadow:0 30px 80px rgba(47,124,246,.18);position:relative}
+.paket .price-card.vald::before{content:"Most popular";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.paket .namn{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.paket .konton{font-size:20px;font-weight:700;margin:14px 0 18px}
+.paket .konton small{display:block;font-size:14px;font-weight:400;color:var(--ink-2);margin-top:4px}
+.ingar{max-width:760px;margin:36px auto 0;color:var(--ink-2);font-size:16px}
+.price-card{max-width:560px;margin:48px auto 0;background:var(--white);border:1px solid var(--line);border-radius:28px;padding:44px 40px;box-shadow:0 30px 80px rgba(11,15,25,.08);text-align:left}
+.price-card .amount{font-size:72px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.price-card .amount small{font-size:28px;vertical-align:top;margin-right:2px;font-weight:700}
+.price-card .once{color:var(--ink-2);margin:6px 0 26px;font-size:16px}
+.includes{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:12px;font-size:16px}
+.includes li{display:flex;gap:12px;align-items:flex-start}
+.includes li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--blue);margin-top:1px;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10'/%3E%3Cpath d='M6 10.5l2.6 2.5L14 7.5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10'/%3E%3Cpath d='M6 10.5l2.6 2.5L14 7.5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.price-card .btn{width:100%;justify-content:center}
+.price-card .fine{font-size:13px;color:var(--ink-2);text-align:center;margin-top:14px}
+
+/* ---------- faq ---------- */
+.faq{max-width:760px;margin:40px auto 0;text-align:left}
+details{border-top:1px solid var(--line);padding:22px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-weight:400;color:var(--ink-2);font-size:26px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--ink-2);font-size:17px;max-width:64ch}
+
+/* ---------- footer ---------- */
+footer{padding:36px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fot-trygg a{margin-left:0;font-weight:600;color:var(--ink)}
+.fot-kontakt a{font-weight:600;color:var(--ink)}
+@media (max-width:767px){footer .wrap{flex-direction:column;align-items:flex-start}}
+footer a{margin-left:18px}
+
+/* ===== LJUS SIDA (forhandsvisning) ===== */
+header{background:rgba(255,255,255,.82);border-bottom:1px solid var(--line);color:var(--ink)}
+.links{color:var(--ink-2)} .links a:hover{color:var(--ink)}
+.hero{background:radial-gradient(1100px 520px at 50% -8%,#e6efff 0%,var(--white) 62%);color:var(--ink)}
+.hero .sub{color:var(--ink-2)} .hero .kicker{color:var(--blue)!important}
+.btn-ghost{color:var(--ink);border:1px solid var(--line);background:var(--white)}
+.stage::before{background:radial-gradient(closest-side,rgba(47,124,246,.22),transparent 70%)}
+.window{border:1px solid var(--line);border-bottom:0;background:#0b1220;box-shadow:0 40px 100px rgba(11,15,25,.18)}
+.hero-facts{background:var(--white);color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hero-facts div{border-right:1px solid var(--line)} .hero-facts span{color:var(--ink-2)}
+.fade{display:none} .after-fade{padding-top:112px}
+@media (max-width:767px){.after-fade{padding-top:72px}}
+.dark{background:var(--paper);color:var(--ink)}
+.dark .sub{color:var(--ink-2)} .dark .kicker{color:var(--blue)}
+.rule{background:var(--paper);border:1px solid var(--line)} .rule .n{color:var(--blue)} .rule p{color:var(--ink-2)}
+.meter{background:#e6efff}
+.dark .shot{border-color:var(--line);box-shadow:0 30px 80px rgba(11,15,25,.14)}
+.dark .feature .text p{color:var(--ink-2)}
+footer{background:var(--white)}
+
+/* ===== PROMPTEN 5 OKT 2026: bevis, varde, kansla, trygghet ===== */
+.demo{display:grid;gap:48px;align-items:center;margin-top:56px;text-align:left}
+@media (min-width:960px){.demo{grid-template-columns:340px 1fr;gap:72px}}
+.phone{width:300px;max-width:100%;margin:0 auto;border-radius:38px;padding:10px;background:#0b0f19;box-shadow:0 40px 100px rgba(11,15,25,.28)}
+.phone video,.phone img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:30px;display:block;background:#0b0f19}
+.credit{font-size:12px;color:var(--ink-2);text-align:center;margin-top:12px}
+.klipp{outline:none}
+.klipp-scen{position:relative;width:300px;max-width:100%;margin:0 auto}
+.klipp .phone{width:100%}
+.klipp-fonster{overflow:hidden;border-radius:30px;touch-action:pan-y}
+.klipp-spar{display:flex;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.klipp-bild{flex:0 0 100%;margin:0}
+.klipp-pil{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:999px;
+  display:grid;place-items:center;padding:0;cursor:pointer;background:var(--white);color:var(--ink);
+  border:1px solid var(--line);box-shadow:0 10px 30px rgba(11,15,25,.14);transition:color .15s ease,transform .15s ease}
+.klipp-pil:hover{color:var(--blue);transform:translateY(calc(-50% - 1px))}
+.klipp-pil:focus-visible,.klipp-prick:focus-visible,.klipp:focus-visible .phone{outline:2px solid var(--blue);outline-offset:3px}
+.klipp-pil svg{width:20px;height:20px;display:block}
+.klipp-pil.prev{left:-22px}
+.klipp-pil.next{right:-22px}
+.klipp-info{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:16px}
+.klipp-genre{display:inline-flex;align-items:center;margin:0;padding:5px 11px;border-radius:999px;background:#eef4ff;color:#1f4fd1;font-size:13px;font-weight:600}
+.klipp-prickar{display:flex;gap:2px;justify-content:center}
+.klipp-prick{width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.klipp-prick::before{content:"";width:8px;height:8px;border-radius:99px;background:#c9cfdc;transition:width .25s ease,background .25s ease}
+.klipp-prick[aria-current="true"]::before{width:22px;background:var(--blue)}
+.klipp .credit{margin-top:0}
+@media (prefers-reduced-motion:reduce){.klipp-spar{transition:none}}
+.flow{display:grid;gap:12px;counter-reset:steg}
+.flow .st{display:grid;grid-template-columns:118px 1fr;gap:16px;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.flow .st b{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--blue)}
+.flow .st p{margin:0;font-size:16px;color:var(--ink)}
+.flow .st code{display:block;margin-top:6px;font:500 13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink-2)}
+.flow .st h3{margin:0 0 4px;font-size:18px;font-weight:750;color:var(--ink);letter-spacing:-.01em;line-height:1.5;text-wrap:wrap}
+.flow .st p{color:var(--ink-2)}
+.flow .st .bevis{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 11px;border-radius:999px;background:#eef4ff;color:#1f4fd1;font-size:13px;font-weight:600}
+.flow .st .bevis::before{content:'✓';font-weight:800}
+@media (max-width:600px){.flow .st{grid-template-columns:1fr;gap:6px}}
+.vs{display:grid;gap:18px;margin-top:48px;text-align:left}
+@media (min-width:860px){.vs{grid-template-columns:1fr 1.6fr}}
+.vs .kol{border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;background:var(--white)}
+.vs .kol.mask{border-color:var(--blue);box-shadow:0 30px 80px rgba(47,124,246,.14)}
+.vs h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;color:var(--ink-2)}
+.vs .kol.mask h3{color:var(--blue)}
+.vs ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:17px}
+.vs li{font-weight:650;letter-spacing:-.005em}
+.vs li span{display:block;margin-top:2px;font-size:14.5px;font-weight:400;line-height:1.45;color:var(--ink-2)}
+.vs .mask ul{grid-template-columns:1fr 1fr;column-gap:24px}
+@media (max-width:600px){.vs .mask ul{grid-template-columns:1fr}}
+.foreefter{display:grid;gap:22px;align-items:center;margin-top:56px}
+@media (min-width:900px){.foreefter{grid-template-columns:1fr auto 240px}}
+.foreefter figure.efter{max-width:240px;margin:0 auto}
+.foreefter figure{margin:0}
+.foreefter img{border-radius:14px;border:1px solid var(--line);width:100%;height:auto}
+.foreefter figcaption{font-size:14px;color:var(--ink-2);margin-top:10px}
+.foreefter figcaption b{color:var(--ink)}
+.pil{font-size:34px;color:var(--blue);text-align:center;font-weight:800}
+@media (max-width:899px){.pil{transform:rotate(90deg)}}
+.larsteg{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:16px;counter-reset:ls}
+.larsteg li{position:relative;padding-left:44px;font-size:17px}
+.larsteg li::before{counter-increment:ls;content:counter(ls);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:10px;background:#e8f0ff;color:var(--blue);font-weight:800;font-size:14px;display:grid;place-items:center}
+.larsteg li b{display:block;font-weight:700;color:var(--ink)}
+.larsteg li span{display:block;margin-top:2px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.stapelrub{margin:0 0 18px;font-weight:700;font-size:16px;color:var(--ink)}
+.kundcase{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;box-shadow:0 30px 80px rgba(47,124,246,.10)}
+.kc-rub{margin:0;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.kc-sub{margin:6px 0 18px;font-size:15px;color:var(--ink-2)}
+.kc-stor b{display:block;font-size:56px;line-height:1;font-weight:850;letter-spacing:-.03em;color:var(--ink)}
+.kc-stor span{display:block;margin-top:4px;font-size:16px;color:var(--ink-2)}
+.kc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.kc-grid b{display:block;font-size:24px;font-weight:800;color:var(--ink)}
+.kc-grid span{font-size:14px;color:var(--ink-2)}
+.kc-bild{display:block;width:100%;height:auto;max-width:270px;margin:4px auto 0;border-radius:20px;border:1px solid var(--line);box-shadow:0 20px 50px rgba(15,20,40,.18)}
+.kundcase small{display:block;margin-top:18px;font-size:13px;color:var(--ink-2)}
+.larnot{margin:22px 0 0;font-size:14px;color:var(--ink-2)}
+.lar{display:grid;gap:40px;align-items:center;margin-top:48px;text-align:left}
+@media (min-width:900px){.lar{grid-template-columns:1fr 1fr;gap:64px}}
+.alder{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+.alder span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;font-size:15px;background:var(--white)}
+.staplar{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.staplar .rad{display:grid;grid-template-columns:120px 1fr 56px;gap:12px;align-items:center;margin:12px 0;font-size:15px}
+.staplar .rad i{display:block;height:14px;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+.staplar .rad.svag i{background:#c9cfdc}
+.staplar .rad b{text-align:right}
+.staplar small{display:block;color:var(--ink-2);font-size:13px;margin-top:14px}
+.ager{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin-top:8px;font-size:clamp(26px,4.4vw,52px);font-weight:800;letter-spacing:-.025em;line-height:1.1}
+.ager span:nth-child(n+4){color:var(--blue)}
+.for{display:grid;gap:18px;margin-top:48px;text-align:left}
+@media (min-width:768px){.for{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.for{grid-template-columns:repeat(4,1fr)}}
+.for .job p{font-size:15px}
+.steg4{display:grid;gap:14px;margin-top:48px;text-align:left}
+@media (min-width:900px){.steg4{grid-template-columns:repeat(4,1fr)}}
+.steg4 .job h3{font-size:19px}
+.steg4 .job .n{width:auto;padding:0 12px;font-size:12px;letter-spacing:.12em}
+
+.mc{margin-top:44px;position:relative}
+.mc-stage{position:relative;width:100%;max-width:1100px;margin:0 auto;aspect-ratio:1000/780}
+.mc-img{position:absolute;left:20%;width:60%;top:1.9%;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(11,15,26,.28);border:1px solid #1c2233;background:#0b0f1a}
+.mc-img img{display:block;width:100%;height:auto}
+.mc-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.mc-svg line{stroke:var(--blue);stroke-width:1.6;stroke-dasharray:4 4}
+.mc-svg circle{fill:var(--blue);stroke:#fff;stroke-width:2.5}
+.mc-c{position:absolute;width:19.5%;transform:translateY(-50%);background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;box-shadow:0 10px 30px rgba(11,15,26,.07)}
+.mc-c b{display:block;font-size:16.5px;letter-spacing:-.01em;line-height:1.25}
+.mc-c span{display:block;margin-top:5px;font-size:14px;line-height:1.45;color:var(--ink-2)}
+.mc-c.l{left:0}.mc-c.r{right:0}
+.mc-c.pay{border-color:var(--blue);box-shadow:0 14px 40px rgba(47,124,246,.16)}
+.mc-c.pay b{color:var(--blue)}
+.mc-vs{max-width:900px;margin:34px auto 0;font-size:16px;color:var(--ink-2);text-align:center}
+.mc-vs b{color:var(--ink)}
+@media (max-width:860px){
+  .mc-stage{aspect-ratio:auto}
+  .mc-img{position:relative;left:auto;width:100%;top:auto}
+  .mc-svg{display:none}
+  .mc-c{position:relative;width:100%;transform:none;left:auto;right:auto;margin-top:12px}
+}
+
+.mc-once{max-width:1100px;margin:26px auto 0;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:14px;align-items:stretch;text-align:left}
+.mc-once .t{align-self:center}
+.mc-once .t{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);font-weight:650;padding-right:6px}
+.mc-once div.i{border:1px solid var(--line);background:var(--white);border-radius:12px;padding:12px 16px;font-size:15px;font-weight:650;letter-spacing:-.005em}
+.mc-once div.i span{display:block;font-weight:400;font-size:13.5px;color:var(--ink-2);margin-top:2px}
+@media (max-width:860px){.mc-once{grid-template-columns:1fr}.mc-once .t{padding:0}}
+/* START-FILMEN (11 okt 2026): onboardingfilmen i How it works */
+.igang{display:grid;grid-template-columns:360px 1fr;gap:64px;align-items:center;margin:72px auto 8px;max-width:1040px}
+.igang-fon{position:relative;border-radius:40px;padding:10px;background:#0b0f19;box-shadow:0 40px 90px rgba(11,15,25,.28),0 0 0 1px rgba(11,15,25,.08)}
+.igang-fon video{display:block;width:100%;aspect-ratio:9/16;border-radius:31px;background:#0b0f19;object-fit:cover}
+.igang-text .pill{margin-bottom:18px;font-size:13px;letter-spacing:.14em;padding:7px 16px}
+.igang-text h3{font-size:44px;line-height:1.08;letter-spacing:-.02em;margin:0 0 18px;color:var(--ink)}
+.igang-text>p{font-size:19px;line-height:1.55;color:var(--ink-2);margin:0 0 26px;max-width:520px}
+.igang-steg{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.igang-steg li{display:flex;gap:14px;align-items:center;font-size:17px;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px rgba(11,15,25,.05)}
+.igang-steg b{flex:none;width:32px;height:32px;border-radius:50%;background:#e8f0ff;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:15px}
+@media(max-width:900px){.igang{grid-template-columns:1fr;gap:36px;margin-top:56px}.igang-fon{width:min(320px,82vw);margin:0 auto}.igang-text h3{font-size:34px}}
+/* WINDOWS-RUTAN (11 okt 2026): Windows-besokare far lamna sin mejl - visas en gang, bara pa Windows */
+.winruta{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(11,15,25,.45);padding:20px}
+.winruta.vis{display:flex;animation:winin .35s ease}
+@keyframes winin{from{opacity:0}to{opacity:1}}
+.winkort{position:relative;max-width:440px;width:100%;background:var(--white);border-radius:22px;padding:34px 30px 28px;box-shadow:0 30px 80px rgba(11,15,25,.35);text-align:center}
+.winkort .winlogo{width:52px;height:52px;margin:0 auto 14px;border-radius:14px;background:#e8f0ff;display:flex;align-items:center;justify-content:center}
+.winkort h3{font-size:26px;line-height:1.15;margin:0 0 10px;color:var(--ink)}
+.winkort p{font-size:16px;line-height:1.5;color:var(--ink-2);margin:0 0 20px}
+.winkort form{display:flex;gap:8px}
+.winkort input[type=email]{flex:1 1 auto;min-width:0;height:48px;min-height:48px;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:0 14px;font-size:16px}
+.winkort button[type=submit]{height:48px;padding:0 18px;border:0;border-radius:12px;background:var(--blue);color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+.winkort .winstang{position:absolute;top:12px;right:14px;border:0;background:none;font-size:24px;line-height:1;color:#8a93a6;cursor:pointer}
+.winkort .wintack{display:none;font-weight:700;color:var(--ink);margin:6px 0 0}
+.winkort .winfel{display:none;color:#c0392b;font-size:14px;margin:10px 0 0}
+.winkort small{display:block;margin-top:12px;color:#8a93a6;font-size:12px}
+@media(max-width:480px){.winkort form{flex-direction:column}.winkort input[type=email]{flex:0 0 48px;width:100%}.winkort button[type=submit]{width:100%}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CliprAuto","applicationCategory":"MultimediaApplication","operatingSystem":"macOS, Windows","url":"https://cliprauto.com/","description":"Runs your TikTok, Instagram Reels and YouTube Shorts accounts: finds videos you may reuse, makes the clips, posts on your times and learns what works. Runs on your own computer."}</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><span class="mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="caC" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d2350"/><stop offset="1" stop-color="#1a6fd4"/>
+    </linearGradient>
+    <linearGradient id="caA" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1a6fd4"/><stop offset="1" stop-color="#5ab4ff"/>
+    </linearGradient>
+    <linearGradient id="caP" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5ab4ff"/><stop offset="1" stop-color="#1a6fd4"/>
+    </linearGradient>
+  </defs>
+  <!-- C: oppen ring, oppningen mot hogre dar A:et skar igenom -->
+  <path d="M86 26a44 44 0 1 0 0 68" fill="none" stroke="url(#caC)" stroke-width="15" stroke-linecap="round"/>
+  <!-- A: tva ben och ett tvarstreck -->
+  <path d="M74 98 100 20l26 78" fill="none" stroke="url(#caA)" stroke-width="15"
+        stroke-linejoin="round" stroke-linecap="round" transform="translate(-16,0) scale(0.92,1) translate(8,4)"/>
+  <path d="M68 76h42" stroke="url(#caA)" stroke-width="13" stroke-linecap="round"/>
+  <!-- spelknappen inuti C -->
+  <path d="M44 42 78 60 44 78z" fill="url(#caP)"/>
+</svg></span>CliprAuto</a>
+    <nav class="links">
+      <a href="#demo">See it work</a>
+      <a href="#how">How it works</a>
+      <a href="#studio">Clipr Studio</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-buy" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero center">
+  <div class="wrap narrow">
+    <p class="kicker" style="color:#8fbcff">Shorts, Reels &amp; TikTok on autopilot · for Mac</p>
+    <h1 class="h-xl">Your account.<br>Running itself.</h1>
+    <p class="sub">CliprAuto runs your TikTok, Instagram Reels and YouTube Shorts accounts every day: it finds the material, cuts the clips, checks every one, posts on your schedule and learns from the numbers. On your own computer, with the AI you already pay for.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#demo">See it in action</a>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="window">
+      <div class="top"><i></i><i></i><i></i></div>
+      <img src="bilder/home-hel.jpg" sizes="(max-width: 700px) 92vw, 1040px" width="1920" height="2294" fetchpriority="high" decoding="async" alt="The CliprAuto home screen: clips ready, active accounts, followers and views, and the next scheduled posts for Instagram, TikTok and YouTube">
+    </div>
+  </div>
+  <div class="hero-facts">
+    <div><b>0 servers</b><span>Runs on your computer. Nothing is uploaded to us.</span></div>
+    <div><b>Your AI</b><span>Claude or ChatGPT — the one you already have.</span></div>
+    <div><b>Support included</b><span>Help with installation and the first posts, and answers within 24 hours.</span></div>
+  </div>
+</section>
+<div class="fade navy-paper" aria-hidden="true"></div>
+
+<!-- SEE IT IN ACTION: riktiga utdata, inga pahittade siffror -->
+<section class="paper center after-fade" id="demo">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">See it in action</p>
+      <h2 class="h-l">One source in. Clips out. Checked, posted, measured.</h2>
+      <p class="sub">This is a real run on a fresh copy with the standard settings — not a mock-up. The clips shown here were made and approved by CliprAuto.</p>
+    </div>
+    <div class="demo">
+      <div>
+        <div class="klipp" role="region" aria-roledescription="carousel" aria-label="Clips made by CliprAuto" tabindex="0">
+          <div class="klipp-scen">
+            <button class="klipp-pil prev" type="button" aria-label="Previous clip"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="phone"><div class="klipp-fonster"><div class="klipp-spar">
+            <figure class="klipp-bild" role="group" aria-roledescription="slide" aria-label="1 of 3: Fitness podcast" data-genre="Fitness podcast" data-kanal="Mind Pump Show"><video src="bilder/demo-klipp.mp4" poster="bilder/demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A clip made by CliprAuto from a fitness podcast: vertical, hook line, subtitles in sync"></video></figure>
+            <figure class="klipp-bild" role="group" aria-roledescription="slide" aria-label="2 of 3: Psychology" data-genre="Psychology" data-kanal="Marc Megna"><video data-src="bilder/klipp-megna.mp4" poster="bilder/klipp-megna-poster.jpg" muted loop playsinline preload="none" aria-label="A clip made by CliprAuto from a psychology interview: vertical, hook line, subtitles in sync"></video></figure>
+            <figure class="klipp-bild" role="group" aria-roledescription="slide" aria-label="3 of 3: Space history" data-genre="Space history" data-kanal="The Vintage Space"><video data-src="bilder/klipp-vintagespace.mp4" poster="bilder/klipp-vintagespace-poster.jpg" muted loop playsinline preload="none" aria-label="A clip made by CliprAuto from a space history channel: vertical, hook line, subtitles in sync"></video></figure>
+            </div></div></div>
+            <button class="klipp-pil next" type="button" aria-label="Next clip"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="klipp-info">
+            <p class="klipp-genre" aria-live="polite">Fitness podcast</p>
+            <div class="klipp-prickar"><button class="klipp-prick" type="button" aria-label="Clip 1: Fitness podcast" aria-current="true"></button><button class="klipp-prick" type="button" aria-label="Clip 2: Psychology"></button><button class="klipp-prick" type="button" aria-label="Clip 3: Space history"></button></div>
+            <p class="credit">Footage: Mind Pump Show (CC BY) — credited in every post, as the licence asks.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flow">
+        <div class="st"><b>FIND</b><div><h3>Finds videos worth clipping</h3><p>It searches your niche for videos that already pulled big numbers — and only the ones you're allowed to reuse.</p><span class="bevis">6 sources for "fitness podcast" · 50,000+ views · licence checked</span></div></div>
+        <div class="st"><b>CREATE</b><div><h3>Turns them into ready-to-post clips</h3><p>The strongest moments, cut vertical, with a hook on top and subtitles that follow every word. Never cut mid-sentence.</p><span class="bevis">3 clips from one episode</span></div></div>
+        <div class="st"><b>CHECK</b><div><h3>Checks every clip like an editor would</h3><p>It watches and listens to each finished clip first. Subtitles out of sync, text over a face, a sentence cut off — it doesn't go out.</p><span class="bevis">16 of 16 subtitle lines in sync · approved</span></div></div>
+        <div class="st"><b>POST</b><div><h3>Posts while you're away</h3><p>On your times, from your own browser. Then it opens your account to make sure the post is really there.</p></div></div>
+        <div class="st"><b>MEASURE</b><div><h3>Shows you what's working</h3><p>Every post is compared at the same age — 6 hours and 1 day — so you see real winners, not lucky timing.</p></div></div>
+        <div class="st"><b>LEARN</b><div><h3>Gets better on its own</h3><p>It puts what wins first and flags what keeps falling flat. You don't have to tell it.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOU VS CLIPRAUTO -->
+<section class="paper center" id="du">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Clip tools vs CliprAuto</p>
+      <h2 class="h-l">Clip tools cut. CliprAuto runs the account.</h2>
+      <p class="sub" style="margin-top:14px">A clip tool turns a video you upload into clips, and the rest is up to you. CliprAuto runs the whole account from this screen.</p>
+    </div>
+    <div class="mc">
+      <div class="mc-stage">
+        <div class="mc-img"><img src="bilder/home-hel.jpg" width="1920" height="2294" loading="lazy" alt="The CliprAuto home screen with clips ready, the next scheduled posts, today's posts and the connected accounts"></div>
+        <svg class="mc-svg" viewBox="0 0 1000 780" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="190" y1="112" x2="330" y2="112"/><circle cx="330" cy="112" r="6"/>
+          <line x1="190" y1="327" x2="330" y2="327"/><circle cx="330" cy="327" r="6"/>
+          <line x1="190" y1="560" x2="306" y2="709"/><circle cx="306" cy="709" r="6"/>
+          <line x1="810" y1="174" x2="781" y2="174"/><circle cx="781" cy="174" r="6"/>
+          <line x1="810" y1="327" x2="781" y2="327"/><circle cx="781" cy="327" r="6"/>
+        </svg>
+        <div class="mc-c l" style="top:14.4%"><b>You do not hunt for videos</b><span>It finds videos you are allowed to reuse, in your niche, every day.</span></div>
+        <div class="mc-c l" style="top:41.9%"><b>You do not edit or check</b><span>It makes the clips with hook and subtitles, and checks every one before it can post.</span></div>
+        <div class="mc-c l pay" style="top:71.8%"><b>You do not pay every month</b><span>No subscription to us. It runs on your computer.</span></div>
+        <div class="mc-c r" style="top:22.3%"><b>You do not guess what works</b><span>It compares posts at the same age and adjusts.</span></div>
+        <div class="mc-c r" style="top:41.9%"><b>You do not schedule posts</b><span>It posts on your times to TikTok, Instagram Reels and YouTube Shorts.</span></div>
+      </div>
+      <div class="mc-once">
+        <div class="t">What you do, once</div>
+        <div class="i">Tell it your niche<span>In your own words.</span></div>
+        <div class="i">Connect your accounts<span>You sign in yourself.</span></div>
+        <div class="i">Pick your posting times<span>Or keep four times a day.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIX JOBS -->
+<section class="six6" id="how">
+  <div class="wrap">
+    <div class="head6">
+      <p class="pill">The 6-step machine</p>
+      <h2 class="h-l">CliprAuto does six.</h2>
+      <p class="sub6">From finding the right content to learning what works — it handles the full workflow, every day.</p>
+    </div>
+    <div class="flow6">
+      <div class="s6c c1"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="M15.2 15.2L20 20"/></svg></div><div class="no">01</div><h3>Find</h3><p>Finds videos that already work in your niche, and keeps the bank full on its own.</p><div class="pn"><div class="lb">Found in your niche</div><div class="th3"><img src="bilder/klipp-megna-poster.jpg" alt=""><img src="bilder/klipp-vintagespace-poster.jpg" alt=""><img src="bilder/demo-poster.jpg" alt=""></div></div></div><i class="arw" aria-hidden="true">→</i><div class="s6c c2"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="6.5" r="2.7"/><circle cx="6.5" cy="17.5" r="2.7"/><path d="M8.6 8.2L20 18M8.6 15.8L20 6"/></svg></div><div class="no">02</div><h3>Build</h3><p>Cuts long videos into short vertical clips with a hook line, subtitles and a caption.</p><div class="pn"><div class="lb">Clip built</div><div class="b2"><img src="bilder/klipp-megna-poster.jpg" alt=""><ul class="tg"><li>Hook line</li><li>Subtitles</li><li>Cover</li><li>Caption</li></ul></div></div></div><i class="arw" aria-hidden="true">→</i><div class="s6c c3"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.8 2.8L16.2 9.4"/></svg></div><div class="no">03</div><h3>Check</h3><p>Checks every finished clip. One that fails a check is never posted.</p><div class="pn"><ul class="ck"><li>Subtitles in sync</li><li>Hook in view</li><li>Never cut mid-sentence</li><li>Not a duplicate</li></ul></div></div><i class="arw" aria-hidden="true">→</i><div class="s6c c4"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 3L3 10.5l6.5 2.6L12 20z"/><path d="M9.5 13.1L21 3"/></svg></div><div class="no">04</div><h3>Post</h3><p>Posts to TikTok, Instagram and YouTube on your times, from your own browser.</p><div class="pn"><div class="lb">Scheduled</div><ul class="pl"><li><svg class="lg" viewBox="0 0 24 24" aria-label="Instagram"><defs><radialGradient id="igg" cx="30%" cy="107%" r="140%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.2" fill="url(#igg)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg>Instagram<b>09:00</b></li><li><svg class="lg" viewBox="0 0 24 24" aria-label="TikTok"><rect width="24" height="24" rx="6.2" fill="#000"/><g transform="translate(5.2 4.4) scale(.6)"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25f4ee" transform="translate(-.9 -.7)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#fe2c55" transform="translate(.9 .7)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#fff"/></g></svg>TikTok<b>13:00</b></li><li><svg class="lg" viewBox="0 0 24 24" aria-label="YouTube"><rect x="0" y="3.6" width="24" height="16.8" rx="5" fill="#f00"/><path d="M9.6 8.6v6.8l6-3.4z" fill="#fff"/></svg>YouTube<b>17:00</b></li></ul></div></div><i class="arw" aria-hidden="true">→</i><div class="s6c c5"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></div><div class="no">05</div><h3>Measure</h3><p>Reads the views back at six hours and at one day, and compares like with like.</p><div class="pn"><div class="lb">Views at the same age</div><div class="bars"><i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:86%"></i><i style="height:70%"></i></div><div class="ax"><span>6 h</span><span>1 day</span></div></div></div><i class="arw" aria-hidden="true">→</i><div class="s6c c6"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></div><div class="no">06</div><h3>Learn</h3><p>Moves what wins up the queue next time. Starts after 20 posts per account.</p><div class="pn"><svg class="sp" viewBox="0 0 120 56" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8a6bff"/><stop offset="1" stop-color="#e56bd2"/></linearGradient></defs><polyline points="3,48 24,40 44,43 66,28 88,20 117,6" fill="none" stroke="url(#lg)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="lb">Better results over time</div></div></div>
+    </div>
+    <div class="igang">
+      <div class="igang-fon"><video src="bilder/igang-60s.mp4" poster="bilder/igang-60s-poster.jpg" muted playsinline loop preload="metadata" aria-label="CliprAuto: from first login to first post"></video></div>
+      <div class="igang-text">
+        <p class="pill pill-l">See it in one minute</p>
+        <h3>From first login<br>to first post.</h3>
+        <p>Connect an account, pick what it is about and how often it posts. Then CliprAuto finds the videos, makes the Shorts and Reels, and posts them for you.</p>
+        <ul class="igang-steg">
+          <li><b>1</b>Connect Instagram, TikTok or YouTube — one or all three</li>
+          <li><b>2</b>Pick a subject and how many posts a day</li>
+          <li><b>3</b>The machine takes over and starts finding viral videos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="resultat">
+      <div class="window res-win"><img src="bilder/home-topp.jpg" width="1920" height="1295" loading="lazy" alt="The CliprAuto home screen: clips ready, active accounts, followers and views, and the next scheduled posts"></div>
+      <div class="res-text">
+        <p class="pill pill-l">Real results</p>
+        <h3>Real content.<br>Real numbers.</h3>
+        <p>This is an actual result from a CliprAuto customer in the car niche.</p>
+        <div class="res-case">
+          <img src="bilder/kundcase-insights.jpg" width="591" height="1015" loading="lazy" alt="Instagram reel insights from a customer's clip: 50,476 views, 34,962 viewers, 1.5K likes, 87 saves, 24 follows">
+          <ul class="rs"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></i><div><b>50,476</b><span>views</span></div></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg></i><div><b>24</b><span>follows</span></div></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v16l-5-3.6L7 20z"/></svg></i><div><b>87</b><span>saves</span></div></li><li class="note">Car niche · Instagram reel</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="factsbar"><div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.5-3.1 8-7.5 9.5-4.4-1.5-7.5-5-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><div><b>Your data stays yours</b><span>Nothing is uploaded to us.</span></div></div><div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="10.5" rx="1.6"/><path d="M2.5 19.5h19"/></svg><div><b>Runs on your computer</b><span>0 servers.</span></div></div><div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg><div><b>Your AI</b><span>Claude or ChatGPT — the one you already have.</span></div></div><div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="10.5" width="13" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5"/></svg><div><b>Your accounts</b><span>You stay in control.</span></div></div><div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.2V4.5h7.7l9.3 9.3-7.7 7.7z"/><circle cx="8" cy="9" r="1.3"/></svg><div><b>No subscription</b><span>It runs on your computer, not on ours.</span></div></div></div>
+  </div>
+</section>
+
+<!-- CLIP STUDIO -->
+<section id="studio">
+  <div class="wrap feature">
+    <div class="text">
+      <p class="kicker">Clipr Studio</p>
+      <h2 class="h-m">Drop a video. Get the clips.</h2>
+      <p>Give it a link to a video you like, or one of your own, tell it what you want in plain words, and it finds the best moments, cuts them to 9:16 and subtitles them. The clip is the same film for every platform — what you pick decides where the text may sit.</p>
+      <div class="rail">
+        <div>Best-moment detection, 9:16 crop and subtitles are always on.</div>
+        <div>Your video stays on this computer.</div>
+        <div>One clip or a series — you choose the length.</div>
+      </div>
+    </div>
+    <div class="shot"><img src="bilder/clipstudio.jpg" width="1920" height="1200" loading="lazy" decoding="async" alt="Clipr Studio: add a video from your computer or a link, choose the clip length and pick which TikTok, Instagram and YouTube accounts get the clips"></div>
+  </div>
+  <div class="wrap">
+    <div class="foreefter">
+      <figure><img src="bilder/fore-16x9.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Before: a frame from a 28-minute podcast in wide 16:9 format"><figcaption><b>Before</b> — a 28-minute podcast, wide 16:9.</figcaption></figure>
+      <div class="pil" aria-hidden="true">→</div>
+      <figure class="efter"><img src="bilder/efter-9x16.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="After: the same podcast as a 22-second vertical 9:16 clip with a hook line and subtitles in sync"><figcaption><b>After</b> — a 22-second vertical clip: whole sentences, hook line, subtitles in sync, the speaker kept in frame.</figcaption></figure>
+    </div>
+    <p class="credit">Real output from Clipr Studio. Footage: Mind Pump Show (CC BY).</p>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section class="paper">
+  <div class="wrap feature flip">
+    <div class="text">
+      <p class="kicker">Accounts</p>
+      <h2 class="h-m">One niche per account. Its own times.</h2>
+      <p>Several accounts, each with its own subject and its own schedule. Sign in once in CliprAuto's browser; from then on it posts, reads the numbers and never mixes one account's material into another.</p>
+      <div class="rail">
+        <div>Spread them over TikTok, Instagram and YouTube as you like.</div>
+        <div>Posting times are yours to set — never chosen for you.</div>
+        <div>Every publication is written to a log you can read.</div>
+      </div>
+    </div>
+    <div class="shot"><img src="bilder/accounts.jpg" width="1920" height="1200" loading="lazy" decoding="async" alt="The Accounts page: Instagram, TikTok and YouTube accounts connected to CliprAuto, each with its own niche"></div>
+  </div>
+</section>
+
+<!-- LEARNING -->
+<section class="center" id="learn">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Learning</p>
+      <h2 class="h-l">It doesn't just post.<br>It learns what works.</h2>
+    </div>
+    <div class="lar">
+      <div class="text">
+        <p class="sub" style="margin:0;max-width:none;text-align:left">You post, check the views and guess. Was it the time of day, the length, the style, the subject? A lucky evening makes a weak clip look good, a slow day buries a good one — and nobody can see the pattern by hand.</p>
+        <ol class="larsteg">
+          <li><b>Sees the whole picture</b><span>It keeps track of when every post went out, how long it is, its style and subject — and how people reacted: views, likes, comments and saves.</span></li>
+          <li><b>Tells luck from what works</b><span>Every post is checked at the same age — after a day, with an early look at six hours — against what's normal for that account. A lucky evening can't fool it.</span></li>
+          <li><b>Puts the winners first</b><span>What works for your account goes out first, and it flags what keeps falling flat. Your posting times and your clips are never touched.</span></li>
+        </ol>
+      </div>
+      <div class="kundcase">
+        <p class="kc-rub">A real result from a customer</p>
+        <p class="kc-sub">One clip CliprAuto made and posted for a car account — straight from the customer's Instagram.</p>
+        <img class="kc-bild" src="bilder/kundcase-insights.jpg" width="591" height="1015" loading="lazy" alt="Instagram reel insights from a customer's clip: 50,476 views, 34,962 viewers, 1.5K likes, 87 saves, 24 follows">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNERSHIP -->
+<section class="paper center" id="own">
+  <div class="wrap">
+    <p class="kicker">A machine you own</p>
+    <div class="ager"><span>Your computer.</span><span>Your AI.</span><span>Your accounts.</span><span>Yours to run.</span></div>
+    <p class="sub">Not another subscription. CliprAuto runs on your computer, with the Claude or ChatGPT you already have. Your videos, accounts and numbers never leave it.</p>
+  </div>
+</section>
+
+<!-- WHO IT IS FOR -->
+<section class="center" id="for">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Who it is for</p>
+      <h2 class="h-l">From total beginner to busy pro.</h2>
+    </div>
+    <div class="for">
+      <div class="job"><h3>New to all of this</h3><p>Never edited a video or run an account? You don't need to. Tell it what your account is about — and learn by watching it work.</p></div>
+      <div class="job"><h3>Short on time</h3><p>A job, a family, a full week. It posts every day — even on the days you can't.</p></div>
+      <div class="job"><h3>Already posting</h3><p>You know what works, but cutting and scheduling eat your evenings. Hand it over — every clip is still checked before it goes out.</p></div>
+      <div class="job"><h3>The busy pro</h3><p>Several accounts, each with its own subject and times, run from one computer. Your time goes to the work only you can do.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="fade paper-navy" aria-hidden="true"></div>
+<!-- THREE RULES -->
+<!-- AFTER YOU BUY -->
+<section class="paper center" id="start">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Getting started</p>
+      <h2 class="h-l">Download. Connect. Choose. Start.</h2>
+      <p class="sub">Most of the setup is waiting for downloads. Your AI does the installing; you answer a few questions.</p>
+    </div>
+    <div class="steg4">
+      <div class="job"><div class="n">DOWNLOAD</div><h3>The file by email</h3><p>You get the download from us. Drag the file into Claude (the Code tab in the Claude app) or ChatGPT Codex on your Mac and write "Install the machine".</p></div>
+      <div class="job"><div class="n">CONNECT</div><h3>Sign in to your accounts</h3><p>A window opens per account and you sign in yourself. Your AI never sees your passwords.</p></div>
+      <div class="job"><div class="n">CHOOSE</div><h3>Your niche and times</h3><p>Say what each account is about and when it should post — or keep four researched times a day.</p></div>
+      <div class="job"><div class="n">START</div><h3>It runs</h3><p>It checks the whole chain once, then finds, builds, checks and posts on its own. Onboarding help and support are included.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="fade navy-white" aria-hidden="true"></div>
+<!-- PRICE -->
+<section class="paper center after-fade" id="contact">
+  <div class="wrap narrow">
+    <p class="kicker">Get in touch</p>
+    <h2 class="h-l">Want to know more about CliprAuto?</h2>
+    <p class="sub">Write to us and we answer within 24 hours.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="mailto:info@cliprauto.com">info@cliprauto.com</a></div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="center" id="support">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="kicker">Support included</p>
+      <h2 class="h-m">We are with you. Always.</h2>
+      <p class="sub">Support is part of CliprAuto, not an add-on. Ask us anything, at any point, and we answer within 24 hours — whatever level you are at.</p>
+    </div>
+    <div class="factsbar sup3">
+      <div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.5-3.1 8-7.5 9.5-4.4-1.5-7.5-5-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><div><b>Always included</b><span>No extra fee, no support tiers.</span></div></div>
+      <div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Answer within 24 hours</b><span>Every question, every time.</span></div></div>
+      <div class="fx"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg><div><b>With you at every level</b><span>From your first clip to a busy roster.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="center" id="faq">
+  <div class="wrap">
+    <h2 class="h-l">Questions about CliprAuto</h2>
+    <div class="faq">
+      <details><summary>Is it a subscription?</summary><p>No. CliprAuto runs on your own computer, so there is no subscription to us.</p></details>
+      <details><summary>How is CliprAuto different from clip tools like Opus Clip?</summary><p>Clip tools turn a video you upload into clips, and the rest is up to you. CliprAuto runs the whole account: it finds the videos itself, makes and checks the clips, posts them on your times, measures the result and learns from it.</p></details>
+      <details><summary>Can I run an account without showing my face?</summary><p>Yes. CliprAuto makes clips from videos you're allowed to reuse, or from your own files. You never need to be on camera.</p></details>
+      <details><summary>Which platforms does it post to?</summary><p>TikTok, Instagram Reels and YouTube Shorts. Several accounts, each with its own niche and times.</p></details>
+      <details><summary>What do I need to run it?</summary><p>A Mac that can stay on (Windows coming soon), a Claude or ChatGPT subscription, and accounts on the platforms you want to post to. The requirements list is sent with CliprAuto.</p></details>
+      <details><summary>How much do I have to do myself?</summary><p>Set it up once: niche, accounts, times. After that it finds, builds, checks and posts by itself. Keep the computer on and stay signed in to your AI and your accounts. You can approve clips by hand if you want to.</p></details>
+      <details><summary>Does it need my AI to work?</summary><p>Yes. Your AI writes hook lines, judges clips and helps CliprAuto repair itself when a platform changes its pages. Without an AI it can build, but it will not post anything on its own.</p></details>
+      <details><summary>Who decides what gets posted?</summary><p>CliprAuto builds and checks. Every clip passes the three rules and the quality bar before it is queued. You can approve clips by hand in the panel, or let the schedule run.</p></details>
+      <details><summary>Where is my content?</summary><p>On your computer. There are no servers - your videos, your accounts and your numbers are never uploaded to us.</p></details>
+      <details><summary>What about other people's videos and copyright?</summary><p>By default CliprAuto only fetches videos whose owners allow reuse (Creative Commons), checks the licence on every video and credits the creator in every post. You can switch on "Fetch all videos" - then you are responsible for having the right to use what you post. CliprAuto does not make any material copyright-safe by itself.</p></details>
+      <details><summary>What happens if something breaks?</summary><p>A watchman checks CliprAuto every ten minutes, a built-in doctor finds the cause and fixes what it can, and a clip that fails a check is never posted. If a platform changes its pages, your AI helps repair it - and you can always write to us.</p></details>
+      <details><summary>Are updates included?</summary><p>Ask us. Write to info@cliprauto.com and we answer within 24 hours.</p></details>
+      <details><summary>What does "support included" mean?</summary><p>Help with installation and the first posts, and answers when something is unclear.</p></details>
+      <details><summary>How do I get CliprAuto?</summary><p>Write to info@cliprauto.com. We reply by email, usually within 24 hours.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CliprAuto</span>
+    <span class="fot-kontakt">Questions? <a href="mailto:info@cliprauto.com">info@cliprauto.com</a></span>
+    <span><a href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+
+<script>
+/* DEMO-KARUSELLEN: bara det synliga klippet spelar, ovriga hamtas forst nar de visas. */
+(function () {
+  var rot = document.querySelector('.klipp');
+  if (!rot) return;
+  var spar = rot.querySelector('.klipp-spar');
+  var bilder = [].slice.call(rot.querySelectorAll('.klipp-bild'));
+  var prickar = [].slice.call(rot.querySelectorAll('.klipp-prick'));
+  var genre = rot.querySelector('.klipp-genre');
+  var credit = rot.querySelector('.credit');
+  var n = bilder.length, i = 0, synlig = true;
+
+  function video(k) { return bilder[k].querySelector('video'); }
+  function spela() {
+    var v = video(i);
+    if (!v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; }
+    if (synlig) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
+  }
+  function visa(k) {
+    i = (k + n) % n;
+    spar.style.transform = 'translateX(' + (-100 * i) + '%)';
+    bilder.forEach(function (b, j) {
+      b.setAttribute('aria-hidden', j === i ? 'false' : 'true');
+      if (j !== i) { var v = video(j); v.pause(); try { v.currentTime = 0; } catch (e) {} }
+    });
+    prickar.forEach(function (p, j) { p.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+    genre.textContent = bilder[i].dataset.genre;
+    credit.textContent = 'Footage: ' + bilder[i].dataset.kanal + ' (CC BY) \u2014 credited in every post, as the licence asks.';
+    spela();
+  }
+  rot.querySelector('.klipp-pil.prev').addEventListener('click', function () { visa(i - 1); });
+  rot.querySelector('.klipp-pil.next').addEventListener('click', function () { visa(i + 1); });
+  prickar.forEach(function (p, j) { p.addEventListener('click', function () { visa(j); }); });
+  rot.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); visa(i - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); visa(i + 1); }
+  });
+  var fonster = rot.querySelector('.klipp-fonster'), x0 = null, y0 = 0;
+  fonster.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  fonster.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { visa(dx < 0 ? i + 1 : i - 1); }
+  }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { synlig = e[0].isIntersecting; spela(); }, { threshold: 0.25 }).observe(rot);
+  }
+  visa(0);
+})();
+</script>
+<script>/* START-FILMEN: spelas när den syns, pausas när den lämnar bild; klick = paus/spela */
+(function(){var v=document.querySelector('.igang-fon video');if(!v)return;
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){v.play().catch(function(){})}else{v.pause()}})},{threshold:.4}).observe(v)}else{v.play().catch(function(){})}
+v.addEventListener('click',function(){v.paused?v.play():v.pause()});v.style.cursor='pointer';})();</script>
+
+
+</body>
+</html>
+
+
