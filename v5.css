@@ -200,3 +200,24 @@ footer a{text-decoration:none}
 .sent .eta{margin-top:14px;font-size:14.5px}
 
 .sent .toS{font-weight:600}.sent .to{color:var(--t1)}
+
+/* beställningsdialog (ägaren 1 nov: plan-knapparna ska bli ett formulär, ingen mailto) */
+#order{border:1px solid var(--line2);border-radius:var(--r2);background:var(--s1);color:var(--t1);padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;margin:auto}
+#order::backdrop{background:rgba(0,0,0,.62)}
+#order[open]{animation:ordIn .2s var(--ease-out)}
+@keyframes ordIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+#order .obox{position:relative;padding:28px}
+#order .x{position:absolute;top:8px;right:8px;width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;border-radius:999px;color:var(--t2);cursor:pointer;transition:background .2s var(--ease-out),color .2s var(--ease-out)}
+#order .x .ic{width:20px;height:20px}
+#order .x:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){#order .x:hover{background:var(--s2);color:var(--t1)}}
+#order h3{font-size:22px;font-weight:500;letter-spacing:-.02em;margin:0 44px 4px 0}
+#order .osum{margin:0 0 20px;color:var(--t2);font-size:15.5px}#order .osum b{color:var(--t1);font-weight:600}
+#order .opt{color:var(--t3)}
+.req input[type=text],.req textarea,.req select{width:100%;font:400 17px var(--font);color:var(--t1);background:var(--s1);border:1px solid var(--line2);border-radius:var(--r1);padding:14px;outline:0;transition:border-color .16s var(--ease-out)}
+.req textarea{resize:vertical;min-height:92px;line-height:1.5}
+.req select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23a8a297' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:44px}
+.req input[type=text]:focus,.req textarea:focus,.req select:focus{border-color:var(--accent)}
+.req input[type=text].bad,.req textarea.bad{border-color:#ef8b85}
+#order .sent{margin-top:0;border:0;padding:0;background:transparent;max-width:none}
+@media(prefers-reduced-motion:reduce){#order[open]{animation:none}}
