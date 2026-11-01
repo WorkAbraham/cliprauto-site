@@ -16,12 +16,25 @@ nav .bar{display:flex;align-items:center;justify-content:space-between;height:60
 nav ul{display:flex;gap:30px;list-style:none}
 nav ul a{color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:500}
 nav ul a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border-radius:999px;background:var(--violet);color:#fff;font:600 16px var(--font);text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s;white-space:nowrap;box-shadow:0 10px 30px rgba(87,63,255,.35)}
-.btn:hover{background:var(--violet-d);transform:translateY(-1px)}
-.btn.black{background:var(--ink);box-shadow:none}.btn.black:hover{background:#2a2552}
-.btn.small{padding:11px 22px;font-size:14.5px;box-shadow:none}
-.btn.pink{background:var(--pink);color:var(--ink);box-shadow:0 10px 30px rgba(255,107,209,.4)}.btn.pink:hover{background:#ff82da}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}.btn.ghost:hover{border-color:var(--ink);background:transparent}
+/* KNAPPAR – UX-REGLER.md A: 48 px, 17 px semibold, pill (radie = höjd/2), satintoning + 1 px ljuskant, skugga 8 px ned / 24 blur, ljus kant som löper runt på 200 ms vid hover, sjunker 1 px vid tryck, synlig fokus */
+@property --vinkel{syntax:"<angle>";inherits:false;initial-value:0deg}
+.btn{--fyll1:#6a53ff;--fyll2:#573FFF;--fyll3:#4631e6;--sken:rgba(87,63,255,.38);--ljus:#ff9ee3;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 28px;border-radius:999px;background:linear-gradient(180deg,var(--fyll1) 0%,var(--fyll2) 55%,var(--fyll3) 100%);color:#fff;font:600 17px/1 var(--font);letter-spacing:-.005em;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 0 0 1px rgba(255,255,255,.1),0 8px 24px var(--sken);transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--vinkel),transparent 0deg,var(--ljus) 40deg,transparent 110deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;pointer-events:none}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:hover::after{opacity:1;animation:runt .2s linear 1 forwards}
+@keyframes runt{from{--vinkel:0deg}to{--vinkel:360deg}}
+.btn:active{transform:translateY(1px);filter:brightness(.97);box-shadow:inset 0 2px 5px rgba(0,0,0,.28),0 2px 6px var(--sken)}
+.btn:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.btn[disabled],.btn[aria-disabled=true]{opacity:.55;cursor:not-allowed;transform:none;filter:grayscale(.3)}
+.btn.black{--fyll1:#2b2552;--fyll2:#15112e;--fyll3:#0d0a20;--sken:rgba(21,17,46,.3)}
+.btn.small{min-height:44px;padding:0 24px}
+.btn.pink{--fyll1:#ff86da;--fyll2:#FF6BD1;--fyll3:#f04fbf;--sken:rgba(255,107,209,.42);--ljus:#fff;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(21,17,46,.62)}
+.btn.ghost:hover{background:rgba(21,17,46,.05);filter:none}
+.btn.ghost:active{box-shadow:inset 0 0 0 1.5px rgba(21,17,46,.62),inset 0 2px 4px rgba(0,0,0,.14)}
+.btn svg{width:20px;height:20px;flex:none}
+@media(prefers-reduced-motion:reduce){.btn,.btn:hover::after{transition:none;animation:none}}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink);background:var(--glass);border:1px solid rgba(255,255,255,.8);padding:6px 14px;border-radius:99px;margin-bottom:22px}
 .kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--violet))}
 /* hero panel */

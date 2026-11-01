@@ -19,8 +19,9 @@
    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m)){bad(mail,1);return msg(f,'Please enter a valid email address.')}
    if(ENGANG.indexOf(m.split('@')[1])>=0){bad(mail,1);return msg(f,'Please use a permanent email address, not a temporary one.')}
    if(!f.own.checked){return msg(f,'Please confirm this is your own content, or that you have permission.')}
-   var b=f.querySelector('button'); b.disabled=true; b.textContent='Sending…';
-   setTimeout(function(){fake(f,sent,m);b.disabled=false;b.textContent='Get a free sample'},700);
+   var b=f.querySelector('button'),old=b.innerHTML; b.classList.add('laddar'); b.setAttribute('aria-disabled','true'); b.innerHTML='<span class="spinn"></span><span>Opening your email</span>';
+   setTimeout(function(){b.innerHTML='<svg class="bock" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ready</span>'},300);
+   setTimeout(function(){fake(f,sent,m);b.classList.remove('laddar');b.removeAttribute('aria-disabled');b.innerHTML=old},700);
   });
  });
  function fake(f,sent,mail){var l=f.link.value.trim();f.hidden=true;sent.hidden=false;location.href='mailto:info@cliprauto.com?subject='+encodeURIComponent('Free sample request')+'&body='+encodeURIComponent('Hi,\n\nPlease make a free sample from my video:\n'+l+'\n\nMy email: '+(mail||'')+'\nI post on: ')}

@@ -9,9 +9,11 @@
 .req input.bad{border-color:#c62f4a;box-shadow:0 0 0 4px rgba(198,47,74,.12)}
 .req .chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-2);margin:2px 0 16px;cursor:pointer}
 .req .chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--violet);flex:none}
-.req .btn{width:100%;background:var(--ink);box-shadow:none;font-size:16.5px;padding:16px 26px}
-.req .btn:hover{background:#0b3447}
-.req .btn[disabled]{opacity:.6;cursor:wait}
+.req .btn{width:100%;--fyll1:#2b2552;--fyll2:#15112e;--fyll3:#0d0a20;--sken:rgba(21,17,46,.3);min-height:52px}
+.req .btn.laddar{cursor:progress}
+.req .btn .spinn{width:20px;height:20px;border-radius:50%;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;animation:snurr .6s linear infinite}
+@keyframes snurr{to{transform:rotate(360deg)}}
+.req .btn .bock{width:20px;height:20px}
 .req .msg{min-height:0;margin-top:12px;font-size:14px;font-weight:600;color:#c62f4a}
 .req .msg:empty{display:none}
 .req .small{margin-top:12px;font-size:13px;color:var(--ink-2);text-align:center}
