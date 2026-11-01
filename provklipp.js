@@ -1,5 +1,6 @@
-/* Provklipp-formuläret (FÖRHANDSVISNING: inget skickas). Kontrollerna här är bara för användaren; de riktiga skydden körs alltid på servern. */
+/* Provklipp-formuläret: skickar till mottagningen (Cloudflare Worker), som mejlar bekräftelsen. Kontrollerna här är bara för användaren; de riktiga skydden körs alltid på servern. */
 (function(){
+ var API='https://cliprauto-mottagning.mottagning.workers.dev';
  var OK_HOSTS=['youtube.com','www.youtube.com','m.youtube.com','youtu.be','vimeo.com','player.vimeo.com','loom.com','www.loom.com'];
  var ENGANG=['mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com','yopmail.com','trashmail.com','sharklasers.com','getnada.com','throwawaymail.com'];
  var t0=Date.now();
@@ -11,7 +12,7 @@
   var box=f.parentNode, sent=box.querySelector('.sent');
   f.addEventListener('submit',function(ev){
    ev.preventDefault(); msg(f,''); var link=f.link, mail=f.email; bad(link,0); bad(mail,0);
-   if(f.website.value||Date.now()-t0<3000){return fake(f,sent,mail.value)}          // robot: fyllde dolda fältet eller var för snabb
+   if(f.website.value||Date.now()-t0<3000){f.hidden=true;sent.hidden=false;return}          // robot: fyllde dolda fältet eller var för snabb
    if(forsok()>3){return msg(f,'Too many attempts from this device. Please try again in an hour.')}
    var u; try{u=new URL(link.value.trim())}catch(e){u=null}
    if(!u||u.protocol!=='https:'||OK_HOSTS.indexOf(u.hostname.toLowerCase())<0){bad(link,1);return msg(f,'Please paste a link from YouTube, Vimeo or Loom.')}
@@ -19,11 +20,13 @@
    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m)){bad(mail,1);return msg(f,'Please enter a valid email address.')}
    if(ENGANG.indexOf(m.split('@')[1])>=0){bad(mail,1);return msg(f,'Please use a permanent email address, not a temporary one.')}
    if(!f.own.checked){return msg(f,'Please confirm this is your own content, or that you have permission.')}
-   var b=f.querySelector('button'),old=b.innerHTML; b.classList.add('laddar'); b.setAttribute('aria-disabled','true'); b.innerHTML='<span class="spinn"></span><span>Opening your email</span>';
-   setTimeout(function(){b.innerHTML='<svg class="bock" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ready</span>'},300);
-   setTimeout(function(){fake(f,sent,m);b.classList.remove('laddar');b.removeAttribute('aria-disabled');b.innerHTML=old},700);
+   var b=f.querySelector('button'),old=b.innerHTML; b.classList.add('laddar'); b.setAttribute('aria-disabled','true'); b.innerHTML='<span class="spinn"></span><span>Sending</span>';
+   function klar(){b.classList.remove('laddar');b.removeAttribute('aria-disabled');b.innerHTML=old}
+   fetch(API+'/api/request',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({link:link.value.trim(),email:m,own:true,website:f.website.value,t:t0})})
+    .then(function(r){return r.json().catch(function(){return {ok:false,message:'Something went wrong. Please try again or write to info@cliprauto.com.'}})})
+    .then(function(j){klar(); if(j&&j.ok){f.hidden=true;sent.hidden=false;var p=sent.querySelector('.to');if(p)p.textContent=m}else{msg(f,(j&&j.message)||'Something went wrong. Please try again or write to info@cliprauto.com.')}})
+    .catch(function(){klar();msg(f,'We could not reach the server. Please check your connection and try again, or write to info@cliprauto.com.')});
   });
  });
- function fake(f,sent,mail){var l=f.link.value.trim();f.hidden=true;sent.hidden=false;location.href='mailto:info@cliprauto.com?subject='+encodeURIComponent('Free sample request')+'&body='+encodeURIComponent('Hi,\n\nPlease make a free sample from my video:\n'+l+'\n\nMy email: '+(mail||'')+'\nI post on: ')}
  document.querySelectorAll('.sent .back').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var s=a.closest('.sent');s.hidden=true;s.parentNode.querySelector('form').hidden=false})});
 })();
