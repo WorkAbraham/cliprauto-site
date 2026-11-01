@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /provsida.html
+
+Sitemap: https://cliprauto.com/sitemap.xml
