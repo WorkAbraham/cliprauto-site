@@ -182,3 +182,15 @@ footer a{text-decoration:none}@media(hover:hover) and (pointer:fine){footer a:ho
  .sty{width:210px}
  h1{font-size:40px}
 }
+
+/* LEVANDE BAKGRUND (Iridescence, React Bits; ägaren valde den 1 nov): ligger under allt innehåll, tonas in när den är klar, lätt skärm bakom text för kontrast */
+.hero,.final{isolation:isolate}
+.final{position:relative;overflow:hidden}                       /* bakgrundslagret ankras i rutan (annars täckte det hela sidan) */
+@media (prefers-reduced-transparency:reduce){.bgwrap [data-iridescence]{display:none}}      /* Apple-regel: frostigare/solida ytor när användaren ber om det */
+.bgwrap{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.bgwrap [data-iridescence]{position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease-out);pointer-events:auto}
+.bgwrap [data-iridescence].klar{opacity:1}
+.bgwrap .slor{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(244,241,250,.76) 0%,rgba(244,241,250,.5) 40%,rgba(244,241,250,0) 68%)}
+.bgwrap .slor-mitt{background:radial-gradient(ellipse 62% 70% at 50% 50%,rgba(244,241,250,.82),rgba(244,241,250,.5) 60%,rgba(244,241,250,0) 100%)}
+.hero .wrap,.final .wrap{position:relative;z-index:1}
+@media(max-width:700px){.bgwrap .slor{background:linear-gradient(180deg,rgba(244,241,250,.8) 0%,rgba(244,241,250,.62) 60%,rgba(244,241,250,.3) 100%)}}
