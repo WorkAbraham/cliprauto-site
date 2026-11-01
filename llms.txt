@@ -1,0 +1,24 @@
+# CliprAuto
+
+> CliprAuto is a done-for-you video clipping service. It turns long-form video (podcasts, interviews, webinars, talks) into finished short clips with captions for Instagram Reels, YouTube Shorts, TikTok, LinkedIn and other platforms. Clips are checked by software before delivery. A free sample made from the customer's own recording comes first.
+
+Not a software download. No guarantee of views. Paid monthly by invoice (USD): Starter $500, Most popular $1,099, Premium $1,799.
+
+## Main pages
+- [Home and plans](https://cliprauto.com/): what we do, how we test every clip, plans and the free sample form
+- [Podcast clipping service](https://cliprauto.com/podcasts/): clips from podcast episodes
+- [YouTube creators](https://cliprauto.com/youtube-creators/): Shorts, Reels and TikToks from long YouTube videos
+- [Experts and companies](https://cliprauto.com/experts-and-companies/): LinkedIn, Reels and Shorts from webinars, interviews and talks
+- [CliprAuto in short](https://cliprauto.com/about/): facts, inputs, outputs, formats, pricing and what we do not do
+
+## Guides
+- [How to turn a podcast episode into short clips, step by step](https://cliprauto.com/guides/turn-podcast-into-shorts/): The ten steps we follow, from transcript to final check.
+- [Podcast clips: AI tool, freelancer or agency? How to choose](https://cliprauto.com/guides/podcast-clipping-ai-freelancer-or-agency/): What each option is good at, and what to ask before you pay.
+- [How long should podcast clips be?](https://cliprauto.com/guides/how-long-should-podcast-clips-be/): A practical rule for clip length, and how to apply it.
+- [How to add captions to short videos that are accurate and in sync](https://cliprauto.com/guides/add-captions-to-short-videos/): Accuracy, timing, safe areas and how to check them.
+- [Video sizes for Reels, Shorts, TikTok and LinkedIn](https://cliprauto.com/guides/video-sizes-reels-shorts-tiktok-linkedin/): The four formats that cover every platform, and what each is for.
+- [How to choose which moments of a podcast to clip](https://cliprauto.com/guides/choose-podcast-moments-to-clip/): A checklist, and the red flags that tell you to skip a moment.
+- [How to plan a year of video clips from the questions your audience asks](https://cliprauto.com/guides/plan-a-year-of-clips-from-audience-questions/): A simple method: specialty, topics, real questions, matched to your recordings.
+
+## Contact
+- info@cliprauto.com

@@ -1,4 +1,53 @@
+# Alla sökmotorer och AI-assistenter är välkomna att läsa de publika sidorna. Privata provsidor är stängda.
 User-agent: *
+Allow: /
+Disallow: /provsida.html
+
+User-agent: GPTBot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /provsida.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Claude-User
+Allow: /
+Disallow: /provsida.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /provsida.html
+
+User-agent: Googlebot
 Allow: /
 Disallow: /provsida.html
 
