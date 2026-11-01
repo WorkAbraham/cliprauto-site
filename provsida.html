@@ -4,17 +4,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="v5.css">
 <style>.pg{max-width:1100px;margin:0 auto;padding:56px 24px 96px}.pg h1{font-size:clamp(32px,5vw,48px);font-weight:500;letter-spacing:-.025em;line-height:1.1}.pg .lead{margin-top:14px;max-width:620px;color:var(--t2);font-size:18px;line-height:1.6}
 .stat{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;font:500 13px var(--mono);color:var(--ok);letter-spacing:.03em}.stat i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
-.vers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}.ver{background:var(--s1);border:1px solid var(--line);border-radius:var(--r3);padding:16px;display:flex;flex-direction:column}
+.vers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}.ver{background:var(--s1);border:1px solid var(--line);border-radius:var(--r3);padding:16px;display:flex;flex-direction:column}
 .ver video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r1);background:#000;display:block}.ver h3{font-size:18px;margin:16px 0 2px}.ver p{color:var(--t2);font-size:14.5px;flex:1}.ver .btn{margin-top:16px;width:100%}
 .ver.picked{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}.after{margin-top:56px;max-width:640px}.after h2{font-size:24px;font-weight:500}.after p{color:var(--t2);margin-top:8px;line-height:1.6}
 .fm{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}.fm span{font:500 12px var(--mono);border:1px solid var(--line2);border-radius:6px;padding:4px 9px;color:var(--t2)}
-@media(max-width:900px){.vers{grid-template-columns:1fr}.ver video{max-height:70vh}}</style></head><body>
+.buy{margin-top:72px}.buy h2{font-size:28px;font-weight:500;letter-spacing:-.02em}.buy .plans3{margin-top:28px}.buy .fine{margin-top:20px;color:var(--t3);font-size:14.5px}.buy .pkg3 .for{margin-bottom:0;flex:1}.buy .pkg3 .btn{margin-top:24px}
+@media(max-width:900px){.vers{grid-template-columns:minmax(0,1fr)}.ver video{max-height:70vh}}</style></head><body>
 <nav><div class="in"><a class="logo" href="index.html#top"><img src="bilder/logo.svg" alt="">CliprAuto</a><ul></ul><a class="btn small" href="index.html#plans">See plans</a></div></nav>
 <main class="pg" id="app" aria-live="polite">
 <span class="stat" id="stat"></span><h1 id="rubrik"></h1><p class="lead" id="ingress"></p>
 <div class="vers" id="vers" hidden></div>
 <div class="after" id="efter" hidden><h2>What happens when you choose</h2><p>We email you the chosen clip in 9:16, 4:5, 1:1 and 16:9, ready to post. Want a different design? Reply to that email and tell us.</p><div class="fm"><span>9:16</span><span>4:5</span><span>1:1</span><span>16:9</span></div>
-<p style="margin-top:24px">Like what you see? <a href="index.html#plans" style="color:var(--accent-t);text-decoration:underline;text-underline-offset:3px">See the plans</a>. You pay by invoice, never on this site.</p></div>
+</div>
+<section class="buy" id="planer" hidden><h2>Want this for every episode?</h2><p class="lead">Choose a plan and we do the same for your next episodes. You pay by invoice, never on this site. We send the invoice, and work starts when it is paid.</p><div class="plans3" id="plankort"></div><p class="fine">Not ready yet? Write to <a href="mailto:info@cliprauto.com" style="color:var(--accent-t);text-decoration:underline;text-underline-offset:3px">info@cliprauto.com</a> and tell us what you need.</p></section>
 <p class="lead" id="sido" hidden>Questions? Write to <a href="mailto:info@cliprauto.com" style="color:var(--accent-t);text-decoration:underline;text-underline-offset:3px">info@cliprauto.com</a>.</p>
 </main>
 <script>
@@ -33,14 +35,16 @@
  function bygg(j){
   $('stat').textContent='READY';$('rubrik').textContent='Your sample is ready. Pick your favourite.';
   $('ingress').textContent=''+j.versioner.length+' clips from your episode, each from a different moment and in its own design. Watch them, then press the one you like. We send you that clip in all four picture formats.';
-  var v=$('vers');v.textContent='';v.style.gridTemplateColumns='repeat('+Math.min(j.versioner.length,3)+',1fr)';
+  var v=$('vers');v.textContent='';
   j.versioner.forEach(function(x){
    var d=document.createElement('div');d.className='ver'+(j.vald===x.id?' picked':'');d.dataset.id=x.id;
    var vd=document.createElement('video');vd.controls=true;vd.playsInline=true;vd.preload='none';vd.src=API+x.url;if(x.poster)vd.poster=API+x.poster;
    var h=document.createElement('h3');h.textContent=x.namn;var bt=document.createElement('button');bt.type='button';bt.className='btn ghost';bt.textContent=j.vald===x.id?'Chosen. We email it to you':'Choose this one';
    bt.addEventListener('click',function(){bt.disabled=true;fetch(API+'/api/choose/'+id,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({version:x.id})}).then(function(r){return r.json()}).then(function(r){bt.disabled=false;if(r.ok){v.querySelectorAll('.ver').forEach(function(o){o.classList.remove('picked');o.querySelector('button').textContent='Choose this one'});d.classList.add('picked');bt.textContent='Chosen. We email it to you'}else{bt.textContent='Could not save. Try again'}}).catch(function(){bt.disabled=false;bt.textContent='Could not save. Try again'})});
    var kp=document.createElement('p');kp.textContent=x.krok?'\u201c'+x.krok+'\u201d':'';d.appendChild(vd);d.appendChild(h);if(x.krok)d.appendChild(kp);d.appendChild(bt);v.appendChild(d)});
-  v.hidden=false;$('efter').hidden=false;$('sido').hidden=true}
+  v.hidden=false;$('efter').hidden=false;$('sido').hidden=true;planer()}
+ function planer(){if($('plankort').children.length){$('planer').hidden=false;return}
+  fetch(API+'/api/planer').then(function(r){return r.json()}).then(function(j){if(!j.ok||!j.planer)return;var k=$('plankort');j.planer.forEach(function(x){var c=document.createElement('div');c.className='pkg3'+(x.key==='popular'?' pop':'');var h=document.createElement('h3');h.textContent=x.namn;var f=document.createElement('p');f.className='for';f.textContent=x.rad;var pr=document.createElement('div');pr.className='price';pr.appendChild(document.createTextNode(x.pris));var sm=document.createElement('small');sm.textContent='per month';pr.appendChild(sm);var a=document.createElement('a');a.className='btn'+(x.key==='popular'?'':' ghost');a.dataset.plan=x.key;a.href='mailto:info@cliprauto.com?subject='+encodeURIComponent(x.namn+' plan');a.textContent='Choose '+x.namn;c.appendChild(h);c.appendChild(f);c.appendChild(pr);c.appendChild(a);k.appendChild(c)});if(window.cliprBestall)window.cliprBestall();$('planer').hidden=false}).catch(function(){})}
  function hamta(){
   fetch(API+'/api/status/'+id).then(function(r){return r.json().then(function(j){return {s:r.status,j:j}})}).then(function(o){
    if(o.s===404||!o.j.ok){visa('expired');clearInterval(tim);return}
@@ -50,4 +54,5 @@
  visa('verify');hamta();tim=setInterval(hamta,15000);
 })();
 </script>
+<script src="bestall.js"></script>
 <footer><div class="wrap"><span>© 2026 CliprAuto · No cookies, no tracking</span><span><a href="privacy.html">Privacy</a> · <a href="mailto:info@cliprauto.com">info@cliprauto.com</a></span></div></footer></body></html>
