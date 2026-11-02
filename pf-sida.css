@@ -199,3 +199,16 @@ body.pf-body .pf-hero h1{font-size:27px;line-height:1.16}
 @media(min-width:861px){.pf-nav .pf-locked{font-size:15px;gap:11px;padding:0 10px}}
 .pf-mtabs .pf-locked{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:66px;border:1px solid var(--line);border-radius:var(--r2);background:var(--s1);color:var(--t3);font-size:12.5px;font-weight:500;padding:8px 2px;opacity:.55;cursor:not-allowed;user-select:none}
 .pf-mtabs .pf-locked svg{width:26px;height:26px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* glöd: starkast på huvudknappen och den aktiva tjänsten, återhållsam runt videoramarna (GPT-granskningen 2 nov, punkt 5) */
+body.pf-body .pf-nav a[aria-current=page]{box-shadow:0 0 18px rgba(139,63,245,.5)}
+@media(min-width:861px){
+body.pf-body .pf-t .pf-cta .btn:first-child{box-shadow:0 0 3cqw rgba(139,63,245,.7)}
+.pf-t .pf-src{border-width:.1cqw;border-color:rgba(190,170,255,.55);box-shadow:0 .8cqw 2.4cqw rgba(0,0,0,.5)}
+.pf-t .pf-visual .pf-clips figure{border:.17cqw solid rgba(190,170,255,.7);box-shadow:0 0 .9cqw rgba(140,110,255,.25)}
+.pf-t .pf-ba .r figure.on img{border:.14cqw solid rgba(190,170,255,.75);box-shadow:0 0 .7cqw rgba(140,110,255,.22)}
+}
+@media(max-width:860px){
+body.pf-body .pf-hero .btn:first-child{box-shadow:0 0 24px rgba(139,63,245,.65)}
+.pf-clips figure{border:1.5px solid rgba(190,170,255,.7);box-shadow:0 0 8px rgba(140,110,255,.25)}
+.pf-src{border:1px solid rgba(190,170,255,.5);box-shadow:0 6px 16px rgba(0,0,0,.45)}
+}
