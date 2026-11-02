@@ -241,3 +241,6 @@ footer a{text-decoration:none}
 .pkg3 .out .mono{display:block;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-t);margin-bottom:10px}
 .pkg3 .out .row{font-size:15px;color:var(--t2)}.pkg3 .out .row b{font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--t1);font-variant-numeric:tabular-nums}
 .pkg3 .out .mid{font:500 14px var(--mono);color:var(--t3);margin:2px 0}.pkg3 .out p{margin:10px 0 0;font-size:13px;color:var(--t3)}
+
+/* garanti vid priserna */
+.guar{margin:22px 0 0;padding:14px 18px;border-radius:12px;background:rgba(79,209,139,.08);box-shadow:inset 0 0 0 1px rgba(79,209,139,.28);color:var(--t1);font-size:15.5px;text-align:center}.guar b{font-weight:600}
