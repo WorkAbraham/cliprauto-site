@@ -247,3 +247,9 @@ footer a{text-decoration:none}
 
 /* kortbetalning i beställningsdialogen */
 .paycard{margin:4px 0 18px}.paycard .btn{width:100%;justify-content:center}.paycard .small{margin:10px 0 0;text-align:center}.paycard .or{display:flex;align-items:center;gap:12px;margin:18px 0 2px;color:var(--t3);font-size:13px}.paycard .or:before,.paycard .or:after{content:"";flex:1;height:1px;background:var(--line2)}
+
+/* dialogen på mobil: bara EN rullning (i rutan, aldrig bakom), kortknappen först, fakturan bakom en knapp (ägaren 2 nov) */
+#order{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.payfirst:not(.visafaktura) .invf{display:none}
+.orb{display:block;width:100%;margin:6px 0 0;padding:14px;min-height:48px;background:transparent;border:0;color:var(--t2);font:inherit;font-size:15px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(max-width:640px){#order{width:100vw;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;border:0;margin:0}#order .obox{padding:24px 20px 32px}}

@@ -7,37 +7,40 @@
  var REF=(new URLSearchParams(location.search).get('id')||'').replace(/[^a-z0-9]/g,'');
  var HTML='<div class="obox"><button class="x" type="button" aria-label="Close" data-close><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'
  +'<form class="req" data-order novalidate><h3 id="orderT">Choose how to pay</h3><p class="osum"><b class="op"></b> <span class="opr"></span></p>'
- +'<div class="paycard" hidden><a class="btn" href="#" target="_blank" rel="noopener"><span class="etikett">Pay by card or PayPal</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><p class="small">Secure checkout by PayPal, with or without a PayPal account. After paying, send us the link to your first episode at info@cliprauto.com and we start right away.</p><div class="or"><span>or get an invoice</span></div></div>'
- +'<div class="f"><label class="l" for="OP">Plan</label><select id="OP" name="plan"></select></div>'
+ +'<div class="paycard" hidden><a class="btn" href="#" target="_blank" rel="noopener"><span class="etikett">Pay by card or PayPal</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><p class="small">Secure checkout by PayPal, with or without a PayPal account. When your payment arrives we email you to confirm it and to get your first episode started.</p><button type="button" class="orb" data-faktura>Or request an invoice instead</button></div>'
+ +'<div class="invf"><div class="f"><label class="l" for="OP">Plan</label><select id="OP" name="plan"></select></div>'
  +'<div class="f"><label class="l" for="ON">Name or company for the invoice</label><input id="ON" name="name" type="text" autocomplete="organization"></div>'
  +'<div class="f"><label class="l" for="OE">Email for the invoice</label><input id="OE" name="email" type="email" placeholder="you@company.com" autocomplete="email"></div>'
  +'<div class="f"><label class="l" for="OA">Billing address</label><textarea id="OA" name="address" rows="3" autocomplete="street-address"></textarea></div>'
  +'<div class="f"><label class="l" for="OV">VAT number <span class="opt">(optional)</span></label><input id="OV" name="vat" type="text" autocomplete="off"></div>'
  +'<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'
  +'<button class="btn" type="submit"><span class="etikett">Request my invoice</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>'
- +'<p class="msg" role="alert"></p><p class="small">You pay nothing here. We email you the invoice, and work starts when it is paid.</p></form>'
+ +'<p class="msg" role="alert"></p><p class="small">You pay nothing here. We email you the invoice, and work starts when it is paid.</p></div></form>'
  +'<div class="sent" hidden><svg class="ic" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><h3>We have your order</h3><p><b>Check your inbox<span class="toS"> at <span class="to"></span></span>.</b> We sent you a confirmation.</p>'
  +'<ol class="after"><li>We email you an invoice with the payment details.</li><li>Work starts when it is paid.</li><li>Send your first episode and the 48 hours begin.</li></ol><p style="margin-top:14px"><button class="btn ghost" type="button" data-close><span class="etikett">Close</span></button></p></div></div>';
  var dlg=document.getElementById('order');
  if(!dlg){dlg=document.createElement('dialog');dlg.id='order';dlg.setAttribute('aria-labelledby','orderT');dlg.innerHTML=HTML;document.body.appendChild(dlg)}
  if(!dlg.showModal) return;
  var f=dlg.querySelector('form'), sent=dlg.querySelector('.sent'), sel=f.plan;
- function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;var pc=dlg.querySelector('.paycard'),l=betal[sel.value];dlg.querySelector('.opr').textContent=p.pris+(l?' per month':' per month, invoiced monthly');pc.hidden=!l;if(l)pc.querySelector('a').href=l;dlg.querySelector('#orderT').textContent=l?'Choose how to pay':'Request your invoice'}
+ function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;var pc=dlg.querySelector('.paycard'),l=betal[sel.value];dlg.querySelector('.opr').textContent=p.pris+(l?' per month':' per month, invoiced monthly');pc.hidden=!l;f.classList.toggle('payfirst',!!l);if(l)pc.querySelector('a').href=l;dlg.querySelector('#orderT').textContent=l?'Choose how to pay':'Request your invoice'}
  try{fetch('betalning.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){betal=j||{};visa()}).catch(function(){})}catch(e){}
  function bind(){
   document.querySelectorAll('a[data-plan]:not([data-bound])').forEach(function(a){
    var kort=a.closest('.pkg3'), pr=kort&&kort.querySelector('.price'), k=a.dataset.plan; if(!pr) return; a.dataset.bound='1';
    if(!planer[k]){planer[k]={namn:kort.querySelector('h3').textContent.trim(),pris:pr.firstChild.textContent.trim()};var o=document.createElement('option');o.value=k;o.textContent=planer[k].namn+' · '+planer[k].pris;sel.appendChild(o)}
-   a.addEventListener('click',function(ev){ev.preventDefault();trigger=a;sel.value=k;visa();f.hidden=false;sent.hidden=true;dlg.showModal();(f.name.value?f.email:f.name).focus()});
+   a.addEventListener('click',function(ev){ev.preventDefault();trigger=a;sel.value=k;f.classList.remove('visafaktura');visa();f.hidden=false;sent.hidden=true;las();dlg.showModal();dlg.scrollTop=0;(f.name.value?f.email:f.name).focus()});
   });
  }
  window.cliprBestall=bind; bind();
+ var sy=0;function las(){sy=window.pageYOffset;var b=document.body;b.style.position='fixed';b.style.top=(-sy)+'px';b.style.left='0';b.style.right='0';b.style.width='100%'}
+ function slapp(){var b=document.body;if(b.style.position!=='fixed')return;b.style.position='';b.style.top='';b.style.left='';b.style.right='';b.style.width='';window.scrollTo(0,sy)}
+ dlg.querySelector('[data-faktura]').addEventListener('click',function(){f.classList.add('visafaktura');var el=dlg.querySelector('.invf');el.scrollIntoView({block:'start',behavior:'smooth'})});
  function msg(t){f.querySelector('.msg').textContent=t||''}
  function bad(el,on){el.classList.toggle('bad',!!on)}
  sel.addEventListener('change',visa);
- dlg.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){dlg.close()})});
- dlg.addEventListener('click',function(ev){if(ev.target===dlg)dlg.close()});
- dlg.addEventListener('close',function(){if(trigger)trigger.focus()});
+ dlg.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){slapp();dlg.close()})});
+ dlg.addEventListener('click',function(ev){if(ev.target===dlg){slapp();dlg.close()}});
+ dlg.addEventListener('close',function(){slapp();if(trigger)trigger.focus()});dlg.addEventListener('cancel',function(){slapp()});
  f.addEventListener('submit',function(ev){
   ev.preventDefault(); msg(''); [f.name,f.email,f.address].forEach(function(e){bad(e,0)});
   if(f.website.value||Date.now()-t0<3000){f.hidden=true;sent.hidden=false;return}
