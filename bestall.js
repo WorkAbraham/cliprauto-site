@@ -2,7 +2,7 @@
    Dialogen byggs här (ett ställe) och används både på startsidan och på provsidan. Utan JavaScript fungerar knapparna som förut (mejl till info@cliprauto.com med planen ifylld).
    Priser och namn läses ur planernas kort, så att de bara finns på ett ställe. Kommer sidan från en provsida (?id=…) följer id:t med beställningen. window.cliprBestall() binder knappar som läggs till efteråt. */
 (function(){
- var API='https://cliprauto-mottagning.mottagning.workers.dev', t0=Date.now(), trigger=null, planer={}, betal={};
+ var API='https://cliprauto-mottagning.mottagning.workers.dev', BASE=(document.currentScript&&document.currentScript.src||'').replace(/[^\/]*$/,''), t0=Date.now(), trigger=null, planer={}, betal={};
  var ENGANG=['mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com','yopmail.com','trashmail.com','sharklasers.com','getnada.com','throwawaymail.com'];
  var REF=(new URLSearchParams(location.search).get('id')||'').replace(/[^a-z0-9]/g,'');
  var HTML='<div class="obox"><button class="x" type="button" aria-label="Close" data-close><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'
@@ -22,12 +22,12 @@
  if(!dlg){dlg=document.createElement('dialog');dlg.id='order';dlg.setAttribute('aria-labelledby','orderT');dlg.innerHTML=HTML;document.body.appendChild(dlg)}
  if(!dlg.showModal) return;
  var f=dlg.querySelector('form'), sent=dlg.querySelector('.sent'), sel=f.plan;
- function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;var pc=dlg.querySelector('.paycard'),l=betal[sel.value];dlg.querySelector('.opr').textContent=p.pris+(l?' per month':' per month, invoiced monthly');pc.hidden=!l;f.classList.toggle('payfirst',!!l);if(l)pc.querySelector('a').href=l;dlg.querySelector('#orderT').textContent=l?'Choose how to pay':'Request your invoice'}
- try{fetch('betalning.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){betal=j||{};visa()}).catch(function(){})}catch(e){}
+ function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;var pc=dlg.querySelector('.paycard'),l=betal[sel.value];dlg.querySelector('.opr').textContent=p.pris+(p.enhet==='one-time'?(l?' one-time':' one-time, invoiced'):(l?' per month':' per month, invoiced monthly'));pc.hidden=!l;f.classList.toggle('payfirst',!!l);if(l)pc.querySelector('a').href=l;dlg.querySelector('#orderT').textContent=l?'Choose how to pay':'Request your invoice'}
+ try{fetch(BASE+'betalning.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){betal=j||{};visa()}).catch(function(){})}catch(e){}
  function bind(){
   document.querySelectorAll('a[data-plan]:not([data-bound])').forEach(function(a){
    var kort=a.closest('.pkg3'), pr=kort&&kort.querySelector('.price'), k=a.dataset.plan; if(!pr) return; a.dataset.bound='1';
-   if(!planer[k]){planer[k]={namn:kort.querySelector('h3').textContent.trim(),pris:pr.firstChild.textContent.trim()};var o=document.createElement('option');o.value=k;o.textContent=planer[k].namn+' · '+planer[k].pris;sel.appendChild(o)}
+   if(!planer[k]){planer[k]={namn:kort.querySelector('h3').textContent.trim(),pris:pr.firstChild.textContent.trim(),enhet:kort.dataset.enhet||''};var o=document.createElement('option');o.value=k;o.textContent=planer[k].namn+' · '+planer[k].pris;sel.appendChild(o)}
    a.addEventListener('click',function(ev){ev.preventDefault();trigger=a;sel.value=k;f.classList.remove('visafaktura');visa();f.hidden=false;sent.hidden=true;las();dlg.showModal();dlg.scrollTop=0;(f.name.value?f.email:f.name).focus()});
   });
  }
