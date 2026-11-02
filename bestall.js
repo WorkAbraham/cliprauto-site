@@ -7,7 +7,7 @@
  var REF=(new URLSearchParams(location.search).get('id')||'').replace(/[^a-z0-9]/g,'');
  var HTML='<div class="obox"><button class="x" type="button" aria-label="Close" data-close><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'
  +'<form class="req" data-order novalidate><h3 id="orderT">Choose how to pay</h3><p class="osum"><b class="op"></b> <span class="opr"></span></p>'
- +'<div class="paycard" hidden><a class="btn" href="#" target="_blank" rel="noopener"><span class="etikett">Pay by card</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><p class="small">Secure checkout by Stripe. Your receipt comes by email.</p><div class="or"><span>or get an invoice</span></div></div>'
+ +'<div class="paycard" hidden><a class="btn" href="#" target="_blank" rel="noopener"><span class="etikett">Pay by card or PayPal</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><p class="small">Secure checkout by PayPal, with or without a PayPal account. After paying, send us the link to your first episode at info@cliprauto.com and we start right away.</p><div class="or"><span>or get an invoice</span></div></div>'
  +'<div class="f"><label class="l" for="OP">Plan</label><select id="OP" name="plan"></select></div>'
  +'<div class="f"><label class="l" for="ON">Name or company for the invoice</label><input id="ON" name="name" type="text" autocomplete="organization"></div>'
  +'<div class="f"><label class="l" for="OE">Email for the invoice</label><input id="OE" name="email" type="email" placeholder="you@company.com" autocomplete="email"></div>'
