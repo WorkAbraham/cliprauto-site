@@ -251,3 +251,6 @@ footer a{text-decoration:none}
 .payfirst:not(.visafaktura) .invf{display:none}
 .orb{display:block;width:100%;margin:6px 0 0;padding:14px;min-height:48px;background:transparent;border:0;color:var(--t2);font:inherit;font-size:15px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(max-width:640px){#order{width:100vw;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;border:0;margin:0}#order .obox{padding:24px 20px 32px}}
+
+/* förklaring under planerna */
+.def{margin:20px 0 0;color:var(--t2);font-size:15px;line-height:1.55;max-width:720px}.def b{color:var(--t1);font-weight:600}
