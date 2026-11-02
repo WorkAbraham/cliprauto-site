@@ -1,0 +1,194 @@
+/* PLATTFORMEN (ägaren 2 nov: "Bygg sidan så, håll alla funktioner låsta förutom Content"): sidomeny med tjänster + varje tjänst som egen sida. Ligger ovanpå v5.css (samma färger). Alla klasser har prefixet pf- så att inget krockar med v5.css. */
+.pf-app{display:grid;grid-template-columns:316px minmax(0,1fr);min-height:100vh}
+.pf-side{background:var(--s1);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;overflow:auto}
+.pf-brand{display:flex;align-items:center;gap:12px;padding:0 8px 20px;text-decoration:none}.pf-brand img{width:36px;height:36px}.pf-brand b{display:block;font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--t1)}.pf-brand small{display:block;font-size:13px;color:var(--t3)}
+.pf-nav{display:flex;flex-direction:column;gap:3px}
+.pf-nav a{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 12px;border-radius:var(--r2);color:var(--t2);text-decoration:none;font-size:16px;font-weight:500;border:1px solid transparent;transition:background .16s var(--ease-out),color .16s var(--ease-out)}
+.pf-nav a svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pf-nav a span:first-of-type{white-space:nowrap}
+.pf-tag{white-space:nowrap;margin-left:auto;font:500 11px var(--mono);letter-spacing:.02em;border-radius:999px;padding:3px 9px;border:1px solid var(--line2);color:var(--t2)}.pf-tag.live{color:var(--ok);border-color:rgba(79,209,139,.45);background:rgba(79,209,139,.08)}
+@media(hover:hover) and (pointer:fine){.pf-nav a:hover{background:rgba(240,235,225,.07);color:var(--t1)}}
+.pf-nav a[aria-current=page]{background:rgba(87,63,255,.18);border-color:var(--accent);color:#fff}.pf-nav a[aria-current=page] svg{stroke:var(--accent-t)}
+.pf-nav a:focus-visible,.pf-chip:focus-visible,.pf-mtabs a:focus-visible,.pf-psum:focus-visible{outline:3px solid var(--accent-t);outline-offset:2px}
+.pf-top{display:flex;justify-content:flex-end;align-items:center;gap:12px;padding:14px clamp(20px,4vw,48px);border-bottom:1px solid var(--line);min-height:68px}
+.pf-main{padding:34px clamp(20px,4vw,48px) 56px;max-width:1180px;width:100%}
+.pf-eyebrow{font:600 14px var(--font);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-t)}
+.pf-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.pf-hero h1{font-size:clamp(32px,4.2vw,46px);font-weight:600;letter-spacing:-.028em;line-height:1.1;margin-top:10px;max-width:640px}
+.pf-hero .pf-lead{margin-top:16px;max-width:580px;color:var(--t2);font-size:18px;line-height:1.6}.pf-hero .pf-lead b{color:var(--t1);font-weight:600}
+.pf-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.pf-checks{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;list-style:none;color:var(--t2);font-size:15.5px}.pf-checks li{display:flex;gap:8px;align-items:center}.pf-checks svg{width:18px;height:18px;stroke:var(--ok);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pf-facts,.pf-mtabs{display:none}
+.pf-visual{position:relative;display:flex;align-items:center;gap:14px;justify-content:center}
+.pf-src{position:relative;flex:1 1 56%;max-width:360px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--line2);box-shadow:0 18px 50px rgba(0,0,0,.5);transform:rotate(-3deg)}.pf-src img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.pf-badge{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.65);border-radius:8px;padding:3px 8px;font:500 12.5px var(--mono)}
+.pf-arrow{width:38px;flex:none;stroke:var(--t2);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pf-clips{display:flex;gap:10px;flex:1 1 38%}.pf-clips figure{position:relative;flex:1;border-radius:var(--r2);overflow:hidden;border:1px solid var(--line2);box-shadow:0 14px 36px rgba(0,0,0,.5)}.pf-clips figure:nth-child(2){border:2px solid var(--accent-t);transform:translateY(-8px)}.pf-clips img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover}
+.pf-plats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}.pf-plats span{font:500 12.5px var(--mono);color:var(--t2);border:1px solid var(--line2);border-radius:999px;padding:5px 12px;background:var(--s1)}
+.pf-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:40px}
+.pf-card{background:var(--s1);border:1px solid var(--line);border-radius:var(--r3);padding:22px 24px}.pf-card h2{font-size:22px;font-weight:600;letter-spacing:-.01em}.pf-sub{color:var(--t2);font-size:15.5px;margin-top:2px}
+.pf-ba{display:flex;align-items:center;gap:16px;margin-top:18px}.pf-ba .l{flex:0 0 38%}.pf-ba .l img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r1);border:1px solid var(--line2)}.pf-ba .l small{display:block;margin-top:6px;color:var(--t3);font-size:13px}.pf-ba .r{display:flex;gap:8px;flex:1}.pf-ba .r img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r1);border:1px solid var(--line2)}.pf-ba .r figure{flex:1}
+.pf-hows{display:flex;align-items:flex-start;gap:6px;margin-top:20px}.pf-hows>div{flex:1;text-align:center;font-size:15px}.pf-hows .ic{width:52px;height:52px;border-radius:50%;margin:0 auto 10px;background:rgba(87,63,255,.18);border:1px solid var(--line2);display:grid;place-items:center;position:relative}.pf-hows .ic svg{width:24px;height:24px;stroke:var(--accent-t);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.pf-hows .ic b{position:absolute;left:-4px;bottom:-4px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font:600 12px var(--font);display:grid;place-items:center}.pf-hows p{color:var(--t2);font-size:14px;margin-top:4px;line-height:1.45}.pf-hows i{margin-top:18px;color:var(--t3);font-style:normal}.pf-hows .t{display:block}
+.pf-get{margin-top:16px;display:grid;gap:10px;list-style:none}.pf-get li{display:flex;gap:12px;color:var(--t2);font-size:16px}.pf-get svg{width:20px;height:20px;stroke:var(--ok);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:3px}
+.pf-s{margin-top:44px}.pf-s>h2,.pf-psum{font-size:26px;font-weight:600;letter-spacing:-.02em}.pf-pd>.pf-sub{color:var(--t2);margin:6px 0 20px}
+.pf-psum{list-style:none;cursor:pointer;margin-bottom:0;line-height:1.2}.pf-psum::-webkit-details-marker{display:none}.pf-pd:not([open])>*:not(summary){display:none}
+.pf-more{margin-top:20px}.pf-more .wrap{padding:0;max-width:none}.pf-more .rule{padding-left:0;padding-right:0}
+.pf-next{margin-top:44px;border:1px solid var(--line2);border-radius:var(--r3);background:var(--s1);padding:22px 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.pf-next .ic{width:46px;height:46px;border-radius:50%;background:rgba(87,63,255,.18);display:grid;place-items:center;flex:none}.pf-next .ic svg{width:24px;height:24px;stroke:var(--accent-t);stroke-width:1.7;fill:none}.pf-next .tx{flex:1 1 320px}.pf-next h2{font-size:20px;font-weight:600}.pf-next p{color:var(--t2);font-size:15.5px;margin-top:2px}
+.pf-chip{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:1.5px solid #8d887e;color:var(--t1);text-decoration:none;font-weight:600;font-size:17px;background:transparent}.pf-chip svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none}
+@media(hover:hover) and (pointer:fine){.pf-chip:hover{background:rgba(240,235,225,.08)}}
+.pf-lock{display:inline-flex;align-items:center;gap:8px;font:500 12.5px var(--mono);color:var(--accent-t);border:1px solid rgba(164,150,255,.4);border-radius:999px;padding:5px 12px;margin-bottom:14px}.pf-lock svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pf-sample{margin-top:40px}.pf-sample .pf-card{padding:24px}.pf-sample h2{font-size:24px}
+@media(max-width:1080px){.pf-hero{grid-template-columns:1fr}.pf-row{grid-template-columns:1fr}}
+@media(max-width:860px){.pf-app{grid-template-columns:1fr}.pf-side{position:sticky;top:0;z-index:20;height:auto;padding:12px 16px;border-right:0;border-bottom:1px solid var(--line);background:var(--bg)}.pf-side .pf-nav{display:none}.pf-brand{padding:0}.pf-brand img{width:32px;height:32px}.pf-brand small{display:none}.pf-brand b{font-size:19px}.pf-top{display:none}
+ .pf-main{padding:16px 16px 40px}
+ .pf-mtabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.pf-mtabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px;border:1px solid var(--line);border-radius:var(--r2);background:var(--s1);text-decoration:none;color:var(--t2);font-size:12px;font-weight:500;padding:8px 2px}.pf-mtabs a svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.pf-mtabs a[aria-current=page]{background:rgba(87,63,255,.18);border-color:var(--accent);color:#fff}.pf-mtabs a[aria-current=page] svg{stroke:var(--accent-t)}
+ .pf-hero{display:flex;flex-direction:column;align-items:stretch;gap:0;margin-top:22px}.pf-hero>.txt{display:contents}.pf-hero .pf-eyebrow{order:1;font-size:13px}.pf-hero h1{order:2;font-size:30px;line-height:1.12;margin-top:8px}.pf-hero .pf-lead{order:3;font-size:16.5px;margin-top:12px}.pf-hero>.vis{order:4;margin-top:20px}.pf-hero .pf-cta{order:5;flex-direction:column;gap:10px;margin-top:20px}.pf-cta .btn{width:100%}.pf-hero .pf-checks{display:none}.pf-hero .pf-facts{order:6;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;list-style:none;margin-top:22px}.pf-facts li{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-size:14px;color:var(--t2);line-height:1.3}.pf-facts svg{width:26px;height:26px;stroke:var(--accent-t);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ .pf-visual{flex-direction:row;gap:8px;justify-content:center}.pf-src{flex:1 1 62%;max-width:none;transform:rotate(-2deg)}.pf-visual .pf-arrow{width:26px}.pf-clips{flex:0 0 30%;gap:0}.pf-clips figure{transform:none}.pf-plats{display:none}
+ .pf-row{margin-top:28px}.pf-card{padding:20px}.pf-hows{flex-direction:column;align-items:stretch}.pf-hows i{display:none}.pf-hows>div{display:flex;gap:16px;text-align:left;align-items:center}.pf-hows .ic{margin:0;flex:none}.pf-hows .tx{flex:1;text-align:left}.pf-hows .t{font-size:16.5px;font-weight:500}.pf-hows p{margin-top:0;text-align:left}.pf-ba{flex-direction:column;align-items:stretch}.pf-ba .pf-arrow{transform:rotate(90deg);align-self:center}.pf-ba .l{flex:none}
+ .pf-card .pf-cta{flex-direction:column}.pf-card .pf-cta .btn{width:100%}
+ .pf-s{margin-top:28px}.pf-psum{display:flex;align-items:center;justify-content:space-between;min-height:60px;padding:0 18px;border:1px solid var(--line2);border-radius:var(--r3);background:var(--s1);font-size:20px}.pf-psum::after{content:"";width:12px;height:12px;border-right:2px solid var(--t2);border-bottom:2px solid var(--t2);transform:rotate(45deg) translateY(-3px);transition:transform .2s var(--ease-out)}.pf-pd[open]>.pf-psum::after{transform:rotate(-135deg) translateY(-3px)}.pf-pd>.pf-sub{margin-top:14px}
+ .pf-next{padding:18px}.pf-sample{margin-top:28px}}
+/* de gamla djupsektionerna ligger nu direkt i huvudytan (16 px sidopadding på mobil i stället för 24) */
+@media(max-width:640px){.pf-more .moments{margin:0 -16px;padding:0 16px 8px;scroll-padding-left:16px}}
+/* tätare avstånd mellan de flyttade sektionerna */
+.pf-more .rule{padding-top:56px;padding-bottom:8px}.pf-more .rule:first-child{border-top:0}
+@media(max-width:860px){.pf-more .rule{padding-top:40px;padding-bottom:0}.pf-s .moment{margin:0}.pf-s .phone{max-width:230px;margin:0 auto}.pf-s{margin-top:24px}.pf-s .moment{gap:20px}}
+.pf-s,.pf-sample{padding:0}
+/* mallens detaljer: spelare i hero, tidsrad, lugna paketkort, formuläret i en ruta */
+.pf-src .pf-playb{position:absolute;left:12px;bottom:10px;width:30px;height:30px;display:grid;place-items:center}.pf-src .pf-playb svg,.pf-dur svg{width:16px;height:16px;fill:#fff}
+.pf-bar{position:absolute;left:52px;right:16px;bottom:22px;height:3px;border-radius:2px;background:rgba(255,255,255,.35)}.pf-bar i{display:block;width:32%;height:100%;border-radius:2px;background:#fff}
+.pf-dur{position:absolute;left:8px;bottom:8px;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:rgba(0,0,0,.6)}.pf-dur svg{width:13px;height:13px}
+.pf-visual .pf-clips{flex:0 0 26%}.pf-visual .pf-clips figure:nth-child(2){transform:none}.pf-visual .pf-clips figure{border:2px solid var(--accent-t);box-shadow:0 0 34px rgba(87,63,255,.45)}
+.pf-ba .r figure{position:relative}.pf-ba .r figure.on img{border:2px solid var(--accent-t)}
+.pf-checkrow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;list-style:none;margin-top:30px;color:var(--t2);font-size:15.5px}.pf-checkrow li{display:flex;align-items:center;gap:10px}.pf-checkrow .ck{width:26px;height:26px;border-radius:50%;background:rgba(87,63,255,.22);display:grid;place-items:center}.pf-checkrow .ck svg{width:15px;height:15px;stroke:var(--accent-t);stroke-width:2.4;fill:none}
+.pf-hero .pf-cta .btn svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.pf-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:6px}
+.pf-plan.pkg3{position:relative;display:flex;flex-direction:column;background:var(--s1);border:1px solid var(--line);border-radius:var(--r3);padding:22px 24px;gap:0}
+.pf-plan.pkg3.pf-pop{border:1.5px solid var(--accent);background:rgba(87,63,255,.1)}
+.pf-plan h3{font-size:19px;font-weight:600}.pf-plan .price{font:600 30px var(--font);letter-spacing:-.02em;margin-top:6px;padding-bottom:14px;border-bottom:1px solid var(--line)}.pf-plan .price small{font:400 15px var(--font);color:var(--t3);margin-left:6px}
+.pf-plan ul{list-style:none;margin:14px 0 18px;display:grid;gap:9px;color:var(--t2);font-size:15.5px;flex:1}.pf-plan li{display:flex;gap:10px}.pf-plan li svg{width:18px;height:18px;stroke:var(--t1);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:3px}
+.pf-plan .btn{width:100%}.pf-flag{position:absolute;right:16px;top:18px;font:600 12px var(--font);background:rgba(87,63,255,.3);border:1px solid var(--accent);border-radius:999px;padding:4px 12px;color:#fff}
+.pf-dlg{border:1px solid var(--line2);border-radius:var(--r3);background:var(--bg);color:var(--t1);padding:28px;width:min(620px,calc(100vw - 32px));margin:auto;max-height:calc(100vh - 32px);overflow:auto}.pf-dlg::backdrop{background:rgba(0,0,0,.65)}.pf-dlg h2{font-size:24px;font-weight:600}.pf-x{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:var(--t2);cursor:pointer;display:grid;place-items:center}.pf-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+@media(max-width:1080px){.pf-plans{grid-template-columns:1fr}}
+@media(max-width:860px){.pf-checkrow{display:none}.pf-visual .pf-clips{flex:0 0 30%}.pf-dlg{padding:20px}}
+.pf-hero{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}.pf-hero h1{font-size:clamp(30px,3.3vw,40px);max-width:700px}.pf-hero .pf-lead{font-size:17px;max-width:640px}
+@media(max-width:1080px){.pf-hero{grid-template-columns:1fr}}
+@media(max-width:860px){.pf-hero h1{font-size:30px}.pf-hero .pf-lead{font-size:16.5px}}
+/* ===== EXAKT EFTER ÄGARENS MALL (desktop): alla mått mätta ur mallbilden (888 px bred huvudyta) och omräknade till cqw, så att allt skalar i samma proportioner som bilden ===== */
+.pf-t{container-type:inline-size}
+@media(min-width:861px){
+.pf-t .pf-hero{display:grid;grid-template-columns:53cqw minmax(0,1fr);column-gap:1.5cqw;align-items:center}
+.pf-t .pf-eyebrow{font-size:1.43cqw;font-weight:600;letter-spacing:.01em}
+.pf-t h1{font-size:3.83cqw;line-height:1.15;font-weight:700;letter-spacing:-.018em;margin-top:.6cqw;max-width:none}
+.pf-t .pf-lead{font-size:1.6cqw;line-height:1.49;margin-top:1.5cqw;max-width:47cqw}
+.pf-t .pf-cta{gap:1.9cqw;margin-top:2.4cqw;flex-wrap:nowrap}
+.pf-t .pf-cta .btn{min-height:5.1cqw;height:5.1cqw;padding:0 2.6cqw;border-radius:1cqw;font-size:max(1.43cqw,15px);font-weight:600;gap:.9cqw;white-space:nowrap}
+.pf-t .pf-cta .btn:first-child{background:linear-gradient(180deg,#7f6dff 0%,#573FFF 100%);color:#fff;border:1px solid rgba(190,180,255,.55);box-shadow:0 0 2.2cqw rgba(87,63,255,.5)}
+.pf-t .pf-cta .btn.ghost{background:rgba(240,235,225,.05);color:var(--t1);border:1px solid rgba(240,235,225,.22);box-shadow:none}
+.pf-t .pf-cta .btn svg{width:1.6cqw;height:1.6cqw;min-width:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.pf-t .pf-facts{display:none}
+/* hero-bilden: tiltad spelare med spelarfält, böjd pil, klipp med tjock glödande kant */
+.pf-t .pf-visual{display:flex;align-items:center;justify-content:flex-end;gap:.6cqw;position:relative;padding:2cqw 1.3cqw 0 0}
+.pf-t .pf-src{flex:0 0 27.3cqw;max-width:none;transform:rotate(-5deg);border:.17cqw solid #a98bff;border-radius:1.3cqw;box-shadow:0 0 1.6cqw rgba(150,120,255,.35),0 1.2cqw 3cqw rgba(0,0,0,.5)}
+.pf-t .pf-src img{aspect-ratio:242/150}
+.pf-t .pf-playbar{position:absolute;left:.8cqw;right:.8cqw;bottom:.7cqw;height:3.1cqw;border-radius:.8cqw;background:rgba(0,0,0,.62);display:flex;align-items:center;gap:.8cqw;padding:0 .9cqw}
+.pf-t .pf-playb{position:static;width:auto;height:auto;display:block}.pf-t .pf-playb svg{width:1.5cqw;height:1.5cqw;fill:#fff;min-width:12px}
+.pf-t .pf-bar{position:static;flex:1;height:.28cqw;background:rgba(255,255,255,.35);border-radius:.2cqw}.pf-t .pf-bar i{width:30%}
+.pf-t .pf-curve{flex:0 0 5.6cqw;width:5.6cqw;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-top:3cqw}
+.pf-t .pf-visual .pf-clips{flex:0 0 10.2cqw;position:relative;gap:0}
+.pf-t .pf-visual .pf-clips figure{border:.34cqw solid #b6a2ff;border-radius:1.5cqw;box-shadow:0 0 2cqw rgba(140,110,255,.55);transform:none;overflow:visible}
+.pf-t .pf-visual .pf-clips figure img{border-radius:1.2cqw;aspect-ratio:91/145}
+.pf-t .pf-visual .pf-clips figure::before,.pf-t .pf-visual .pf-clips figure::after{content:"";position:absolute;top:-2.2cqw;width:.22cqw;height:1.7cqw;background:#c9b8ff;border-radius:.2cqw}
+.pf-t .pf-visual .pf-clips figure::before{left:28%;transform:rotate(-8deg)}.pf-t .pf-visual .pf-clips figure::after{left:58%;transform:rotate(38deg)}
+.pf-t .pf-dur{left:.8cqw;bottom:.8cqw;width:auto;height:auto;padding:.5cqw .8cqw;border-radius:.7cqw;background:rgba(0,0,0,.65)}.pf-t .pf-dur svg{width:1.3cqw;height:1.3cqw;min-width:11px;min-height:11px;fill:#fff}
+.pf-t .pf-plats{display:none}
+/* checkraden: tre lika kolumner över hela bredden */
+.pf-t .pf-checkrow{display:grid;grid-template-columns:repeat(3,1fr);justify-items:center;margin-top:2.6cqw;font-size:1.4cqw;gap:0}
+.pf-t .pf-checkrow li{gap:.9cqw}.pf-t .pf-checkrow .ck{width:2.5cqw;height:2.5cqw;background:rgba(87,63,255,.3)}.pf-t .pf-checkrow .ck svg{width:1.4cqw;height:1.4cqw;min-width:11px}
+/* före/efter + så fungerar det: 53,9 % / 41,4 %, höjd 17,1 cqw */
+.pf-t .pf-row{grid-template-columns:53.9fr 41.4fr;gap:1.8cqw;margin-top:2.4cqw}
+.pf-t .pf-card{padding:1.9cqw 1.9cqw;border-radius:1.35cqw;min-height:17.1cqw;background:rgba(240,235,225,.04);border:1px solid rgba(240,235,225,.1)}
+.pf-t .pf-card h2{font-size:2.07cqw;font-weight:700;letter-spacing:0}
+.pf-t .pf-ba{margin-top:1.4cqw;gap:1.1cqw;align-items:center}.pf-t .pf-ba .l{flex:0 0 18.4cqw}.pf-t .pf-ba .l img{aspect-ratio:163/82;border-radius:.9cqw}.pf-t .pf-ba .pf-arrow{width:3.4cqw;flex:none}
+.pf-t .pf-ba .r{flex:1;gap:.8cqw}.pf-t .pf-ba .r figure{flex:0 0 6.8cqw}.pf-t .pf-ba .r img{aspect-ratio:61/92;border-radius:.8cqw;border:1px solid rgba(240,235,225,.2)}
+.pf-t .pf-ba .r figure.on img{border:.2cqw solid #b6a2ff;box-shadow:0 0 1.4cqw rgba(140,110,255,.55)}
+.pf-t .pf-hows{margin-top:2cqw;gap:0}.pf-t .pf-hows>div{font-size:1.4cqw;line-height:1.3}.pf-t .pf-hows i,.pf-t .pf-hows .ic b{display:none}
+.pf-t .pf-hows .ic{width:4.1cqw;height:4.1cqw;background:#5a33b8;border:0;margin-bottom:1.1cqw}.pf-t .pf-hows>div:last-of-type .ic{background:#8e5bf0}.pf-t .pf-hows .ic svg{width:2.1cqw;height:2.1cqw;stroke:#fff}.pf-t .pf-hows .tx p{display:none}
+/* paket: tre kort, Growth med kraftig kant och sken */
+.pf-t .pf-s{margin-top:2.8cqw}.pf-t .pf-psum{font-size:2.55cqw;font-weight:700;letter-spacing:0}.pf-t .pf-pd>.pf-sub{font-size:1.35cqw;margin:.3cqw 0 1.6cqw}
+.pf-t .pf-plans{gap:1.8cqw;margin-top:0}
+.pf-t .pf-plan.pkg3{padding:1.8cqw 2cqw;border-radius:1.35cqw;background:rgba(240,235,225,.04);border:1px solid rgba(240,235,225,.1)}
+.pf-t .pf-plan.pkg3.pf-pop{border:.23cqw solid #8f78ff;background:linear-gradient(180deg,rgba(87,63,255,.2),rgba(87,63,255,.07));box-shadow:0 0 2.4cqw rgba(87,63,255,.45)}
+.pf-t .pf-plan h3{font-size:2.07cqw;font-weight:700}.pf-t .pf-plan .price{font-size:2.71cqw;font-weight:700;padding-bottom:1.1cqw;margin-top:.5cqw}.pf-t .pf-plan .price small{font-size:1.35cqw;margin-left:.6cqw}
+.pf-t .pf-plan ul{font-size:1.35cqw;gap:.9cqw;margin:1.2cqw 0 1.6cqw}.pf-t .pf-plan li svg{width:1.4cqw;height:1.4cqw;min-width:12px;stroke:#fff}
+.pf-t .pf-flag{right:1.5cqw;top:1.6cqw;font-size:1.1cqw;padding:.3cqw 1cqw;background:#7a4dff;border:0;border-radius:.8cqw}
+.pf-t .pf-plan .btn{min-height:3.8cqw;height:3.8cqw;border-radius:.9cqw;font-size:max(1.4cqw,15px);padding:0}
+/* tom linje/mellanrum runt paketen bort */
+.pf-t #plans{border:0;padding:0}.pf-t .pf-pd,.pf-t .pf-psum{border:0}
+/* "fungerar bättre med"-ruta */
+.pf-t .pf-next{margin-top:2.6cqw;border-radius:1.35cqw;padding:1.5cqw 2cqw;border:1px solid rgba(140,120,255,.45);background:linear-gradient(90deg,rgba(87,63,255,.28),rgba(87,63,255,.08))}
+.pf-t .pf-next h2{font-size:1.6cqw}.pf-t .pf-next p{font-size:1.3cqw}.pf-t .pf-next .pf-chip{min-height:4.2cqw;border-radius:.9cqw;font-size:max(1.4cqw,15px);padding:0 1.8cqw}
+}
+@media(min-width:861px){.pf-t .pf-psum{padding:0;min-height:0;margin:0}.pf-t .pf-pd>.pf-sub{margin:.5cqw 0 1.8cqw}.pf-t .pf-s{margin-top:2.6cqw}}
+/* banner och Growth-markering efter mallbilden */
+@media(min-width:861px){
+.pf-t .pf-plan.pkg3.pf-pop{border:.3cqw solid #a99bff;background:linear-gradient(180deg,rgba(110,80,255,.3),rgba(110,80,255,.08));box-shadow:0 0 2.8cqw rgba(110,85,255,.6)}
+.pf-t .pf-next{margin-top:1.7cqw;min-height:8cqw;padding:1.3cqw 1.9cqw;gap:1.8cqw;border-radius:1cqw;border:1px solid rgba(150,125,255,.55);background:linear-gradient(90deg,rgba(87,63,255,.34),rgba(87,63,255,.1))}
+.pf-t .pf-next .ic{width:4.7cqw;height:4.7cqw;background:#3d2a99}.pf-t .pf-next .ic svg{width:2.4cqw;height:2.4cqw;stroke:#fff}
+.pf-t .pf-next h2{font-size:1.7cqw;font-weight:700}.pf-t .pf-next p{font-size:1.27cqw;margin-top:.3cqw}
+.pf-t .pf-next .pf-chip{min-height:3.6cqw;height:3.6cqw;border-radius:.7cqw;border:1px solid #fff;font-size:max(1.2cqw,15px);font-weight:700;padding:0 1.6cqw}
+.pf-app{grid-template-columns:276px minmax(0,1fr)}.pf-nav a{font-size:15px;gap:11px;padding:0 10px}.pf-tag{font-size:10px;padding:3px 8px}
+}
+/* läsbarhet och tryckyta: mallens knappar behåller sin form men aldrig under 44 px höjd, 17 px text och 24 px sidopadding; planknapparna (finns inte i mallen) följer knappreglerna */
+@media(min-width:861px){
+.pf-t .pf-cta .btn{font-size:max(1.43cqw,17px);padding:0 max(2.6cqw,24px);min-height:max(5.1cqw,48px);height:auto}
+.pf-t .pf-plan .btn{min-height:48px;height:auto;font-size:17px;border-radius:999px;padding:0 24px}
+.pf-t .pf-next .pf-chip{min-height:max(3.6cqw,44px);height:auto;font-size:17px;padding:0 24px}
+}
+/* ===== MALLENS PALETT OCH TYPSNITT (provtagna ur mallbilden): marinsvart botten, violett markering, ljus text, tung rubrikvikt ===== */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+body.pf-body{--bg:#0d1018;--s1:rgba(255,255,255,.045);--s2:rgba(255,255,255,.08);--line:rgba(190,175,255,.13);--line2:rgba(190,175,255,.26);--t1:#f4f3fb;--t2:#d3d0e3;--t3:#9d9ab3;--accent:#8b3ff5;--accent-t:#c3a2ff;background:radial-gradient(1100px 620px at 88% -8%,rgba(126,58,214,.34),transparent 62%),#0d1018}
+body.pf-body .pf-side{background:radial-gradient(420px 380px at 0% 100%,rgba(120,60,220,.4),transparent 70%),#12141c}
+body.pf-body .pf-nav a[aria-current=page]{background:rgba(139,63,245,.24);border-color:#8b3ff5}
+body.pf-body .pf-eyebrow{color:#b07bff}
+@media(min-width:861px){
+body.pf-body .pf-t h1{font-weight:800;color:#fff}
+body.pf-body .pf-t .pf-lead{color:#e2dff0}
+body.pf-body .pf-t .pf-cta .btn:first-child{background:linear-gradient(90deg,#8236f4,#9d3ff9);border:1px solid rgba(215,185,255,.5);box-shadow:0 0 2.4cqw rgba(139,63,245,.55)}
+body.pf-body .pf-t .pf-cta .btn.ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.28)}
+body.pf-body .pf-t .pf-checkrow{color:#eceaf6}body.pf-body .pf-t .pf-checkrow .ck{background:rgba(139,63,245,.35)}
+body.pf-body .pf-t .pf-card{background:rgba(255,255,255,.05);border-color:rgba(190,175,255,.16)}
+body.pf-body .pf-t .pf-card h2,body.pf-body .pf-t .pf-psum{font-weight:800;color:#fff}
+body.pf-body .pf-t .pf-hows>div{color:#f1effa}
+body.pf-body .pf-t .pf-hows .ic{background:#6a30c9}body.pf-body .pf-t .pf-hows>div:last-of-type .ic{background:#9a52f2}
+body.pf-body .pf-t .pf-plan.pkg3{background:rgba(255,255,255,.045);border-color:rgba(190,175,255,.16)}
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop{border-color:#b183ff;background:linear-gradient(180deg,rgba(139,63,245,.3),rgba(139,63,245,.09));box-shadow:0 0 2.8cqw rgba(139,63,245,.6)}
+body.pf-body .pf-t .pf-plan h3,body.pf-body .pf-t .pf-plan .price{font-weight:800;color:#fff}.pf-t .pf-plan ul{color:#ece9f7}
+body.pf-body .pf-t .pf-flag{background:#8b3ff5;color:#fff}
+body.pf-body .pf-t .pf-pd>.pf-sub{color:#d9d6ea}
+body.pf-body .pf-t .pf-next{background:linear-gradient(90deg,rgba(120,60,220,.45),rgba(120,60,220,.14));border-color:rgba(176,140,255,.55)}.pf-t .pf-next p{color:#e3e0f1}
+}
+@media(max-width:860px){body.pf-body .pf-hero h1{font-weight:800}body.pf-body .pf-hero .btn:first-child{background:linear-gradient(90deg,#8236f4,#9d3ff9);color:#fff;border-color:rgba(215,185,255,.5);box-shadow:0 0 20px rgba(139,63,245,.5)}}
+/* mallens knappar: samma bredd, textstorlek och avstånd som bilden */
+@media(min-width:861px){
+.pf-t .pf-cta{gap:1.9cqw;flex-wrap:nowrap}
+.pf-t .pf-cta .btn:first-child{width:28.4cqw;padding:0;font-size:1.43cqw}.pf-t .pf-cta .btn.ghost{width:22cqw;padding:0;font-size:1.43cqw}
+.pf-t .pf-cta .btn{min-height:5.1cqw}
+}
+.pf-curve{flex:none;width:34px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:860px){.pf-visual{align-items:center;gap:6px}.pf-src{flex:1 1 auto;min-width:0}.pf-curve{width:30px;margin-top:6px}.pf-visual .pf-clips{flex:0 0 31%}.pf-clips figure{border:2px solid #b6a2ff;border-radius:12px;box-shadow:0 0 18px rgba(140,110,255,.55)}.pf-clips figure img{border-radius:10px}.pf-src{border:1.5px solid #a98bff;border-radius:12px;box-shadow:0 0 14px rgba(150,120,255,.35)}.pf-src .pf-playbar{position:absolute;left:8px;right:8px;bottom:6px;height:24px;border-radius:7px;background:rgba(0,0,0,.62);display:flex;align-items:center;gap:8px;padding:0 8px}.pf-src .pf-playb{position:static;width:auto;height:auto}.pf-src .pf-playb svg{width:12px;height:12px;fill:#fff}.pf-src .pf-bar{position:static;flex:1}}
+/* mobilen: mallens storlekar (rubrik 24, text 14, knappar med mjukt hörn, större flikar) */
+@media(max-width:860px){
+body.pf-body .pf-hero h1{font-size:24px;line-height:1.18}
+.pf-hero .pf-lead{font-size:14px;line-height:1.5}
+.pf-hero .pf-cta .btn{border-radius:12px;font-size:15px;min-height:46px}
+.pf-mtabs a{min-height:66px;font-size:12.5px}.pf-mtabs a svg{width:26px;height:26px}
+.pf-brand img{width:38px;height:38px}.pf-brand b{font-size:21px;font-weight:700}
+.pf-facts li{font-size:13px}.pf-facts svg{width:24px;height:24px}
+.pf-psum{font-size:18px;font-weight:800;border-radius:12px}
+.pf-row .pf-card h2{font-weight:800}
+}
+@media(max-width:860px){
+body.pf-body .pf-hero h1{font-size:27px;line-height:1.16}
+.pf-t{display:flex;flex-direction:column}.pf-t>.pf-hero{order:1}.pf-t>.pf-checkrow{display:none}.pf-t>#plans{order:2;margin-top:22px}.pf-t>.pf-row{order:3}.pf-t>.pf-next{order:4}
+}
