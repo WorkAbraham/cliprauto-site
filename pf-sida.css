@@ -232,3 +232,4 @@ body.pf-body .pf-hero .btn:first-child{box-shadow:0 0 24px rgba(139,63,245,.65)}
 .pf-wsum p,.pf-wcta p{color:var(--t2);font-size:17px;line-height:1.6}.pf-wcta .btn{margin-top:14px}.pf-wok summary{cursor:pointer;font-weight:600;font-size:18px;min-height:44px;display:flex;align-items:center}.pf-wok ul{margin:10px 0 0 18px;color:var(--t2);display:grid;gap:6px}.pf-wmob img{display:block;max-width:100%;height:auto;border-radius:16px;border:1px solid var(--line2);margin-top:8px}.pf-wnote{color:var(--t3);font-size:13.5px;line-height:1.6;padding:6px 4px 30px}
 .pf-t>#paket{order:2;margin-top:22px}.pf-t>#pris{order:4}
 .pf-wok{padding:6px 24px}.pf-wsum p{margin:0}.pf-wsum{padding-bottom:20px}.pf-wmob img{max-width:min(100%,390px)}
+body.pf-body #order{background:#141722;box-shadow:0 30px 80px rgba(0,0,0,.6)}
