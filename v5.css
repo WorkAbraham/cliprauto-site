@@ -244,3 +244,6 @@ footer a{text-decoration:none}
 
 /* garanti vid priserna */
 .guar{margin:22px 0 0;padding:14px 18px;border-radius:12px;background:rgba(79,209,139,.08);box-shadow:inset 0 0 0 1px rgba(79,209,139,.28);color:var(--t1);font-size:15.5px;text-align:center}.guar b{font-weight:600}
+
+/* kortbetalning i beställningsdialogen */
+.paycard{margin:4px 0 18px}.paycard .btn{width:100%;justify-content:center}.paycard .small{margin:10px 0 0;text-align:center}.paycard .or{display:flex;align-items:center;gap:12px;margin:18px 0 2px;color:var(--t3);font-size:13px}.paycard .or:before,.paycard .or:after{content:"";flex:1;height:1px;background:var(--line2)}

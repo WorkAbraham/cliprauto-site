@@ -28,7 +28,7 @@
   queue:['IN LINE','You are in line','We have confirmed your email and your episode is in line. Ready within 2 hours of your confirmation. You can close this page: we email you the link when it is ready.'],
   building:['BUILDING','We are building your clip','We are cutting several different moments from your episode, each in its own design, and testing each one. This usually takes up to two hours. You can close this page: we email you when it is ready.'],
   full:['FULL TODAY','We are full today','We have your episode and start as soon as there is room. You get an email when your sample is ready.'],
-  stop:['COULD NOT START','We could not make a sample from this link','This can happen when the video already has a sample or is not available to us. Write to info@cliprauto.com and we continue from there.'],
+  stop:['WE LOOK AT IT','We need to look at this one ourselves','The automatic sample did not meet our quality bar for this video, or the video already has a sample. We take a look by hand and write to you within one working day. You can also write to info@cliprauto.com with a link to another video.'],
   expired:['LINK EXPIRED','This sample link has expired','Sample links work for 30 days. Request a new sample on cliprauto.com, or write to info@cliprauto.com.']
  };
  function visa(st,pl){var t=TEXT[st]||TEXT.queue;$('stat').textContent=t[0]+(st==='queue'&&pl>1?' · POSITION '+pl:'');$('rubrik').textContent=t[1];$('ingress').textContent=t[2];$('vers').hidden=true;$('efter').hidden=true;$('sido').hidden=!(st==='stop'||st==='expired'||st==='full')}

@@ -2,11 +2,12 @@
    Dialogen byggs här (ett ställe) och används både på startsidan och på provsidan. Utan JavaScript fungerar knapparna som förut (mejl till info@cliprauto.com med planen ifylld).
    Priser och namn läses ur planernas kort, så att de bara finns på ett ställe. Kommer sidan från en provsida (?id=…) följer id:t med beställningen. window.cliprBestall() binder knappar som läggs till efteråt. */
 (function(){
- var API='https://cliprauto-mottagning.mottagning.workers.dev', t0=Date.now(), trigger=null, planer={};
+ var API='https://cliprauto-mottagning.mottagning.workers.dev', t0=Date.now(), trigger=null, planer={}, betal={};
  var ENGANG=['mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com','yopmail.com','trashmail.com','sharklasers.com','getnada.com','throwawaymail.com'];
  var REF=(new URLSearchParams(location.search).get('id')||'').replace(/[^a-z0-9]/g,'');
  var HTML='<div class="obox"><button class="x" type="button" aria-label="Close" data-close><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'
- +'<form class="req" data-order novalidate><h3 id="orderT">Request your invoice</h3><p class="osum"><b class="op"></b> <span class="opr"></span></p>'
+ +'<form class="req" data-order novalidate><h3 id="orderT">Choose how to pay</h3><p class="osum"><b class="op"></b> <span class="opr"></span></p>'
+ +'<div class="paycard" hidden><a class="btn" href="#" target="_blank" rel="noopener"><span class="etikett">Pay by card</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><p class="small">Secure checkout by Stripe. Your receipt comes by email.</p><div class="or"><span>or get an invoice</span></div></div>'
  +'<div class="f"><label class="l" for="OP">Plan</label><select id="OP" name="plan"></select></div>'
  +'<div class="f"><label class="l" for="ON">Name or company for the invoice</label><input id="ON" name="name" type="text" autocomplete="organization"></div>'
  +'<div class="f"><label class="l" for="OE">Email for the invoice</label><input id="OE" name="email" type="email" placeholder="you@company.com" autocomplete="email"></div>'
@@ -21,7 +22,8 @@
  if(!dlg){dlg=document.createElement('dialog');dlg.id='order';dlg.setAttribute('aria-labelledby','orderT');dlg.innerHTML=HTML;document.body.appendChild(dlg)}
  if(!dlg.showModal) return;
  var f=dlg.querySelector('form'), sent=dlg.querySelector('.sent'), sel=f.plan;
- function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;dlg.querySelector('.opr').textContent=p.pris+' per month, invoiced monthly'}
+ function visa(){var p=planer[sel.value];if(!p)return;dlg.querySelector('.op').textContent=p.namn;var pc=dlg.querySelector('.paycard'),l=betal[sel.value];dlg.querySelector('.opr').textContent=p.pris+(l?' per month':' per month, invoiced monthly');pc.hidden=!l;if(l)pc.querySelector('a').href=l;dlg.querySelector('#orderT').textContent=l?'Choose how to pay':'Request your invoice'}
+ try{fetch('betalning.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){betal=j||{};visa()}).catch(function(){})}catch(e){}
  function bind(){
   document.querySelectorAll('a[data-plan]:not([data-bound])').forEach(function(a){
    var kort=a.closest('.pkg3'), pr=kort&&kort.querySelector('.price'), k=a.dataset.plan; if(!pr) return; a.dataset.bound='1';
