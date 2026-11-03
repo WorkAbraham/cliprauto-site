@@ -402,3 +402,8 @@ body.pf-body .pf-t .pf-hows .ic b{display:block!important}
 body.pf-body .pf-t .pf-hows .t{color:var(--t1);font-weight:500}
 @media(max-width:860px){body.pf-body .pf-t .pf-hows>div{align-items:center}body.pf-body .pf-t .pf-hows .ic{width:32px!important;flex:none}}
 body.pf-body .pf-t .pf-hows{gap:24px!important}body.pf-body .pf-t .pf-hows>div{min-width:0}body.pf-body .pf-t .pf-hows .t{display:block;text-wrap:balance}
+/* Ägaren 3 nov: "Varför är delar av hans huvud borta?" Stående klipp visas alltid i sitt eget 9:16-format: aldrig kapade upptill eller nertill.
+   (qa-tools/beskarning.mjs i sidkollen stoppar publicering om ett stående klipp kapas mer än 2 % i höjd.) */
+@media(max-width:700px){body.pf-body .moment>.phone{height:auto!important;aspect-ratio:9/16!important;width:min(100%,280px)!important;justify-self:center;margin:16px auto 0!important;border:1px solid var(--line2)!important;border-radius:10px!important;overflow:hidden}body.pf-body .moment{justify-items:center}body.pf-body .moment>div:not(.phone){width:100%}}
+body.pf-body .moment>.phone video{object-position:center top}
+body.pf-body .pf-t .pf-visual .pf-clips figure img,body.pf-body .pf-ba .r figure img{aspect-ratio:9/16!important;height:auto!important;object-fit:cover}
