@@ -259,3 +259,139 @@ body.pf-body.rp-body{background:#0d1018;min-height:100vh;display:flex;flex-direc
 .pf-t:has(.pf-wex) .pf-row,.pf-t:has(.pf-os) .pf-row{align-items:start}
 body.pf-body .pf-t:has(.pf-os) .pf-plan.pkg3.pf-pop{background:#161a27;border:1px solid var(--accent-t);box-shadow:none}
 body.pf-body .pf-t:has(.pf-os) .pf-plan.pkg3 h3{font-weight:600}
+
+/* ===== Grafitprofil (3 nov 2026, ägarens ja): återhållen grafit, blå primär, dämpad sekundär; mallens layout och texter orörda utöver hjältens beskrivningsrad ===== */
+/* Återhållen grafitprofil. Rörs inte: routes, formulär, betalflöden, texter, tjänsternas status. Ändras bara: färgtokens, ytor, knappar, ikoner, typografi, avstånd. */
+body.pf-body{
+ --bg:#101216;--s1:#181B20;--s2:#22262D;--line:#2A2F37;--line2:#353B44;--ctl:#7B828D;
+ --t1:#F1F2F4;--t2:#A5ABB5;--t3:#8E95A0;
+ --accent:#1F6FD1;--accent-t:#5AB4FF;--accent-b:#4C93E8;--violet:#5AB4FF;
+ --r2:8px;--r3:12px;
+ background:var(--bg);color:var(--t1)}
+/* sidopanel och topp: samma struktur, jämn yta */
+body.pf-body .pf-side{background:#14171C;border-right:1px solid var(--line)}
+body.pf-body .pf-top{background:transparent;border-bottom:1px solid var(--line)}
+body.pf-body .pf-nav a{border-radius:8px}
+body.pf-body .pf-nav a[aria-current=page]{background:var(--s2);border-color:transparent;box-shadow:inset 2px 0 0 var(--accent);color:var(--t1)}
+body.pf-body .pf-nav a[aria-current=page] svg{stroke:var(--accent-t)}
+body.pf-body .pf-tag,body.pf-body .pf-tag.live{background:none;border:0;padding:0;color:var(--t3);font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace}
+body.pf-body .pf-tag.live{color:#7FC9A0}
+/* typografi: tre nivåer, ingen versal-etikett */
+body.pf-body h1,body.pf-body h2,body.pf-body h3,body.pf-body b,body.pf-body strong{font-weight:600}
+body.pf-body .pf-eyebrow{text-transform:none;letter-spacing:0;font:500 15px var(--font);color:var(--t3)}
+body.pf-body .pf-hero .pf-lead{max-width:56ch;color:var(--t2)}
+body.pf-body .pf-h2,body.pf-body .pf-s>h2,body.pf-body .rule .head h2{font-size:clamp(26px,3vw,32px);font-weight:600;letter-spacing:-.015em}
+body.pf-body .pf-card h2{font-size:20px;font-weight:600;letter-spacing:-.01em}
+body.pf-body .pf-sub{color:var(--t2);max-width:60ch;margin-top:8px}
+/* knappar: 8 px, massiv blå fyllning ur logotypens blå (#1F6FD1, vit text 4,9:1), ingen glöd/gradient */
+body.pf-body .btn{border-radius:8px;background:var(--accent);color:#fff;box-shadow:none;transition:background-color .16s ease-out,border-color .16s ease-out,transform .12s ease-out}
+body.pf-body .btn::after{display:none}
+body.pf-body .btn.ghost{background:transparent;color:var(--t1);border:1px solid var(--ctl)}
+@media(hover:hover) and (pointer:fine){body.pf-body .btn:hover{background:#1A66C4;filter:none;transform:none}body.pf-body .btn.ghost:hover{background:var(--s2);border-color:var(--t2)}}
+body.pf-body .btn:active{transform:scale(.98);box-shadow:none}
+body.pf-body .btn:focus-visible,body.pf-body .pf-nav a:focus-visible,body.pf-body summary:focus-visible{outline:2px solid var(--accent-t);outline-offset:3px}
+body.pf-body .pf-top .btn{background:var(--t1);color:#101216}
+/* ytor: kontrast i stället för ramar. Kort = platt yta utan ram, 12 px */
+body.pf-body .pf-card,body.pf-body .pkg3,body.pf-body .pf-guarantee,body.pf-body .pf-wex{background:var(--s1);border:0;border-radius:12px;box-shadow:none}
+body.pf-body .pf-guarantee{background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;padding:20px 0}
+/* asymmetri: "så fungerar det" står direkt på sidan, utan eget kort */
+body.pf-body .pf-t .pf-row>.pf-card:last-child{background:transparent;padding-left:8px;padding-right:0}
+/* planer: ingen gradient/glöd; vald plan lyfts med yta + tunn accentkant */
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop,body.pf-body .pf-plan.pkg3.pf-pop{background:var(--s2);border:1px solid var(--accent);box-shadow:none}
+body.pf-body .pf-flag,body.pf-body .pkg3 .pf-flag{background:none;color:var(--violet);box-shadow:none;padding:0;font:500 13px var(--font);text-transform:none;letter-spacing:0}
+body.pf-body .pkg3 .price{font-weight:600}
+body.pf-body .pkg3 li svg,body.pf-body .pf-checkrow svg,body.pf-body .pf-facts svg{stroke:var(--t2)}
+/* ikoner: en familj, 1,75 i linje, inga dekorativa cirklar */
+body.pf-body svg{stroke-width:1.75}
+body.pf-body .pf-t .pf-checkrow .ck{background:none!important;border:0;width:auto;height:auto}
+body.pf-body .pf-t .pf-checkrow .ck svg{stroke:var(--t2);stroke-width:2}
+body.pf-body .pf-t .pf-hows .ic,body.pf-body .pf-t .pf-hows>div:last-of-type .ic{background:none!important;border:0;width:auto;height:auto;margin-bottom:10px;border-radius:0}
+body.pf-body .pf-t .pf-hows .ic svg{width:26px;height:26px;stroke:var(--accent-t)}
+body.pf-body .pf-hows .ic b{position:static;display:inline;background:none!important;border:0!important;color:var(--t3)!important;font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace!important;margin-left:8px}
+body.pf-body .pf-guarantee .ic{background:none;width:auto;height:auto}body.pf-body .pf-guarantee svg{stroke:var(--accent-t)}
+/* hjältens demovisning: tunn neutral kant, ingen glöd */
+body.pf-body .pf-t .pf-visual .pf-clips figure,body.pf-body .pf-visual .pf-clips figure{border:1px solid var(--line2)!important;box-shadow:0 12px 32px rgba(0,0,0,.45)!important}
+body.pf-body .pf-src{box-shadow:0 12px 32px rgba(0,0,0,.45)}
+/* Mac/Windows-väljaren och Website-fynd */
+body.pf-body .pf-os{border-radius:10px;background:var(--s1);border-color:var(--line2)}
+body.pf-body .pf-os button{border-radius:8px}body.pf-body .pf-os button[aria-pressed=true]{background:var(--accent);color:#fff}
+body.pf-body .pf-wf{background:var(--s2);border:0;border-radius:8px}
+body.pf-body .pf-wf .tag{text-transform:none;letter-spacing:0;font:500 13.5px var(--font);border:0;padding:0;display:inline-flex;align-items:center;gap:7px}
+body.pf-body .pf-wf .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+body.pf-body .pf-mtabs a[aria-current=page]{background:var(--s2);border-color:var(--line2);box-shadow:none}
+body.pf-body .pf-mtabs a{border-radius:8px}
+/* FAQ och list-avdelare: samma linje överallt */
+body.pf-body .faqlista details{border-color:var(--line)}
+/* mallens cqw-regler har högre specificitet: samma mål, uttryckt tydligt */
+body.pf-body .pf-t .pf-card,body.pf-body .pf-t .pf-plan.pkg3{background:var(--s1)!important;border:0!important;border-radius:12px!important;box-shadow:none!important}
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop{background:var(--s2)!important;border:1px solid var(--accent)!important}
+body.pf-body .pf-t .pf-row>.pf-card:last-child{background:transparent!important}
+body.pf-body .pf-t .pf-card h2,body.pf-body .pf-t .pf-plan h3,body.pf-body .pf-t .pf-plan .price{font-weight:600!important}
+body.pf-body .pf-t .pf-cta .btn:first-child{background:var(--accent)!important;color:#fff!important;border:0!important;box-shadow:none!important;border-radius:8px!important}
+body.pf-body .pf-t .pf-cta .btn.ghost{background:transparent!important;color:var(--t1)!important;border:1px solid var(--ctl)!important;border-radius:8px!important}
+body.pf-body .pf-t .pf-plan li svg{stroke:var(--t2)!important}
+body.pf-body .pf-t .pf-plan .btn{border-radius:8px!important}
+body.pf-body .pf-t .pf-s .pf-h2,body.pf-body .pf-t .pf-h2{font-weight:600!important}
+/* ===== runda 2 (ägarens feedback) ===== */
+/* 3. aktiv meny: tydlig yta + 3 px vänsterlist i logotypens ljusblå */
+body.pf-body .pf-nav a[aria-current=page]{background:#22262D;box-shadow:inset 3px 0 0 var(--accent-t);border-radius:8px}
+body.pf-body .pf-nav a[aria-current=page] span:first-of-type{font-weight:600}
+/* 4. rekommenderad plan: yta + 1 px blå kant; de andra är kontur utan fyllning */
+body.pf-body .pf-t .pf-plan.pkg3{background:transparent!important;border:1px solid var(--line2)!important}
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop{background:#22262D!important;border:1px solid var(--accent-b)!important}
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop .btn{background:var(--accent);color:#fff}
+body.pf-body .pf-flag,body.pf-body .pkg3 .pf-flag{color:var(--accent-t)}
+/* 6. variation: "Before and after" lyfts som yta, "How it works" är oboxad, planerna är konturer */
+body.pf-body .pf-t .pf-row>.pf-card:first-child{background:#181B20!important}
+/* 7. kontrollrapporten är en produktdemo: eget fönster med titelrad, mörk insida, inget marknadskort */
+body.pf-body .moment{background:#0C0E12;border:1px solid var(--line2);border-radius:12px;padding:0;overflow:hidden;box-shadow:none;display:grid;grid-template-columns:minmax(200px,26%) 1fr;gap:0;align-items:stretch}
+body.pf-body .moment>.phone{border-radius:0;border:0;box-shadow:none;margin:0;align-self:stretch;max-width:none;width:auto;border-right:1px solid var(--line2)}
+body.pf-body .moment>div:not(.phone){padding:0 24px 20px;min-width:0}
+body.pf-body .moment .panel-h{margin:0 -24px 16px;padding:14px 24px;background:#14171C;border-bottom:1px solid var(--line2);font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--t2)}
+body.pf-body .moment .panel-h .num{color:var(--t1)}
+body.pf-body .moment .wave{background:transparent;border:0;border-radius:0;padding:0}
+@media(max-width:700px){body.pf-body .moment{grid-template-columns:1fr}body.pf-body .moment>.phone{border-right:0;border-bottom:1px solid var(--line2)}}
+body.pf-body .moment{grid-template-columns:260px minmax(0,1fr)}
+body.pf-body .moment>.phone{width:100%!important;max-width:none!important;min-width:0}
+body.pf-body .moment>.phone video,body.pf-body .moment>.phone img{width:100%;height:100%;object-fit:cover}
+@media(max-width:700px){body.pf-body .moment{grid-template-columns:1fr}body.pf-body .moment>.phone{width:100%!important;aspect-ratio:9/12}}
+@media(max-width:700px){body.pf-body .moment>.phone{aspect-ratio:auto;height:300px}body.pf-body .moment>.phone video{object-position:center 30%}}
+/* ===== runda 3 (ägarens analys): starkt blått bara för primära handlingar; dämpat stålblått för det sekundära ===== */
+body.pf-body{--accent-q:#7F9CC0}
+/* 1. sekundära markeringar dämpas: meny-list, processikoner, flaggor, kryss */
+body.pf-body .pf-nav a[aria-current=page]{box-shadow:inset 3px 0 0 var(--accent-q)}
+body.pf-body .pf-nav a[aria-current=page] svg{stroke:var(--accent-q)}
+body.pf-body .pf-t .pf-hows .ic svg{stroke:var(--accent-q)}
+body.pf-body .pf-guarantee svg{stroke:var(--accent-q)}
+body.pf-body .pf-flag,body.pf-body .pkg3 .pf-flag{color:var(--accent-q)}
+body.pf-body .pf-mtabs a[aria-current=page] svg{stroke:var(--accent-q)}
+/* 2. Growth lyfts med yta och en dämpad kant; knappen är kontur så att gratisprovet förblir första handlingen */
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop{border:1px solid #4A5568!important;background:#22262D!important}
+body.pf-body .pf-t .pf-plan.pkg3.pf-pop .btn{background:transparent!important;color:var(--t1)!important;border:1px solid var(--t2)!important}
+@media(hover:hover) and (pointer:fine){body.pf-body .pf-t .pf-plan.pkg3.pf-pop .btn:hover{background:#2C313A!important}}
+/* 3. typografi och rytm: tätare rubrik, mono för etiketter, en tydlig avståndsskala (8/16/24/48) */
+body.pf-body .pf-hero h1{letter-spacing:-.028em;line-height:1.08}
+body.pf-body .pf-eyebrow{font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.01em;color:var(--t3)}
+body.pf-body .pf-t #plans,body.pf-body .pf-t .pf-s{margin-top:48px}
+body.pf-body .pf-t .pf-h2,body.pf-body .pf-t .pf-s>h2{margin-bottom:8px}
+body.pf-body .pf-t .pf-sub{margin-bottom:24px}
+body.pf-body .pf-t .pf-row{margin-top:32px}
+/* 4. produktdemon först: större och tydligare rader, staplar i dämpat blått, högre kontrast på mätvärden */
+body.pf-body .moment .checks li{font-size:16.5px;padding:11px 0;border-color:var(--line)}
+body.pf-body .moment .checks .v{font-size:15px;color:var(--t1)}
+body.pf-body .moment .panel-h{color:var(--t1);font-size:13.5px}
+body.pf-body .moment .wave .cap{color:var(--t2)}
+body.pf-body .moment .verdict{font-size:15px}
+body.pf-body .moment svg rect[fill="#a496ff"]{fill:#7F9CC0}
+body.pf-body .moment svg rect[fill="#8f897f"]{fill:#6b7380}
+body.pf-body .pf-os button[aria-pressed=true]{background:#2C313A;color:#fff;box-shadow:inset 0 0 0 1px var(--accent-q)}
+/* mobilflikar enligt ägarens val B + proportioner: tre lika breda kort, 80 px höga, 8 px mellanrum, radie 10, ikon 22, text 13, ingen glöd */
+body.pf-body .pf-mtabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px;padding:8px;background:#14171C;border-radius:12px;margin-bottom:8px}
+body.pf-body .pf-mtabs a{min-height:80px;gap:8px;border-radius:10px;background:#181B20;border:1px solid var(--line2);font-size:13px;line-height:1.2;padding:0 4px;text-align:center}
+body.pf-body .pf-mtabs a svg{width:22px;height:22px}
+body.pf-body .pf-mtabs a[aria-current=page]{background:#22262D;border-color:var(--accent-q);color:var(--t1)}
+body.pf-body .pf-main{overflow-x:clip}
+/* hero-knappar på mobil: etikett 17 px och sidopadding 24 (knappreglerna). På dator behåller mallen sin cqw-storlek så att raden ryms bredvid bilden */
+@media(max-width:860px){body.pf-body .pf-t .pf-cta .btn{font-size:17px!important;padding:0 24px!important;min-height:48px;white-space:nowrap}}
+/* synlig tangentbordsring överallt */
+body.pf-body a:focus-visible,body.pf-body button:focus-visible,body.pf-body summary:focus-visible,body.pf-body input:focus-visible,body.pf-body select:focus-visible,body.pf-body textarea:focus-visible{outline:2px solid var(--accent-t);outline-offset:3px;border-radius:8px}
