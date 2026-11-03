@@ -249,3 +249,13 @@ body.pf-body.rp-body{background:#0d1018;min-height:100vh;display:flex;flex-direc
 /* färdig rapport: samma lugna ton */
 .rp-body .pf-eyebrow{text-transform:none;letter-spacing:0;font-weight:500;font-size:15px;color:var(--t3)}.rp-body .pf-whead h1{font-weight:600}
 .rp-body .pf-card{background:#12151e;border-radius:12px}.rp-body .pf-wf .tag{text-transform:none;letter-spacing:0;font-weight:500;font-size:13.5px}
+/* Unslop-pass 3 nov på Website- och CliprAuto-sidorna (bara det som är vårt): platta ytor, en accent, inga glöd, ingen versal-etikett, vikt <=600 */
+.pf-wex{box-shadow:none;background:#12151e;border-color:var(--line);border-radius:12px}
+.pf-wf{border-radius:8px;border:1px solid var(--line);border-left-width:1px;background:transparent;padding:14px 16px}
+.pf-wf .h{gap:2px 10px}.pf-wf .tag{text-transform:none;letter-spacing:0;font:500 13.5px var(--font);border:0;padding:0;display:inline-flex;align-items:center;gap:7px}.pf-wf .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pf-wf.p1,.pf-wf.p2,.pf-wf.p3{border-left-color:var(--line)}
+.pf-t:has(.pf-wex) .pf-eyebrow,.pf-t:has(.pf-os) .pf-eyebrow{text-transform:none;letter-spacing:0;font-weight:500;font-size:15px;color:var(--t3)}
+.pf-t:has(.pf-wex) .pf-hero h1,.pf-t:has(.pf-os) .pf-hero h1{font-weight:600}
+.pf-t:has(.pf-wex) .pf-row,.pf-t:has(.pf-os) .pf-row{align-items:start}
+body.pf-body .pf-t:has(.pf-os) .pf-plan.pkg3.pf-pop{background:#161a27;border:1px solid var(--accent-t);box-shadow:none}
+body.pf-body .pf-t:has(.pf-os) .pf-plan.pkg3 h3{font-weight:600}
