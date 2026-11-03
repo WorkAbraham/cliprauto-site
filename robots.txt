@@ -3,65 +3,78 @@ User-agent: *
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: GPTBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
+Disallow: /pages/
 
 Sitemap: https://cliprauto.com/sitemap.xml
