@@ -307,7 +307,7 @@ body.pf-body .pf-t .pf-checkrow .ck{background:none!important;border:0;width:aut
 body.pf-body .pf-t .pf-checkrow .ck svg{stroke:var(--t2);stroke-width:2}
 body.pf-body .pf-t .pf-hows .ic,body.pf-body .pf-t .pf-hows>div:last-of-type .ic{background:none!important;border:0;width:auto;height:auto;margin-bottom:10px;border-radius:0}
 body.pf-body .pf-t .pf-hows .ic svg{width:26px;height:26px;stroke:var(--accent-t)}
-body.pf-body .pf-hows .ic b{position:static;display:inline;background:none!important;border:0!important;color:var(--t3)!important;font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace!important;margin-left:8px}
+body.pf-body .pf-hows .ic b{position:static;display:block;background:none!important;border:0!important;color:var(--t3)!important;font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace!important;margin:8px 0 0;text-align:center;width:auto;height:auto}
 body.pf-body .pf-guarantee .ic{background:none;width:auto;height:auto}body.pf-body .pf-guarantee svg{stroke:var(--accent-t)}
 /* hjältens demovisning: tunn neutral kant, ingen glöd */
 body.pf-body .pf-t .pf-visual .pf-clips figure,body.pf-body .pf-visual .pf-clips figure{border:1px solid var(--line2)!important;box-shadow:0 12px 32px rgba(0,0,0,.45)!important}
@@ -395,3 +395,10 @@ body.pf-body .pf-main{overflow-x:clip}
 @media(max-width:860px){body.pf-body .pf-t .pf-cta .btn{font-size:17px!important;padding:0 24px!important;min-height:48px;white-space:nowrap}}
 /* synlig tangentbordsring överallt */
 body.pf-body a:focus-visible,body.pf-body button:focus-visible,body.pf-body summary:focus-visible,body.pf-body input:focus-visible,body.pf-body select:focus-visible,body.pf-body textarea:focus-visible{outline:2px solid var(--accent-t);outline-offset:3px;border-radius:8px}
+/* "How it works" (ägaren 3 nov): ikon, nummer och etikett i SAMMA mittlinje; numret sekundärt (12 px mono, grå), handlingen primär */
+body.pf-body .pf-t .pf-hows .ic,body.pf-body .pf-t .pf-hows>div:last-of-type .ic{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start}
+body.pf-body .pf-t .pf-hows .ic svg{width:24px;height:24px;stroke:var(--accent-q);stroke-width:1.75}
+body.pf-body .pf-t .pf-hows .ic b{display:block!important}
+body.pf-body .pf-t .pf-hows .t{color:var(--t1);font-weight:500}
+@media(max-width:860px){body.pf-body .pf-t .pf-hows>div{align-items:center}body.pf-body .pf-t .pf-hows .ic{width:32px!important;flex:none}}
+body.pf-body .pf-t .pf-hows{gap:24px!important}body.pf-body .pf-t .pf-hows>div{min-width:0}body.pf-body .pf-t .pf-hows .t{display:block;text-wrap:balance}
