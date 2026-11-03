@@ -1,0 +1,324 @@
+/* KOPPLING – dagens riktiga funktioner (provformulär, Website-formulär, filmer, dialoger, paket och betalning)
+   inne i V5-designen (design.css), plus knappreglerna i klippkarna/kunskap/UX-REGLER.md avsnitt A.
+   Laddas EFTER design.css. Förhandsvisning 3 nov 2026 – inget här är publicerat. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2) format('woff2')}
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+html{-webkit-tap-highlight-color:transparent}
+img,video{display:block;max-width:100%}
+
+/* ---------- Knappar: 17 px semibold, ≥48 px, 24 px sidor, 8 px hörn, tryckläge, fokus, ≤200 ms ---------- */
+.btn.btn{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.2;min-height:48px;padding:12px 24px;gap:12px;border-radius:8px;
+ transition:background-color .16s var(--ease-out),border-color .16s var(--ease-out),color .16s var(--ease-out),transform .12s var(--ease-out);
+ touch-action:manipulation;-webkit-user-select:none;user-select:none;cursor:pointer}
+.btn.btn span{font-size:inherit;font-weight:inherit}
+.btn.btn .pil{flex:none;width:20px;text-align:center;font-size:18px;font-weight:400;line-height:1}
+.btn.btn:active{transform:translateY(1px) scale(.97)}
+.btn:focus-visible{outline:3px solid #2679af;outline-offset:3px}
+.btn-primary.btn,.header-action.btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 24px -12px rgba(9,40,62,.55)}
+.header-action.btn{background:#1a2425;color:#fff;border-color:#1a2425}
+.header-action.btn .pil{margin-left:0;color:#79b6e4}
+@media(hover:hover) and (pointer:fine){.header-action.btn:hover{background:#145c94;border-color:#145c94}}
+.page-header{gap:16px}.header-note{min-width:0}.header-action{flex:none}
+
+/* ---------- Gemensamt ---------- */
+.wordmark>span{color:#fff}
+.footer-resources a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(83,96,94,.45)}
+@media(hover:hover) and (pointer:fine){.footer-resources a:hover{color:var(--ink)}}
+.v5-note{font-size:12px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:760px}
+
+/* Filterflikarna: samma läge som i dag (YouTube vald, övriga kommer senare) */
+.filter[disabled]{opacity:.5;cursor:not-allowed}
+.filter[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ---------- Filmer ---------- */
+.clip{position:relative;margin:0;cursor:pointer;background:#0f1a1d}
+.clip video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#0f1a1d}
+.clip .play{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(16,27,30,.74);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);transition:opacity .16s var(--ease-out);pointer-events:none}
+.clip .play:after{content:'';position:absolute;left:20px;top:15px;border-left:16px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.clip.on .play{opacity:0}
+.clip .tid{position:absolute;right:8px;top:8px;font:600 12px/1 var(--sans);color:#fff;background:rgba(16,27,30,.78);padding:5px 7px;font-variant-numeric:tabular-nums;pointer-events:none}
+
+/* Toppens film: riktigt klipp (samma talare som stilproven), tryck för ljud */
+.content-page .hero-art-v5 .hero-original{position:relative;cursor:pointer;overflow:hidden}
+.content-page .hero-art-v5 .hero-original video{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-art-v5 .tap{position:absolute;right:20px;bottom:16px;z-index:2;background:#112127d9;color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;padding:8px 12px;pointer-events:none}
+.real-looks-grid img{aspect-ratio:2.16}
+
+/* 01 / Arbetet: fyra spelbara utseenden + originalet */
+.content-page .looks-proof.clips{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.content-page .looks-proof.clips figure{padding:8px}
+.content-page .looks-proof.clips figcaption{font-size:13px}
+.looks-src{position:relative;margin:22px 0 14px;max-width:340px}
+.looks-src img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.looks-src figcaption{position:absolute;left:8px;bottom:8px;background:#112127d9;color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 8px;font-variant-numeric:tabular-nums}
+
+/* 06 / Användning: riktiga filmer i korten */
+.use-case-grid .clip{width:min(100%,210px);margin-top:20px}
+
+/* 07 / Format: riktiga bilder, en per format */
+.fmt-box{height:132px;display:flex;align-items:flex-end;margin-bottom:20px}
+.fmt-box img{max-height:132px;max-width:100%;width:auto;height:auto;border:1px solid var(--line)}
+
+/* 09 / Stilar: riktiga undertextstilar */
+.caption-specimens.stilar>figure{margin:0;background:#e6e9e6;padding:10px 10px 14px;display:flex;flex-direction:column;gap:12px}
+.caption-specimens.stilar img{width:100%;aspect-ratio:540/250;object-fit:cover}
+.caption-specimens.stilar figcaption{display:flex;justify-content:space-between;align-items:baseline;padding:0 4px}
+.caption-specimens.stilar figcaption b{font-size:18px;letter-spacing:-.03em}
+.caption-specimens.stilar figcaption small{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---------- Formulären (samma fält, namn och skript som i dag) ---------- */
+.v5-form input:not([type=checkbox]){font-size:17px;height:50px;border-radius:6px;transition:border-color .16s var(--ease-out)}
+.v5-form input:not([type=checkbox]):focus{border-color:var(--brand);outline:2px solid #2679af;outline-offset:1px}
+.v5-form input.bad{border-color:#a3361f;box-shadow:0 0 0 1px #a3361f}
+.v5-form input.hp.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;padding:0;border:0;margin:0}
+.v5-form label{font-size:13px}
+.v5-form .check-label{font-size:14px;cursor:pointer}
+.v5-form .check-label input{width:20px;height:20px;flex:none;accent-color:var(--brand);margin-top:1px}
+.v5-form .btn{width:100%}
+.v5-form small{font-size:13px}
+.v5-form small a{text-decoration:underline;text-underline-offset:3px}
+.msg{color:#a3361f;font-size:15px;line-height:1.45;margin:4px 0 0}.msg:empty{display:none}
+.provbox{position:relative;min-width:0}
+.btn.laddar{pointer-events:none;opacity:.86}
+.spinn{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spinn .7s linear infinite}
+@keyframes spinn{to{transform:rotate(360deg)}}
+.sent{background:var(--paper);border:1px solid #c6cfd0;padding:27px 30px;color:var(--ink)}
+.sent>svg{width:24px;height:24px;fill:none;stroke:var(--brand);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sent h3{font-size:26px;letter-spacing:-.04em;margin:12px 0 8px}
+.sent p{font-size:15px;line-height:1.6;color:#4f5d5e;margin:0}
+.sent .after{list-style:none;counter-reset:s;padding:0;margin:16px 0 6px;display:grid;gap:9px;font-size:15px;color:#4f5d5e}
+.sent .after li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.sent .after li:before{content:counter(s,decimal-leading-zero);font:italic 17px var(--display);color:var(--brand)}
+.sent .eta{margin-top:14px;font-size:14px}
+.sent a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+.sent .back{display:inline-flex;align-items:center;min-height:44px}
+
+/* ---------- Dialoger (provet, Website-granskningen, CliprAuto-paketen) ---------- */
+.v5-dlg{border:1px solid #c6cfd0;background:var(--paper);color:var(--ink);padding:0;width:min(620px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;border-radius:6px;box-shadow:0 30px 80px -20px rgba(9,24,28,.55)}
+.v5-dlg::backdrop{background:rgba(14,26,29,.62)}
+.v5-dlg .dlg-in{padding:34px 32px 30px;position:relative}
+.v5-dlg h2{font-size:34px;line-height:1.05;letter-spacing:-.05em;margin:10px 0 12px;padding-right:44px}
+.v5-dlg .dlg-sub{font-size:15px;line-height:1.6;color:var(--muted);margin:0 0 20px;max-width:520px}
+.v5-dlg .v5-form{border:0;padding:0;background:transparent}
+.v5-x{position:absolute;top:18px;right:18px;width:44px;height:44px;display:grid;place-items:center;background:transparent;border:1px solid #b7c2bd;border-radius:8px;color:var(--ink);transition:background-color .16s var(--ease-out)}
+.v5-x svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.v5-x:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){.v5-x:hover{background:#eaece6}}
+.content-page .v5-dlg h2{font-family:var(--display);font-weight:400}
+.website-page .v5-dlg h2,.cliprauto-page .v5-dlg h2{font-weight:800}
+
+/* CliprAuto: paketen (Mac/Windows, PayPal) – samma kort och länkar som i dag, i V5:s tabellstil */
+.pf-os{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.pf-os>span{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.pf-os button{min-height:44px;padding:10px 20px;border:1px solid #b7c2bd;background:transparent;color:#3f4b4a;font-size:15px;font-weight:600;border-radius:6px;transition:background-color .16s var(--ease-out),color .16s var(--ease-out)}
+.pf-os button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pf-os button:active{transform:scale(.97)}
+.paket-section .plan-table{border-top:2px solid var(--ink)}
+.paket-section .plan-row{grid-template-columns:1fr 1.55fr .62fr auto;padding:24px 0;gap:22px;align-items:start}
+.paket-section .plan-row h3{font:400 34px var(--display);letter-spacing:-.05em;margin:5px 0 4px}
+.paket-section .plan-row.best{margin-left:-18px;padding-left:14px;border-left:5px solid #155a8d;background:rgba(255,255,255,.5)}
+.pkg-mid p{margin:0 0 8px;font-size:15px;font-weight:400;line-height:1.5}
+.pkg-mid ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.pkg-mid li{font-size:13px;line-height:1.45;color:var(--muted);padding-left:20px;position:relative}
+.pkg-mid li:before{content:'✓';position:absolute;left:0;font-weight:800;color:var(--brand)}
+.paket-section .price strong{font-size:36px;font-variant-numeric:tabular-nums}
+.paket-section .price small{font-size:12px;color:var(--muted)}
+.pkg-kop{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.pf-gar{font-size:12px;color:var(--muted);margin:0;text-align:center}
+.garanti{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;margin-top:26px;padding:20px 22px;background:#e3e9e7;border-left:4px solid var(--brand)}
+.garanti b{display:block;font-size:16px;margin-bottom:4px}
+.garanti span{font-size:14px;line-height:1.6;color:#4f5d5e}
+.garanti .ck{width:22px;height:22px;fill:none;stroke:var(--brand);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:950px){
+ .paket-section .plan-row{grid-template-columns:1fr 1.3fr .7fr}
+ .paket-section .plan-row .pkg-kop{grid-column:1/-1}
+}
+@media(max-width:650px){
+ .btn.btn{white-space:normal;text-align:left}
+ .header-action.btn{padding:10px 24px;min-height:48px}
+ .header-note{font-size:10px;line-height:1.4}
+ .content-page .plan-row,.paket-section .plan-row{grid-template-columns:1fr auto;row-gap:12px}
+ .content-page .plan-row>p{grid-column:1/-1;grid-row:2}
+ .content-page .plan-row .price,.paket-section .plan-row .price{grid-column:2;grid-row:1;text-align:right}
+ .content-page .plan-row .btn{grid-column:1/-1;grid-row:3;width:100%}
+ .paket-section .plan-row .pkg-mid{grid-column:1/-1}
+ .paket-section .plan-row .pkg-kop{grid-column:1/-1}
+ .paket-section .plan-row.best{margin-left:-12px;padding-left:9px;padding-right:9px}
+ .v5-dlg .dlg-in{padding:26px 20px 24px}
+ .v5-dlg h2{font-size:30px}
+ .content-page .looks-proof.clips{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .looks-src{max-width:none}
+ .use-case-grid .clip{width:min(100%,180px)}
+ .fmt-box{height:96px;margin-bottom:14px}.fmt-box img{max-height:96px}
+ .caption-specimens.stilar>figure{padding:8px 8px 10px}
+ .caption-specimens.stilar figcaption b{font-size:15px}
+ .sent{padding:22px 18px}
+ .footer-resources{text-align:left;max-width:none}
+}
+@media(prefers-reduced-motion:reduce){.btn.btn,.clip .play,.v5-x{transition:none}.spinn{animation-duration:1.6s}}
+
+/* ===================== Dagens innehåll i V5:s komponenter (ägaren 3 nov: designen ändras, informationen är exakt dagens) ===================== */
+/* Content – toppens bild: originalet + tre klipp + plattformar (dagens bilder) */
+.content-page .hero-art-v5.ce-art{height:auto;min-height:0;display:flex;flex-direction:column;align-self:center;background:#101a1d}
+.ce-src{position:relative;margin:0}
+.ce-src img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.ce-lapp{position:absolute;left:20px;top:18px;background:#112127d9;color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 11px;font-variant-numeric:tabular-nums}
+.ce-art .real-looks{position:static;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:20px 22px 26px}
+.ce-stack{display:flex;gap:12px}
+.ce-stack figure{position:relative;margin:0;width:104px}
+.ce-stack img{width:100%;aspect-ratio:9/16;object-fit:cover;border:1px solid #455255}
+.ce-stack .tid{position:absolute;right:6px;top:6px;font:600 11px/1 var(--sans);color:#fff;background:rgba(16,27,30,.8);padding:4px 6px;font-variant-numeric:tabular-nums}
+.ce-plattf{list-style:none;margin:0;padding:0;display:flex;gap:10px}
+.ce-plattf li{width:40px;height:40px;display:grid;place-items:center;border:1px solid #455255}
+.ce-plattf svg{width:20px;height:20px;fill:none;stroke:#d5e3e7;stroke-width:1.6;stroke-linejoin:round}
+.ce-plattf svg.fyll{fill:#d5e3e7;stroke:none}.ce-plattf .prick{fill:#d5e3e7;stroke:none}
+.content-page .storyline,.website-page .storyline{justify-content:center;gap:24px;padding:25px 4.6%;background:#15292d;color:#e9f0ed;border:0;font-size:13px}
+.content-page .story-line,.website-page .story-line{background:#5e7780;max-width:90px}
+.content-page .icon-check,.website-page .icon-check{color:#a3c9e0}
+.looks-intro>p{font-size:15px;line-height:1.6;color:#4e5b58}
+.content-page .looks-editorial{grid-template-columns:.62fr 1fr}
+.content-page .looks-proof.tre{grid-template-columns:repeat(3,minmax(0,1fr))}
+.looks-src{max-width:none}
+.content-page .looks-editorial.fyra{grid-template-columns:1fr}
+.content-page .looks-proof.clips figure.clip{background:#f7f5ef}
+.content-page .looks-proof.clips figcaption{display:block;border-top:1px solid #bdc5c0;padding:10px 2px 2px;margin-top:10px}
+.content-page .looks-proof.clips figcaption b{display:block;font:400 22px/1.1 var(--display);letter-spacing:-.04em;color:var(--ink);margin-bottom:5px}
+.content-page .looks-proof.clips figcaption span{font-size:13px;line-height:1.5;color:var(--muted)}
+.looks-proof.fyra .clip>.play{top:36%}
+.process-list b{font-variant-numeric:tabular-nums}
+.plan-li{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.plan-li li{font-size:14px;line-height:1.45;padding-left:20px;position:relative;color:#3d4847}
+.plan-li li:first-child{font-weight:700;color:var(--ink)}
+.plan-li li:before,.plan-foot li:before{content:'✓';position:absolute;left:0;font-weight:800;color:var(--brand)}
+ul.plan-foot{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13px;color:#3d4847}
+ul.plan-foot li{position:relative;padding-left:20px}
+ul.plan-foot li:before{position:absolute;left:0}
+ul.plan-foot small{color:var(--muted);font-size:13px}
+.plan-foot span:before{content:none}
+.content-page .plan-row .price strong{font-variant-numeric:tabular-nums}
+.content-page .plan-row .price small{font-size:12px}
+/* Kvalitet: hela kontrollrapporten + toppfilmens rapport (dagens texter) */
+.content-page .quality-section.quality-wide{grid-template-columns:1fr 1fr;row-gap:60px}
+.q-pts{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px;max-width:460px}
+.q-pts li{position:relative;padding-left:28px}
+.q-pts li:before{content:'✓';position:absolute;left:0;top:0;color:#8bbce0;font-weight:800}
+.q-pts b{display:block;font-size:16px;color:#f4f7f6}
+.q-pts span{display:block;font-size:14px;line-height:1.55;color:#b8c6c8;margin-top:2px}
+.content-page .quality-sheet.q-full>div{padding:11px 0}
+.content-page .quality-sheet.q-full>div span{font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.content-page .quality-sheet.q-full>div strong{font-size:13px;font-variant-numeric:tabular-nums}
+.content-page .quality-sheet .quality-sheet-top strong{color:#1d7a5c;font-size:15px}
+.q-live{grid-column:1/-1;display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:center;border-top:1px solid #355058;padding-top:56px}
+.q-phone{position:relative;cursor:pointer;background:#0b1416;border:6px solid #f4f1e8}
+.q-phone video{width:100%;aspect-ratio:9/16;object-fit:cover}
+.q-phone .tap{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);white-space:nowrap;background:#112127e6;color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;padding:8px 12px;pointer-events:none}
+.q-panel-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #355058;padding-bottom:12px;margin-bottom:16px}
+.q-panel-h span{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#8bbce0}
+.q-panel-h b{font-size:20px;font-variant-numeric:tabular-nums;color:#f4f7f6}
+.q-wave svg{width:100%;height:96px}
+.q-wave .cap{display:flex;justify-content:space-between;font-size:11px;color:#8fa6aa;margin-top:6px;font-variant-numeric:tabular-nums}
+.q-checks{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0 24px}
+.q-checks li{display:flex;flex-direction:column;gap:3px;padding:12px 0;border-top:1px solid #355058;font-size:13px;color:#dfe8e8}
+.q-checks .v{color:#9fb3b6;font-size:12px;font-variant-numeric:tabular-nums}
+.q-verdict{margin:18px 0 0;font-size:15px;font-weight:700;color:#8fdcb8}
+/* Så går det till (4 steg) i detaljsektionens stil */
+.details-cols.steg4{grid-template-columns:repeat(4,1fr)}
+.details-cols.steg4 h3{font-size:26px}
+.steg-tag{display:inline-block;margin-top:4px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);border:1px solid var(--brand);padding:5px 8px}
+/* Format */
+.formats-grid>figure{margin:0;min-height:160px;padding:24px 18px}
+.formats-grid>figure+figure{border-left:1px solid var(--line)}
+.formats-grid figcaption b{display:block;font:400 48px var(--display);letter-spacing:-.07em;color:var(--brand)}
+.formats-grid figcaption p{color:var(--muted);font-size:13px;line-height:1.5;margin:10px 0 0}
+/* Question Map */
+.content-page .map-section{align-items:start}
+.map-section h2{max-width:560px}
+.map-steps{list-style:none;padding:0;margin:26px 0 0}
+.map-steps li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px 0;border-top:1px solid #b7c6c7}
+.map-steps li:before{content:none!important}
+.map-steps b{font:italic 20px var(--display);color:var(--brand)}
+.map-steps h3{font-size:18px;letter-spacing:-.03em;margin:0 0 4px}
+.map-steps p{margin:0}
+.map-sheet{background:var(--paper);border:1px solid #c0d1d0;padding:26px 28px;box-shadow:12px 12px 0 #bfd2d4}
+.map-sheet-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.map-sheet-h span{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--brand)}
+.map-sheet-h b{font:400 32px var(--display);font-variant-numeric:tabular-nums}
+.map-sheet ol li{font-size:14px}
+.fine-mail{font-size:15px}.fine-mail a{text-decoration:underline;text-underline-offset:3px}
+/* Website */
+.website-page .check-grid>div{min-height:0;padding-bottom:28px}
+.website-page .check-grid p{font-size:13px}
+.website-page .review-steps p{font-size:14px}
+.website-page .beta-art p{font-size:14px;line-height:1.6;color:#d6e6ef}
+.website-page .faq-section h2,.cliprauto-page .faq-section h2{font-size:clamp(40px,4vw,56px)}
+.website-page .report-item div span{line-height:1.45}
+/* CliprAuto */
+.app-facts{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.app-facts li{font-size:clamp(36px,3.2vw,56px);font-weight:800;line-height:1.05;letter-spacing:-.06em;color:#18302f}
+.cliprauto-page .app-frame{max-width:none;justify-self:stretch}
+.cliprauto-page .app-frame img{height:auto;object-fit:contain}
+.cliprauto-page .product-viewport{grid-template-columns:.42fr 1fr}
+.cliprauto-page .app-value-strip span{text-transform:uppercase}
+.horizontal-sequence.sex{grid-template-columns:repeat(3,1fr);row-gap:40px}
+.horizontal-sequence.tre{grid-template-columns:repeat(3,1fr)}
+.horizontal-sequence p{font-size:14px}
+.cliprauto-page .app-once{background:#f7f5ef;padding-top:96px}
+.cliprauto-page .ownership-section h2{font-size:clamp(56px,5.2vw,82px)}
+.ownership-section .pf-os>span{color:#bdd2d8}
+.ownership-section .pf-os button{color:#eaf3f5;border-color:#7a99a7}
+.ownership-section .pf-os button[aria-pressed=true]{background:#eff6f8;color:#143343;border-color:#eff6f8}
+.cliprauto-page .paket-section{background:#f7f5ef;padding-top:56px}
+.paket-section .plan-row{display:grid;border-bottom:1px solid #bfc4bd}
+.paket-section .plan-number{font-size:10px;color:var(--brand);letter-spacing:.17em;font-weight:800}
+.paket-section .pf-plans[hidden]{display:none}
+@media(max-width:1200px){.content-page .plan-row .btn,.paket-section .plan-row .btn{font-size:17px}}
+@media(max-width:950px){
+ .content-page .quality-section.quality-wide{grid-template-columns:1fr}
+ .q-live{grid-template-columns:200px 1fr;gap:28px}
+ .details-cols.steg4{grid-template-columns:1fr 1fr}.details-cols.steg4>div:last-child{grid-column:auto}
+ .details-cols.steg4>div:nth-child(3){border-left:0;padding-left:0}
+ .content-page .looks-editorial{grid-template-columns:1fr}
+ .website-page .storyline{flex-wrap:wrap}
+ .cliprauto-page .product-viewport{grid-template-columns:1fr}
+ .horizontal-sequence.sex{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+ .ce-art .real-looks{flex-direction:column;align-items:flex-start;gap:14px;padding:14px 14px 18px}
+ .ce-stack figure{width:84px}
+ .content-page .storyline,.website-page .storyline{flex-direction:column;align-items:flex-start;gap:8px;font-size:13px;padding:20px}
+ .content-page .looks-proof.tre{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .content-page .looks-proof.tre .clip .play{width:40px;height:40px;margin:-20px 0 0 -20px}
+ .content-page .looks-proof.tre .clip .play:after{left:15px;top:11px;border-left-width:13px;border-top-width:9px;border-bottom-width:9px}
+ .content-page .looks-proof.clips figcaption b{font-size:18px}
+ .q-live{grid-template-columns:1fr;padding-top:36px}.q-phone{width:200px}
+ .details-cols.steg4{display:block}
+ .formats-grid>figure:nth-child(odd){border-left:0}
+ .formats-grid figcaption b{font-size:38px}
+ .map-sheet{padding:18px 16px;box-shadow:6px 6px 0 #bfd2d4}
+ .app-facts li{font-size:34px}
+ .horizontal-sequence.sex,.horizontal-sequence.tre{grid-template-columns:1fr}
+ .cliprauto-page .app-frame img{height:auto}
+ .paket-section .plan-row{grid-template-columns:1fr auto}
+}
+/* bildernas width/height-attribut får aldrig styra höjden när CSS sätter bredd + bildformat */
+.ce-src img,.ce-stack img,.looks-src img,.caption-specimens.stilar img,.cliprauto-page .app-frame img,.fmt-box img,.real-looks-grid img{height:auto}
+.q-wave rect[fill="#a496ff"]{fill:#7fbde5}.q-wave rect[fill="#8f897f"]{fill:#64808a}.q-wave line{stroke:#355058}
+.q-checks{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:950px){.q-checks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.website-page .report-wrapper:before{content:none;display:none}
+.app-facts li{font-size:clamp(30px,2.7vw,44px)}
+.cliprauto-page .paket-section .plan-row h3{font:800 30px/1.05 var(--sans);letter-spacing:-.05em}
+.cliprauto-page .paket-section .price strong{font:800 36px var(--sans);letter-spacing:-.04em}
+/* mörk topp på CliprAuto: blå knapp mot mörkt nådde bara 2.2:1 – ljusblå fyllning (mallens accentfärg) med mörk text */
+.cliprauto-page .app-hero .btn-primary.btn{background:#9ecbe5;border-color:#9ecbe5;color:#0f2533}
+.cliprauto-page .app-hero .btn-primary.btn .pil{color:#0f2533}
+@media(hover:hover) and (pointer:fine){.cliprauto-page .app-hero .btn-primary.btn:hover{background:#c0dff0;border-color:#c0dff0}}
+.storyline .st{display:inline-flex;align-items:center;gap:10px}
+/* mallen skriver dessa etiketter med versaler – samma text, versaler via CSS */
+.header-note,.priority,.hero-meta,.report-header small,.plan-number,.use-case-grid article>span,.ce-lapp,.looks-src figcaption{text-transform:uppercase}
+.priority{letter-spacing:.04em}
+.website-page .hero-website{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+@media(max-width:950px){.website-page .hero-website{grid-template-columns:1fr}}
+/* hidden-attributet ska alltid vinna (formuläret döljs när bekräftelsen visas, Windows-paketen döljs när Mac är valt) */
+[hidden]{display:none!important}
