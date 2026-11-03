@@ -1,5 +1,11 @@
 {
  "starter": "https://www.paypal.com/ncp/payment/F4RJUPN45C6QQ",
  "popular": "https://www.paypal.com/ncp/payment/VZ72FPSF2WBU4",
- "premium": "https://www.paypal.com/ncp/payment/C3GEY3FK92YYE"
+ "premium": "https://www.paypal.com/ncp/payment/C3GEY3FK92YYE",
+ "maskin-minimum-mac": "https://www.paypal.com/ncp/payment/MWHV5LVXUZLYW",
+ "maskin-minimum-win": "https://www.paypal.com/ncp/payment/MWHV5LVXUZLYW",
+ "maskin-creator-mac": "https://www.paypal.com/ncp/payment/HYRG5KYQULVV4",
+ "maskin-creator-win": "https://www.paypal.com/ncp/payment/HYRG5KYQULVV4",
+ "maskin-studio-mac": "https://www.paypal.com/ncp/payment/GBUJCR8LQA3EU",
+ "maskin-studio-win": "https://www.paypal.com/ncp/payment/GBUJCR8LQA3EU"
 }
