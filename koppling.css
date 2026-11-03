@@ -322,3 +322,23 @@ ul.plan-foot small{color:var(--muted);font-size:13px}
 @media(max-width:950px){.website-page .hero-website{grid-template-columns:1fr}}
 /* hidden-attributet ska alltid vinna (formuläret döljs när bekräftelsen visas, Windows-paketen döljs när Mac är valt) */
 [hidden]{display:none!important}
+
+/* Ägaren 3 nov: "designfel där linje skär sig och ligger inte bra". Det markerade paketet flyttades 18 px åt vänster (linjen ovanför började
+   senare än kortet) och den tjocka blå kanten möttes snett mot den tunna grå. Nu: kortet följer raderna kant i kant och den blå linjen ritas inuti. */
+/* Alla rader har samma inre marginal, så att kolumnerna linjerar med det markerade kortet (ingen rad står längre in än de andra). */
+.plan-row,.content-page .plan-row,.paket-section .plan-row{padding-left:22px!important;padding-right:18px!important}
+.plan-row.best,.content-page .plan-row.best,.paket-section .plan-row.best{margin-left:0!important;border-left:0!important;box-shadow:inset 5px 0 0 #155a8d}
+@media(max-width:650px){.plan-row,.content-page .plan-row,.paket-section .plan-row{padding-left:17px!important;padding-right:12px!important}}
+/* Samma bredd på knapp- och priskolumnen i varje rad, så att alla kolumner linjerar (knapptexterna är olika långa). */
+.plan-row>.btn,.plan-row .pkg-kop{min-width:13rem;box-sizing:border-box}
+.paket-section .plan-row .price{min-width:7.5rem}
+@media(max-width:950px){.plan-row>.btn,.plan-row .pkg-kop{min-width:11.5rem}}
+@media(max-width:650px){.plan-row>.btn,.plan-row .pkg-kop{min-width:0}}
+/* Låsta kolumnbredder (minmax(0,…) = innehållet får inte trycka isär en enskild rad), samma för alla rader vid varje bredd. */
+.content-page .plan-row{grid-template-columns:minmax(0,1.25fr) minmax(0,1.28fr) minmax(0,.64fr) 13rem!important}
+.paket-section .plan-row{grid-template-columns:minmax(0,1fr) minmax(0,1.55fr) minmax(0,.62fr) 13rem!important}
+@media(max-width:1250px){.content-page .plan-row{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,.5fr) 12rem!important}}
+@media(max-width:950px){.content-page .plan-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.5fr) 11.5rem!important}
+ .paket-section .plan-row{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,.7fr)!important}}
+@media(max-width:650px){.content-page .plan-row{grid-template-columns:minmax(0,1fr) minmax(0,.93fr)!important}
+ .paket-section .plan-row{grid-template-columns:minmax(0,1fr) 7.5rem!important}}
