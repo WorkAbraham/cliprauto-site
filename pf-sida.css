@@ -408,8 +408,7 @@ body.pf-body .pf-t .pf-hows{gap:24px!important}body.pf-body .pf-t .pf-hows>div{m
 body.pf-body .moment>.phone video{object-position:center top}
 body.pf-body .pf-t .pf-visual .pf-clips figure img,body.pf-body .pf-ba .r figure img{aspect-ratio:9/16!important;height:auto!important;object-fit:cover}
 /* ===== Content-startsidan efter ägarens bild 3 nov 2026 (menyn till vänster behålls). Egna klasser .ce-*, inget av mallens gamla regler gäller här ===== */
-body.pf-body:has(.ce) .pf-col{background:radial-gradient(900px 520px at 85% 0%,rgba(30,120,255,.22),transparent 60%),radial-gradient(700px 500px at 0% 55%,rgba(40,90,220,.12),transparent 60%),#081226}
-.ce{--ce-bg:#081226;--ce-kort:#0d1830;--ce-kort2:#101f3c;--ce-kant:#22324f;--ce-t1:#f3f6fb;--ce-t2:#aeb9cc;--ce-t3:#8592a8;--ce-bla:#1eb4f5;--ce-bla2:#5ec8ff;--ce-mork:#06121f;
+.ce{--ce-bg:#101216;--ce-kort:#181B20;--ce-kort2:#22262D;--ce-kant:#353B44;--ce-t1:#F1F2F4;--ce-t2:#A5ABB5;--ce-t3:#8E95A0;--ce-bla:#1F6FD1;--ce-bla2:#1A66C4;--ce-mork:#ffffff;--ce-dampad:#7F9CC0;--ce-ljus:#5AB4FF;--ce-ctl:#7B828D;
  display:flex;flex-direction:column;color:var(--ce-t1);font-family:var(--font)}
 .ce>section{padding:44px 0;border-top:1px solid rgba(120,150,220,.14)}.ce>section:first-child{border-top:0;padding-top:28px}
 .ce h2{font-size:clamp(26px,2.6vw,32px);font-weight:700;letter-spacing:-.02em;color:var(--ce-t1);text-wrap:balance}
@@ -509,3 +508,24 @@ body.pf-body:has(.ce) .pf-col{background:radial-gradient(900px 520px at 85% 0%,r
 @media(max-width:860px){.ce-steg li.ce-p{display:none}.ce-hero h1{font-size:40px}.ce-hdemo{max-width:420px;margin:0 auto}}
 @media(max-width:860px){.ce-feat li:last-child{grid-column:1/-1}}
 .ce-flikar button{min-height:40px}.ce-flikar button:not(:disabled):active{transform:scale(.97)}
+/* ägaren 3 nov: "färgerna vi hade precis innan ska vara kvar" – grafitprofilen (v3.1) på den nya designen: starkt blått bara för primära knappar, dämpat stålblått för det sekundära, inga glöd */
+.ce>section{border-top-color:#2A2F37}.ce-feat{border-top-color:#2A2F37}
+.ce-bla{color:var(--ce-ljus)}
+.ce-pill{color:var(--ce-dampad);border-color:var(--ce-dampad)}
+.ce-btn.ce-ghost{border-color:var(--ce-ctl)}
+@media(hover:hover) and (pointer:fine){.ce-btn:hover{background:var(--ce-bla2);border-color:var(--ce-bla2)}.ce-btn.ce-ghost:hover{background:var(--ce-kort2);border-color:var(--ce-t2)}}
+.ce a:focus-visible,.ce button:focus-visible{outline-color:var(--ce-ljus)}
+.ce-checks svg{stroke:var(--ce-dampad)}
+.ce-orig{border-color:var(--ce-kant);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.ce-stack figure{border:1px solid var(--ce-kant);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.ce-stack .ce-s0{border-color:var(--ce-ctl);box-shadow:0 14px 36px rgba(0,0,0,.55)}
+.ce-ik{background:var(--ce-kort2);border-color:var(--ce-kant)}.ce-ik svg{stroke:var(--ce-dampad)}
+.ce-flikar button{border-color:var(--ce-ctl)}
+.ce-flikar button[aria-selected=true]{background:var(--ce-kort2);border-color:var(--ce-dampad);color:var(--ce-t1)}
+.ce-clip{border-color:var(--ce-kant)}
+.ce-plan{background:var(--ce-kort);border-color:var(--ce-kant)}
+.ce-plan.ce-pop{background:var(--ce-kort2);border:1px solid #4A5568;box-shadow:none}
+.ce-badge{background:var(--ce-kort2);color:var(--ce-dampad);border:1px solid #4A5568;font-weight:500}
+.ce-plan li svg{stroke:var(--ce-t2)}
+.ce-feat svg{stroke:var(--ce-dampad)}
+.ce-exdemo .ce-stor{flex:0 0 37%}@media(max-width:860px){.ce-exdemo .ce-stor{flex:none}}
