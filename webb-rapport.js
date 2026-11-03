@@ -14,11 +14,11 @@
   expired:['This link is not valid any more','Review pages are deleted after 30 days. You can ask for a new review on the Clipr Website page.']};
  var STEG=['Confirm email','In line','Reviewing','Report ready'],NOW={verify:0,queue:1,full:1,scanning:2};
  function ikon(path){var d=el('div','rp-ic');d.innerHTML='<svg viewBox="0 0 24 24"><path d="'+path+'"/></svg>';return d}
- function stegrad(n){var ol=el('ol','rp-steps');STEG.forEach(function(t,i){var li=el('li',i<n?'on':i===n?'now':'');var d=el('span','d');if(i<n)d.innerHTML=CHECK;else if(i===n)d.appendChild(document.createElement('i'));else d.textContent=String(i+1);li.appendChild(d);li.appendChild(el('span',null,t));ol.appendChild(li)});return ol}
+ function stegrad(n){var ol=el('ol','rp-steps');STEG.forEach(function(x,i){var li=el('li',i<n?'on':i===n?'now':'');var d=el('span','d');if(i<n)d.innerHTML=CHECK;li.appendChild(d);li.appendChild(el('span','t',x));li.appendChild(el('span','s',i<n?'Done':i===n?'Now':'Next'));ol.appendChild(li)});return ol}
  function stat(s,extra,host){tom();var d=el('div','rp-state');var t=TEXT[s]||TEXT.queue;
   if(s==='failed'||s==='expired'){d.appendChild(ikon(s==='failed'?'M12 8v5M12 16.5v.5M10.3 3.9L2.6 17.2A2 2 0 004.3 20h15.4a2 2 0 001.7-2.8L13.7 3.9a2 2 0 00-3.4 0z':'M12 7v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z'))}
-  else{if(host)d.appendChild(el('div','rp-site',host));d.appendChild(stegrad(NOW[s]==null?1:NOW[s]))}
-  d.appendChild(el('h1',null,t[0]));d.appendChild(el('p',null,s==='failed'&&extra?extra+' '+t[1]:t[1]));
+  else if(host)d.appendChild(el('div','rp-site',host));
+  d.appendChild(el('h1',null,t[0]));d.appendChild(el('p',null,s==='failed'&&extra?extra+' '+t[1]:t[1]));if(NOW[s]!=null)d.appendChild(stegrad(NOW[s]));
   if(NOW[s]!=null&&s!=='verify')d.appendChild(el('p','rp-note','You can close this page. We email you the link when your review is ready.'));
   if(s==='expired'||s==='failed'){var a=el('a','btn','Back to Clipr Website');a.href='./';d.appendChild(a)}root.appendChild(d)}
  var OMR=['Mobile','Search and sharing','Speed','Trust and contact','Technical'];
@@ -26,7 +26,7 @@
  function fynd(f){var li=el('li','pf-wf '+(PRIO[f.prio]||PRIO[2])[1]);var h=el('div','h');h.appendChild(el('span','tag',(PRIO[f.prio]||PRIO[2])[0]));h.appendChild(el('b',null,f.rubrik));li.appendChild(h);
   if(f.varfor)li.appendChild(el('p','why',f.varfor));if(f.bevis)li.appendChild(el('p','ev',f.bevis));if(f.atgard){var a=el('p','fix');a.appendChild(el('b',null,'How to fix it: '));a.appendChild(document.createTextNode(f.atgard));li.appendChild(a)}return li}
  function visa(r,host){
-  tom();var wrap=el('div','pf-wrap');var h=el('div','pf-whead');h.appendChild(el('div','pf-eyebrow','Your free website review'));h.appendChild(el('h1',null,r.host||host));
+  tom();var wrap=el('div','pf-wrap');var h=el('div','pf-whead');h.appendChild(el('div','pf-eyebrow','Free website review'));h.appendChild(el('h1',null,r.host||host));
   h.appendChild(el('p','meta','Reviewed '+(r.datum||'')+(r.mat&&r.mat.sidor?' · '+r.mat.sidor+' page'+(r.mat.sidor>1?'s':'')+' checked':'')));wrap.appendChild(h);
   var list=(r.fynd||[]).slice().sort(function(a,b){return (a.prio||2)-(b.prio||2)});
   if(r.sammanfattning){var s=el('div','pf-card pf-wsum');s.appendChild(el('h2',null,'In short'));s.appendChild(el('p',null,r.sammanfattning));wrap.appendChild(s)}
