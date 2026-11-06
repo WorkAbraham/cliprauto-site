@@ -63,6 +63,7 @@ h4{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px}
 .mini input:focus-visible,.prov input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .mini .btn{flex:none}
 .mini-not{font-size:14px;color:var(--mut);margin-top:12px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .mini-not a,.alt a{color:var(--mut2);text-underline-offset:3px;transition:color 200ms var(--k)}
 .hero-art{display:grid;gap:0}
 .hero-art figure{position:relative}
