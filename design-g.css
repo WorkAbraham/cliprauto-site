@@ -304,3 +304,35 @@ h4{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px}
 .gl{list-style:none;padding:0;margin:28px 0;display:grid;gap:0;border-top:1px solid var(--lin)}.gl a{display:block;padding:18px 0;border-bottom:1px solid var(--lin);text-decoration:none;color:inherit}.gl a b{display:block;font-size:18px;margin-bottom:4px;font-weight:500}.gl a span{color:var(--mut2);font-size:15px}
 @media (hover:hover) and (pointer:fine){.gl a:hover b{color:var(--acc)}.krum a:hover{color:var(--ink)}}
 @media (max-width:700px){.art .tab{display:block;overflow-x:auto}.plul li{grid-template-columns:1fr;gap:2px}.art dl.fakta{grid-template-columns:1fr}.art .fakta dt{border-bottom:0;padding-bottom:0}}
+/* I – den sanna tidslinjen i hjälten (RIKTNING-G + granskarens krav på ett bärande ögonblick). Allt ritas från uppmätta tider. */
+.hero .wrap{grid-template-columns:5fr 7fr;align-items:start;padding-top:40px}
+.hero-copy{padding-top:56px}
+.tl{display:grid;gap:12px}
+.remsa{position:relative;height:auto;aspect-ratio:672/72;border:1px solid var(--lin);border-radius:var(--r);overflow:hidden;background:#000;cursor:col-resize;touch-action:pan-y;user-select:none}
+.remsa .ruta{display:none}
+.remsa .alla{position:absolute;inset:0;background:url(bilder/talk-kalla-remsa.jpg) 0 0/100% 100% no-repeat;opacity:.9}
+.remsa .klippyta{position:absolute;top:0;bottom:0;border:1.5px solid var(--acc);background:rgba(26,111,212,.18);pointer-events:none}
+.spelhuvud{position:absolute;top:0;bottom:0;left:0;width:1.5px;background:#fff;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+.spelhuvud::before{content:"";position:absolute;top:-1px;left:-4px;width:9px;height:9px;background:#fff;border-radius:1px}
+.tl-rad{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mut2)}
+.tl-rad .tc{font-size:13px}
+.tl-spann{position:relative;height:28px;border-top:1px solid var(--lin);margin-top:2px}
+.tl-klipp{position:absolute;top:8px;height:20px;min-width:14px;display:block;background:var(--acc2);border-radius:3px;cursor:pointer;text-decoration:none;transition:background-color 200ms var(--k)}
+.tl-klipp .tc{position:absolute;top:22px;left:0;white-space:nowrap;font-size:11px;color:var(--mut)}
+.tl-klipp.aktiv{background:var(--acc)}
+.tl-klipp:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tl-vids{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.tl-vid{position:relative}
+.tl-vid .vid{aspect-ratio:9/16}
+.tl-vid figcaption{display:flex;gap:10px;align-items:baseline;margin-top:8px;font-size:13px;color:var(--mut2)}
+.tl-vid .cut{position:absolute;left:50%;top:-18px;width:1.5px;height:18px;background:var(--acc2);transform:translateX(-50%)}
+.avl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--lin)}
+.avl dt{font-size:12px;color:var(--mut)}.avl dd{font:500 13px/1.4 var(--mono);color:var(--acc);margin-top:2px;min-height:18px}
+.ord{margin-top:12px;font-size:15px;line-height:1.5;color:var(--mut);min-height:46px;max-height:46px;overflow:hidden}
+.ord span.sagt{color:var(--ink)}.ord span[aria-current]{color:var(--acc)}
+/* entré: klippen faller ur källan, en gång */
+.hero-art.entre .tl-vid{transform:translateY(-24px);opacity:0;transition:transform 480ms var(--k),opacity 480ms var(--k)}
+.hero-art.entre .tl-vid:nth-child(2){transition-delay:70ms}.hero-art.entre .tl-vid:nth-child(3){transition-delay:140ms}
+.hero-art.entre.inne .tl-vid{transform:none;opacity:1}
+@media (max-width:1000px){.hero .wrap{grid-template-columns:1fr}}
+@media (max-width:720px){.hero .wrap{padding-top:28px}.hero-copy{padding-top:0}.tl-vid figcaption{font-size:11px;gap:6px}.tl-vids{gap:8px}.avl{grid-template-columns:1fr 1fr}.tl-klipp .tc{font-size:10px}}
