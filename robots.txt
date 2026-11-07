@@ -4,77 +4,90 @@ Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: GPTBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /provsida.html
 Disallow: /website/report.html
 Disallow: /pages/
+Disallow: /preview/
 
 Sitemap: https://cliprauto.com/sitemap.xml
