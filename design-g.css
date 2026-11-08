@@ -277,8 +277,6 @@ h4{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px}
  .fot-grid{grid-template-columns:1fr}
 }
 
-/* kontaktnumret bryts aldrig mitt i (8 nov 2026) */
-a[href^="tel:"]{white-space:nowrap}
 /* ---- formulärets tillstånd (provklipp.js / webb.js) ---- */
 .prov .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .prov .msg{font-size:14px;color:#FF8A8A;min-height:0;margin:0}
