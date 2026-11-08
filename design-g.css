@@ -184,6 +184,12 @@ h4{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px}
 .paket td{font-size:15px;color:var(--mut2)}
 .paket .kop td{border-bottom:0;padding-top:20px}
 .paket .kop .not{margin-top:12px;font-size:13px}
+/* CliprAuto: sex stilar (riktiga kort ur appen) */
+.stil-grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 20px;margin-top:40px}
+.stil-k{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start}
+.stil-k img{border-radius:var(--r);border:1px solid var(--lin)}
+.stil-k figcaption strong{display:block;font-weight:500;font-size:18px;margin-bottom:6px}
+.stil-k figcaption span{color:var(--mut2);font-size:15px;line-height:1.5}
 /* fall: asymmetriskt 1 stor + 2 */
 .fall-s{background:var(--yta)}
 .fall-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:40px}
@@ -267,9 +273,12 @@ h4{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px}
  .fall-grid{grid-template-columns:1fr}.fall .vid,.fall:first-child .vid{max-width:260px}
  .fyra-grid{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}.fyra-k{flex:0 0 68%;scroll-snap-align:start}
  .fmt-grid{grid-template-columns:1fr 1fr;gap:16px}
- .stil-grid{grid-template-columns:1fr}
+ .stil-grid{grid-template-columns:1fr}.stil-grid6{grid-template-columns:1fr}.stil-k{grid-template-columns:110px 1fr}
  .fot-grid{grid-template-columns:1fr}
 }
+
+/* kontaktnumret bryts aldrig mitt i (8 nov 2026) */
+a[href^="tel:"]{white-space:nowrap}
 /* ---- formulärets tillstånd (provklipp.js / webb.js) ---- */
 .prov .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .prov .msg{font-size:14px;color:#FF8A8A;min-height:0;margin:0}
