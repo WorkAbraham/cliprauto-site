@@ -1,5 +1,7 @@
 {
  "starter": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-1WC174879K2659151NLUZKGA",
  "popular": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-6TE23247W19710304NLUZLII",
- "premium": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-60N47410L9763925GNLUZL6A"
+ "premium": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-60N47410L9763925GNLUZL6A",
+ "maskin-mac": "https://www.paypal.com/ncp/payment/HPP8NPK7UF9FU",
+ "maskin-win": "https://www.paypal.com/ncp/payment/HPP8NPK7UF9FU"
 }
