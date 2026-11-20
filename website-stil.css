@@ -16,7 +16,7 @@ em{font-style:normal;color:var(--acc)}
 .pill a.l{padding:9px 16px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none;color:var(--mut);transition:color 200ms var(--k),background 200ms var(--k)}
 .pill a.l[aria-current]{color:var(--ink);background:rgba(255,255,255,.09)}
 /* knappar: pill */
-.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:0;font:600 17px/1 var(--font);text-decoration:none;cursor:pointer;color:#121417;background:linear-gradient(180deg,#F6F7F8,#E2E5E8);box-shadow:inset 0 1px 0 #fff,0 10px 30px rgba(0,0,0,.4);transition:transform 160ms var(--k),box-shadow 200ms var(--k)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:0;font:600 17px/1 var(--font);text-decoration:none;cursor:pointer;color:#121417;background-color:#E9EBED;background-image:linear-gradient(180deg,#F6F7F8,#E2E5E8);box-shadow:inset 0 1px 0 #fff,0 10px 30px rgba(0,0,0,.4);transition:transform 160ms var(--k),box-shadow 200ms var(--k)}
 .btn:active{transform:scale(.97)}
 .btn.o{color:var(--ink);background:transparent;box-shadow:none;border:1.5px solid var(--lin2)}.btn:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 .btn svg{width:20px;height:20px}
