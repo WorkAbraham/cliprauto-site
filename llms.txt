@@ -1,17 +1,14 @@
 # CliprAuto
 
-> CliprAuto is a done-for-you video clipping service. It turns long-form video (podcasts, interviews, webinars, talks) into finished short clips with captions for Instagram Reels, YouTube Shorts, TikTok, LinkedIn and other platforms. Clips are checked by software before delivery. A free sample made from the customer's own recording comes first.
+> CliprAuto sells two things. CliprAuto is a machine that runs TikTok, Instagram Reels and YouTube Shorts accounts on the customer's own computer (Mac or Windows): $139, paid once, 5 accounts, no monthly fee. Clipr Website builds a new website for a business from its current site, all pages: free to look at, $199 paid once, no monthly fee to us.
 
-The clipping service is not a software download. No guarantee of views. Paid monthly by card or PayPal, cancel anytime from the next billing date (USD): Starter $379, Growth $679, Premium $979.
+No guarantee of views, followers or sales.
 
 ## Main pages
-- [Home and plans](https://cliprauto.com/): what we do, how we test every clip, plans and the free sample form
-- [Podcast clipping service](https://cliprauto.com/podcasts/): clips from podcast episodes
-- [YouTube creators](https://cliprauto.com/youtube-creators/): Shorts, Reels and TikToks from long YouTube videos
-- [Experts and companies](https://cliprauto.com/experts-and-companies/): LinkedIn, Reels and Shorts from webinars, interviews and talks
-- [CliprAuto, the software](https://cliprauto.com/cliprauto/): software that runs TikTok, Instagram Reels and YouTube Shorts accounts on the customer's own computer. One-time purchase for Mac or Windows: $139, 5 accounts
-- [Clipr Website](https://cliprauto.com/website/): free automatic website review (Beta): a private report on what to fix first
-- [CliprAuto in short](https://cliprauto.com/about/): facts, inputs, outputs, formats, pricing and what we do not do
+- [Home](https://cliprauto.com/): CliprAuto and Clipr Website in short
+- [CliprAuto](https://cliprauto.com/cliprauto/): the machine that runs short-form video accounts on the customer's own computer. One-time purchase for Mac or Windows: $139, 5 accounts
+- [Clipr Website](https://cliprauto.com/website/): a new website for your business from your current site, free to look at, $199 once
+- [CliprAuto in short](https://cliprauto.com/about/): facts, prices and what we do not do
 
 ## Guides
 - [How to turn a podcast episode into short clips, step by step](https://cliprauto.com/guides/turn-podcast-into-shorts/): The ten steps we follow, from transcript to final check.
