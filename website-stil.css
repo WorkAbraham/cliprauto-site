@@ -10,7 +10,7 @@ h1{font-size:clamp(46px,6.4vw,88px)}h2{font-size:clamp(36px,4.4vw,60px);letter-s
 .lede{color:var(--mut);font-size:19px;max-width:34em;margin:22px 0 0}
 em{font-style:normal;color:var(--acc)}
 /* flytande pillmeny */
-.pill{position:fixed;z-index:20;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:7px 8px 7px 20px;border-radius:999px;background:rgba(24,27,31,.72);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border:1px solid var(--lin2);box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.pill{position:absolute;z-index:20;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:7px 8px 7px 20px;border-radius:999px;background:rgba(24,27,31,.72);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border:1px solid var(--lin2);box-shadow:0 10px 40px rgba(0,0,0,.45)}
 .pill .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;letter-spacing:-.02em;text-decoration:none;margin-right:14px}
 .pill .logo img{width:22px;height:22px}
 .pill a.l{padding:9px 16px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none;color:var(--mut);transition:color 200ms var(--k),background 200ms var(--k)}
