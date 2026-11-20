@@ -124,3 +124,20 @@ footer a:hover{color:var(--ink)}
 .cmp input{font-size:16px}
 
 .steg4{grid-template-columns:repeat(4,1fr)}@media(max-width:1000px){.steg4{grid-template-columns:1fr 1fr}}@media(max-width:860px){.steg4{grid-template-columns:1fr}}
+
+/* fokus i pillfältet: ringen sitter på hela pillen, aldrig som en kantig ruta runt fältet (ägaren 20 nov) */
+.fld input,.fm input{outline:none;border-radius:999px;-webkit-appearance:none;appearance:none}
+.fld{transition:border-color 200ms var(--k),box-shadow 200ms var(--k)}
+.fld:focus-within{border-color:var(--acc);box-shadow:0 0 0 3px rgba(90,180,255,.25),0 20px 50px rgba(0,0,0,.4)}
+.fm input:not(.hp):focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(90,180,255,.25)}
+@media(max-width:860px){.fld input{padding:0 18px}.fld .btn{width:100%}}
+
+/* mobil: fältet och knappen är två egna stora pillar, inte ett instängt fält i en ram (ägaren 20 nov) */
+@media(max-width:860px){
+ .fld{flex-direction:column;gap:12px;padding:0;background:none;border:0;border-radius:0;box-shadow:none;max-width:none}
+ .fld input{flex:none;height:60px;padding:0 24px;font-size:17px;border:1px solid var(--lin2);border-radius:999px;background:var(--yta2);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+ .fld input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(90,180,255,.25)}
+ .fld:focus-within{border-color:transparent;box-shadow:none}
+ .fld .btn{height:60px;width:100%;justify-content:center}
+ .band .fld input{background:var(--bg)}
+}
