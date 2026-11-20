@@ -126,9 +126,8 @@ footer a:hover{color:var(--ink)}
 .steg4{grid-template-columns:repeat(4,1fr)}@media(max-width:1000px){.steg4{grid-template-columns:1fr 1fr}}@media(max-width:860px){.steg4{grid-template-columns:1fr}}
 
 /* fokus i pillfältet: ringen sitter på hela pillen, aldrig som en kantig ruta runt fältet (ägaren 20 nov) */
-.fld input,.fm input{outline:none;border-radius:999px;-webkit-appearance:none;appearance:none}
+.fld input,.fm input{border-radius:999px;-webkit-appearance:none;appearance:none}
 .fld{transition:border-color 200ms var(--k),box-shadow 200ms var(--k)}
-.fld:focus-within{border-color:var(--acc);box-shadow:0 0 0 3px rgba(90,180,255,.25),0 20px 50px rgba(0,0,0,.4)}
 .fm input:not(.hp):focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(90,180,255,.25)}
 @media(max-width:860px){.fld input{padding:0 18px}.fld .btn{width:100%}}
 
@@ -141,3 +140,6 @@ footer a:hover{color:var(--ink)}
  .fld .btn{height:60px;width:100%;justify-content:center}
  .band .fld input{background:var(--bg)}
 }
+
+.fld input:focus-visible,.fm input:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+@media(max-width:860px){.fld:focus-within{border-color:transparent;box-shadow:none}}
