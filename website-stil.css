@@ -143,3 +143,5 @@ footer a:hover{color:var(--ink)}
 
 .fld input:focus-visible,.fm input:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
 @media(max-width:860px){.fld:focus-within{border-color:transparent;box-shadow:none}}
+
+.pill a.l{line-height:1.5}.pill .logo{color:var(--ink)}

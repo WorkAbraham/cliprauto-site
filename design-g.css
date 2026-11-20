@@ -344,6 +344,17 @@ dialog.kopruta::backdrop{background:rgba(8,9,11,.72)}
 .kopruta .kop-fel{min-height:22px;margin:12px 0 0;color:#FF8A80;font-size:14px}
 .kopruta .kop-rad{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
 .kopruta .btn:disabled{opacity:.6;cursor:default}
+
+/* Den runda flytande menyn: samma på alla sidor (ägaren 20 nov) */
+.pill{position:fixed;z-index:20;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:7px 8px 7px 20px;border-radius:999px;background:rgba(24,27,31,.72);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border:1px solid var(--lin2);box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.pill .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;letter-spacing:-.02em;text-decoration:none;margin-right:14px;color:var(--ink)}
+.pill .logo img{width:22px;height:22px}
+.pill a.l{padding:9px 16px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none;color:var(--mut2);line-height:1.5;transition:color 200ms var(--k),background 200ms var(--k)}
+.pill a.l[aria-current]{color:var(--ink);background:rgba(255,255,255,.09)}
+@media (hover:hover) and (pointer:fine){.pill a.l:hover{color:var(--ink);background:rgba(255,255,255,.07)}}
+.pill a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pillsp{height:76px}
+@media(max-width:860px){.pill{width:calc(100% - 24px);justify-content:space-between;padding-left:16px}.pill .logo{margin-right:4px}.pill a.l{padding:9px 10px;font-size:14px}}
 /* I – den sanna tidslinjen i hjälten (RIKTNING-G + granskarens krav på ett bärande ögonblick). Allt ritas från uppmätta tider. */
 .hero .wrap{grid-template-columns:5fr 7fr;align-items:start;padding-top:40px}
 .hero-copy{padding-top:56px}
