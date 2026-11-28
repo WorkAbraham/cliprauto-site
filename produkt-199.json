@@ -1,0 +1,24 @@
+{
+ "_om": "EN produktdefinition för Clipr Website (F09/F32, 28 nov 2026). Mänsklig version: clipr-agency/kunskap/PRODUKT-199.md. Läses av engine/betalmejl.py; mottagningen (kop.js) måste ha samma värden (provas i prov.mjs). Ändra här först, aldrig bara på ett ställe.",
+ "namn": "Clipr Website",
+ "pris": {
+  "GB": {"belopp": 199, "valuta": "GBP", "tecken": "£"},
+  "US": {"belopp": 199, "valuta": "USD", "tecken": "$"},
+  "standard": "US"
+ },
+ "betallank": {"USD": "website", "GBP": "website-gbp"},
+ "ingar": [
+  "A new homepage for your business, built from the photos, text and colours already on your website",
+  "Designed for phones and computers, with your booking or contact details up front",
+  "Changes until you are happy with it",
+  "The finished homepage, ready to publish, with step-by-step help putting it live on your own domain"
+ ],
+ "ingar_inte": [
+  "The other pages of your current website. The new homepage gathers your key information on one page",
+  "Your domain and hosting, which stay with your own provider"
+ ],
+ "byggare_utan_uppladdning": ["Wix", "Squarespace", "Shopify", "Weebly", "Jimdo", "GoDaddy Website Builder", "Webnode"],
+ "byggare_text": "If your current site is built with Wix, Squarespace, Shopify, Weebly, Jimdo, GoDaddy Website Builder or Webnode, the new homepage cannot be uploaded there. You keep your domain, and publishing needs a hosting service that accepts an uploaded website.",
+ "betalning": "No monthly fee to us.",
+ "forbjudet_i_kundtext": ["all pages", "whole website", "whole new website", "every page"]
+}
