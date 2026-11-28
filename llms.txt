@@ -1,23 +1,10 @@
-# CliprAuto
+# Clipr Website
 
-> CliprAuto sells two things. CliprAuto is a machine that runs TikTok, Instagram Reels and YouTube Shorts accounts on the customer's own computer (Mac or Windows): $139, paid once, 5 accounts, no monthly fee. Clipr Website builds a new homepage for a business from its current site: free to look at, $199 paid once (£199 in the UK), no monthly fee to us.
-
-No guarantee of views, followers or sales.
+> Clipr Website rebuilds a small business's website, every page it has today, from its current site: its photos, words and colours, made better. The design concept is free to look at; the finished website costs $199 paid once (£199 in the UK), with changes until the customer is happy and step-by-step help putting it live on their own domain. No monthly fee to us. Domain and hosting stay with the customer's own provider.
 
 ## Main pages
-- [Home](https://cliprauto.com/): CliprAuto and Clipr Website in short
-- [CliprAuto](https://cliprauto.com/cliprauto/): the machine that runs short-form video accounts on the customer's own computer. One-time purchase for Mac or Windows: $139, 5 accounts
-- [Clipr Website](https://cliprauto.com/website/): a new homepage for your business from your current site, free to look at, $199 once (£199 in the UK)
-- [CliprAuto in short](https://cliprauto.com/about/): facts, prices and what we do not do
-
-## Guides
-- [How to turn a podcast episode into short clips, step by step](https://cliprauto.com/guides/turn-podcast-into-shorts/): The ten steps we follow, from transcript to final check.
-- [Podcast clips: AI tool, freelancer or agency? How to choose](https://cliprauto.com/guides/podcast-clipping-ai-freelancer-or-agency/): What each option is good at, and what to ask before you pay.
-- [How long should podcast clips be?](https://cliprauto.com/guides/how-long-should-podcast-clips-be/): A practical rule for clip length, and how to apply it.
-- [How to add captions to short videos that are accurate and in sync](https://cliprauto.com/guides/add-captions-to-short-videos/): Accuracy, timing, safe areas and how to check them.
-- [Video sizes for Reels, Shorts, TikTok and LinkedIn](https://cliprauto.com/guides/video-sizes-reels-shorts-tiktok-linkedin/): The four formats that cover every platform, and what each is for.
-- [How to choose which moments of a podcast to clip](https://cliprauto.com/guides/choose-podcast-moments-to-clip/): A checklist, and the red flags that tell you to skip a moment.
-- [How to plan a year of video clips from the questions your audience asks](https://cliprauto.com/guides/plan-a-year-of-clips-from-audience-questions/): A simple method: specialty, topics, real questions, matched to your recordings.
+- [Clipr Website](https://cliprauto.com/website/): a new website for your business, every page, free to look at, $199 once (£199 in the UK)
+- [About](https://cliprauto.com/about/): facts, price and what we do not do
 
 ## Contact
 - info@cliprauto.com

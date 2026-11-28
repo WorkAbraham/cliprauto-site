@@ -3,5 +3,7 @@
  "popular": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-6TE23247W19710304NLUZLII",
  "premium": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-60N47410L9763925GNLUZL6A",
  "maskin-mac": "https://www.paypal.com/ncp/payment/HPP8NPK7UF9FU",
- "maskin-win": "https://www.paypal.com/ncp/payment/HPP8NPK7UF9FU"
+ "maskin-win": "https://www.paypal.com/ncp/payment/HPP8NPK7UF9FU",
+ "website": "https://www.paypal.com/ncp/payment/CJLTASC6XL4LE",
+ "website-gbp": "https://www.paypal.com/ncp/payment/3DFK45NCNC3KG"
 }
