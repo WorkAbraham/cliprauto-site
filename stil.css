@@ -5,7 +5,7 @@
 @font-face{font-family:'Geist Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(fonts/geist-mono-latin.woff2) format('woff2')}
 :root{
  --font:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Geist Mono',ui-monospace,Menlo,Consolas,monospace;
- --paper:#F4F4F0;--paper2:#EAEAE4;--card:#FBFBF8;--ink:#121417;--ink2:#3B4048;--ink3:#5C626B;--line:#D3D4CD;--line2:#B9BBB3;
+ --paper:#F4F4F0;--paper2:#EAEAE4;--card:#FBFBF8;--ink:#121417;--ink2:#3B4048;--ink3:#5C626B;--line:#D3D4CD;--line2:#80837C;
  --blue:#1A63C2;--blue-l:#E3ECF8;
  --night:#121417;--night2:#1B1E23;--nline:rgba(255,255,255,.12);--ntext:#ECEDEA;--ntext2:#B3B8BF;--nblue:#7DB6FF;
  --ok:#2F7D4F;--r:6px;--k:cubic-bezier(.23,1,.32,1);--w:1200px;--g:24px}
@@ -177,7 +177,7 @@ h3{font-size:21px;font-weight:500;letter-spacing:-.012em;line-height:1.25}
 .pt td.belopp{font-size:19px;font-weight:500;white-space:nowrap;width:22%}
 .pt td{color:var(--ink2)}
 .pt .vald th,.pt .vald td.belopp{color:var(--ink)}
-.pt .vald{background:linear-gradient(90deg,var(--blue-l),transparent 70%)}
+.pt .vald{background:var(--blue-l)}
 .pt .vald th{padding-left:14px;box-shadow:inset 3px 0 0 var(--blue)}
 @media(max-width:700px){.pt,.pt tbody,.pt tr,.pt th,.pt td{display:block;width:auto}.pt tr{border-top:1px solid var(--line);padding:18px 0}.pt th,.pt td{border:0!important;padding:2px 0}.pt .vald th{padding-left:12px}}
 
@@ -325,3 +325,55 @@ h3{font-size:21px;font-weight:500;letter-spacing:-.012em;line-height:1.25}
 @media(max-width:820px){.pris-rad{display:block}}
 .order-f a{color:inherit}
 .mk-t{font-weight:inherit}
+
+/* gyllene designlagen 28 nov: villkorsrad under hjältens knappar; kvittoknappen bryts i smal spalt (designlag SIDLED 1024 px) */
+.villkor{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:22px;font:400 13px/1.5 var(--mono);color:var(--ink3)}
+.kvitto .btn{width:100%;justify-content:center;white-space:normal;text-align:center;height:auto;min-height:48px;padding-block:12px}
+.s:not(.night) .inte li{border-color:var(--line);color:var(--ink)}
+.night .lista li{border-color:var(--nline)}.night .lista p{color:var(--ntext2)}.night .lista h3 a{color:var(--ntext)}.night .note{color:var(--ntext2)}
+.night .lista>li:last-child{border-color:var(--nline)}
+.order li p.nytta{font:400 14px/1.45 var(--font);color:var(--ink2);margin-top:4px}
+.har-redan{margin-top:26px;padding:14px 0 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink2);max-width:52ch}.har-redan b{color:var(--ink);font-weight:500}
+.inte li b{font-weight:600}
+.inngang{margin-top:22px;border-top:1px solid var(--line);display:grid;gap:0}.inngang p{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink2);max-width:56ch}.inngang b{color:var(--ink);font-weight:500}.inngang .pil{margin-top:6px}
+/* koncept D (gyllene designlagen, runda 3): rubrikrad + utställning av verkligt arbete + tre noter */
+.hero-ut{padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(48px,6vw,88px)}
+.rubrikrad{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(32px,5vw,80px);align-items:end;margin-bottom:clamp(32px,4vw,48px)}
+.rubrikrad .lede{margin-top:0}.rubrikrad .hero-rad{margin-top:24px}
+.utst{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;align-items:start}
+.utst figure{margin:0}.utst figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-top:10px;font-size:15px;color:var(--ink2)}.utst figcaption b{color:var(--ink);font-weight:600}
+.demo-et{font:500 13px/1.6 var(--mono);color:var(--ink);border:1px solid var(--line2);border-radius:3px;padding:0 8px;align-self:center}
+.noter{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:8px}
+.noter li{padding:18px 24px 0 0}.noter li+li{padding-left:24px;border-left:1px solid var(--line)}
+.noter b{font:500 12.5px/1.4 var(--mono);color:var(--ink3)}.noter .andr{color:var(--blue);font-weight:500;margin-top:6px}.noter .nytta{color:var(--ink2);font-size:15px;margin-top:4px}
+.u-mer{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;margin-top:8px}
+@media(max-width:860px){.rubrikrad{grid-template-columns:minmax(0,1fr);row-gap:24px}.utst{grid-template-columns:minmax(0,1fr)}.u-fore{order:2}.u-efter{order:1}.noter{order:3}.u-mer{order:4}.noter{grid-template-columns:minmax(0,1fr)}.noter li+li{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:16px}}
+
+/* granskarnas fynd 28 nov */
+.rubrikrad{align-items:start}
+.noter .koll{font:400 12.5px/1.45 var(--mono);color:var(--ok);margin-top:8px}
+@media(max-width:700px){.pos::before{display:none}.meny-knapp{padding:0 16px;gap:8px}}
+.lofte h2{font-size:clamp(30px,3.6vw,48px);max-width:18ch}
+
+/* Clipr Evidence Mark (GPT R3-05): numrering, mono-etikett, vertikal ändringslinje, kontrollrad */
+.noter li{position:relative}.em-nr{display:block;font:500 13px/1.4 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.em-fynd,.noter .andr{font-size:15px;margin-top:8px}.em-fynd{color:var(--ink2)}
+.em-fynd i,.noter .andr i{font:500 13px/1 var(--mono);letter-spacing:.02em;font-style:normal;display:block;margin-bottom:3px}
+.noter .andr{border-left:3px solid var(--blue);padding-left:12px}.noter .koll{border-top:1px solid var(--line);padding-top:8px}
+
+/* Slutgranskning R4 (V3,V6,V10,V11,V14) */
+.villkor{font:400 16px/1.5 var(--font);color:var(--ink2)}.v-redan{margin-top:8px!important}.v-redan span{font-size:16px;color:var(--ink3)}
+.em-nr{font-size:13px}.noter .andr,.em-fynd,.noter .nytta{font-size:16px}.noter .koll{font-size:13px}
+.efter-pilot{margin-top:24px}.efter-pilot summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}.efter-pilot .pt{margin-top:8px}
+@media(max-width:820px){.meny-knapp{height:44px;padding:0 16px;border-width:1px;box-shadow:none;font-size:16px}}
+.em1{margin-top:28px;max-width:520px}.em1 .noter{display:block;grid-column:auto}.em1 .noter li{padding:18px 0 0}.em1 .note{margin-top:12px}
+@media(max-width:860px){.rubrikrad>div:first-child{display:contents}.rubrikrad .pos{order:1}.rubrikrad h1{order:2}.rubrikrad>div:last-child{order:3}.rubrikrad .v-pris{order:4;margin-top:0}.rubrikrad .v-redan{order:5;margin-top:0!important}}
+.inte-rad{margin-top:32px;padding-top:20px;border-top:1px solid var(--ink);font-size:21px;line-height:1.45;max-width:560px}.inte-rad b{font-weight:600;display:block;font:500 13px/1.4 var(--mono);color:var(--ink3);margin-bottom:6px}
+.u-lank{margin-top:24px}.em-nr::before{content:"";display:inline-block;width:8px;height:8px;background:var(--blue);margin-right:10px;vertical-align:1px}
+.s[aria-labelledby=vad]{padding-block:72px}
+
+/* R5: märkning ovanför bilderna, Changed bär hierarkin, demon tidigare på mobil */
+.utst figure{display:flex;flex-direction:column-reverse}.utst figcaption{margin-top:0;margin-bottom:10px}
+.noter .andr{font-size:18px;font-weight:600;line-height:1.4}
+.v-redan-m{display:none}
+@media(max-width:860px){.rubrikrad .v-redan{display:none}.v-redan-m{display:flex;margin-top:20px}.hero-ut h1{font-size:clamp(40px,11vw,52px)}.rubrikrad{row-gap:14px}.hero-ut .lede{font-size:18px;line-height:1.5}.hero-ut .hero-rad{gap:10px}.rubrikrad .v-pris{font-size:15px}.rubrikrad .pos{margin-bottom:0}}
