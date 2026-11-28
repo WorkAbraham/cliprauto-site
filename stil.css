@@ -1,0 +1,327 @@
+/* CliprAuto – "Arbetsordern" (28 nov 2026). Designsystem för nya cliprauto.com.
+   Idé: varje påstående har en marginalanteckning med bevis (mono). Papper + grafitbläck + EN signalfärg (loggans blå) för status.
+   Byggs av v7-bygg/bygg.py. Regler: klippkarna/kunskap/UX-REGLER.md (knappar 48 px, 17/600, verb+objekt). */
+@font-face{font-family:'Geist';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/geist-latin.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(fonts/geist-mono-latin.woff2) format('woff2')}
+:root{
+ --font:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Geist Mono',ui-monospace,Menlo,Consolas,monospace;
+ --paper:#F4F4F0;--paper2:#EAEAE4;--card:#FBFBF8;--ink:#121417;--ink2:#3B4048;--ink3:#5C626B;--line:#D3D4CD;--line2:#B9BBB3;
+ --blue:#1A63C2;--blue-l:#E3ECF8;
+ --night:#121417;--night2:#1B1E23;--nline:rgba(255,255,255,.12);--ntext:#ECEDEA;--ntext2:#B3B8BF;--nblue:#7DB6FF;
+ --ok:#2F7D4F;--r:6px;--k:cubic-bezier(.23,1,.32,1);--w:1200px;--g:24px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-top:24px}
+body{margin:0;font:400 17px/1.55 var(--font);color:var(--ink);background:var(--paper);font-feature-settings:"tnum" 1,"ss01" 1;text-rendering:optimizeLegibility}
+img,video{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:var(--r);z-index:9;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{width:min(100% - 48px,var(--w));margin-inline:auto}
+@media(max-width:600px){.wrap{width:calc(100% - 40px)}}
+
+/* typografi */
+h1{font-size:clamp(42px,6.2vw,84px);font-weight:500;letter-spacing:-.042em;line-height:.98}
+h2{font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.032em;line-height:1.04}
+h3{font-size:21px;font-weight:500;letter-spacing:-.012em;line-height:1.25}
+.lede{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--ink2);max-width:46ch}
+.p{color:var(--ink2);max-width:62ch}
+.p+.p{margin-top:14px}
+.mono,.note{font:400 13px/1.5 var(--mono);letter-spacing:-.01em}
+.note{color:var(--ink3)}
+.note b{font-weight:500;color:var(--ink)}
+.pris{font-feature-settings:"tnum" 1;font-weight:500;letter-spacing:-.02em}
+
+/* ordmärket: cliprauto + blå punkt (punkten = "klart, kontrollerat") */
+.mark{display:inline-flex;align-items:baseline;font:600 21px/1 var(--font);letter-spacing:-.045em;text-decoration:none;color:var(--ink)}
+.mark i{display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:1px;margin-left:2px;transform:translateY(-1px)}
+
+/* sidhuvud */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}
+.meny{display:flex;gap:4px;align-items:center}
+.meny a{font:500 15px/1 var(--font);text-decoration:none;color:var(--ink2);padding:12px 12px;border-radius:var(--r);transition:color .2s var(--k),background-color .2s var(--k)}
+.meny a[aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink);border-radius:0}
+@media(hover:hover) and (pointer:fine){.meny a:hover{color:var(--ink);background:var(--paper2)}}
+.meny-knapp{display:none}
+@media(max-width:860px){
+ .meny{display:none;position:absolute;left:0;right:0;top:72px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px 20px 16px;z-index:5}
+ .meny.open{display:flex}
+ .meny a{font-size:17px;padding:14px 4px;border-bottom:1px solid var(--line)}
+ .meny a[aria-current]{box-shadow:none;font-weight:600}
+ .top{position:relative}
+ .meny-knapp{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border:2px solid #3B4048;border-radius:24px;background:#FAFAF8 linear-gradient(180deg,#FFFFFF 0%,#F6F6F3 100%);box-shadow:inset 0 1px 0 #fff,0 8px 24px -14px rgba(18,20,23,.16);font:600 17px/1 var(--font);color:var(--ink);cursor:pointer;transition:transform .16s var(--k)}
+ .meny-knapp span{display:block;width:16px;height:1.5px;background:currentColor;box-shadow:0 -5px 0 currentColor,0 5px 0 currentColor}
+}
+
+/* knappar (UX-REGLER A) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:24px;font:600 17px/1 var(--font);text-decoration:none;cursor:pointer;border:1px solid transparent;white-space:nowrap;user-select:none;touch-action:manipulation;
+ transition:transform .16s var(--k),box-shadow .2s var(--k),background-color .2s var(--k),border-color .2s var(--k)}
+.btn .ik{width:20px;height:20px;flex:none}
+.btn-p{color:#fff;background:#16191D linear-gradient(180deg,#22262C 0%,#16191D 100%);border-color:#121417;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px -12px rgba(18,20,23,.28)}
+.btn-o{color:var(--ink);background:#FAFAF8 linear-gradient(180deg,#FFFFFF 0%,#F6F6F3 100%);border:2px solid #3B4048;box-shadow:inset 0 1px 0 #fff,0 8px 24px -14px rgba(18,20,23,.16)}
+@media(hover:hover) and (pointer:fine){
+ .btn-p:hover{background:#121417 linear-gradient(180deg,#2C3138 0%,#16191D 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 8px 24px -10px rgba(18,20,23,.34)}
+ .btn-o:hover{border-color:var(--ink)}
+}
+.btn:active,.meny-knapp:active{transform:translateY(1px) scale(.985)}
+.btn[aria-disabled=true]{opacity:.7;pointer-events:none}
+.pil{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--ink);min-height:44px}
+.pil .ik{width:18px;height:18px;transition:transform .2s var(--k)}
+@media(hover:hover) and (pointer:fine){.pil:hover .ik{transform:translateX(3px)}.pil:hover{text-decoration:underline}}
+.night .btn-p{color:var(--ink);background:#F2F2EF linear-gradient(180deg,#FFFFFF 0%,#ECECE8 100%);border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 8px 24px -12px rgba(0,0,0,.45)}
+.night .btn-o{color:var(--ntext);background:transparent;border:2px solid #C9CDD2;box-shadow:none}
+.night .pil{color:var(--ntext)}
+@media(hover:hover) and (pointer:fine){.night .btn-p:hover{background:#fff;box-shadow:inset 0 1px 0 #fff,0 8px 24px -10px rgba(0,0,0,.5)}.night .btn-o:hover{border-color:#fff}}
+
+/* sektioner */
+.s{padding:104px 0;border-top:1px solid var(--line)}
+.s-tight{padding:72px 0}
+@media(max-width:700px){.s{padding:72px 0}.s-tight{padding:56px 0}}
+.night{background:var(--night);color:var(--ntext);border-top:0}
+.night .p,.night .lede{color:var(--ntext2)}
+.night .note{color:#9DA3AB}
+.night .note b{color:var(--ntext)}
+
+/* arbetsorder-rutnätet: text vänster, anteckning i marginalen */
+.ark{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);column-gap:clamp(32px,6vw,96px);align-items:start}
+.ark>.marg{border-left:1px solid var(--line);padding-left:20px;display:grid;gap:14px}
+.night .ark>.marg{border-color:var(--nline)}
+@media(max-width:860px){.ark{grid-template-columns:1fr;row-gap:28px}}
+
+/* hjälte */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(56px,7vw,96px)}
+.hero .lede{margin-top:28px}
+.hero-rad{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:36px}
+.pos{font:500 13px/1.4 var(--mono);color:var(--ink3);margin-bottom:28px;display:flex;gap:10px;align-items:center}
+.pos::before{content:"";width:24px;height:1px;background:var(--ink3)}
+
+/* arbetsordern (protokollet) */
+.order{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 1px 0 #fff inset,0 24px 48px -32px rgba(18,20,23,.35);font:400 13.5px/1.5 var(--mono);color:var(--ink2);overflow:hidden}
+.order-h{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);color:var(--ink3);font-size:12.5px}
+.order-h b{color:var(--ink);font-weight:500}
+.order ol{counter-reset:o}
+.order li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 18px;border-bottom:1px dashed var(--line);align-items:baseline}
+.order li b{font:500 12.5px/1.4 var(--mono);color:var(--ink3)}
+.order li p{font:400 15px/1.45 var(--font);color:var(--ink);margin-top:4px}
+.order li p.andr{color:var(--blue);font-weight:500}
+.order li p.koll{font:400 12.5px/1.4 var(--mono);color:var(--ok);margin-top:6px}
+.order .andr{color:var(--blue)}
+.order-k{display:flex;gap:8px;padding:10px 18px;border-bottom:1px solid var(--line);font-size:12px;color:var(--ink3)}
+.order-k span+span::before{content:"→";margin-right:8px;color:var(--line2)}
+.marg-order{padding-top:8px}
+.order li::before{counter-increment:o;content:counter(o,decimal-leading-zero);color:var(--ink3)}
+.order li:last-child{border-bottom:0}
+.st{font-size:12px;padding:2px 8px;border-radius:3px;white-space:nowrap;border:1px solid currentColor}
+.st-f{color:#9A3B1F}
+.st-k{color:var(--ok)}
+.st-p{color:var(--blue)}
+.order-f{padding:12px 18px;border-top:1px solid var(--line);background:var(--paper);color:var(--ink3);font-size:12.5px}
+
+/* två vägar (inte kort: två kapitel med olika vikt) */
+.vag{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);padding:56px 0;border-top:1px solid var(--line);align-items:start}
+.vag:first-of-type{border-top:0;padding-top:0}
+.vag .vem{font:500 13px/1.4 var(--mono);color:var(--ink3);margin-bottom:16px}
+.vag h3{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.028em;line-height:1.1}
+.vag .p{margin-top:14px}
+.vag .pr{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 var(--font);color:var(--ink)}
+.vag .pr span{color:var(--ink3);font-weight:400}
+.vag .act{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+@media(max-width:860px){.vag{grid-template-columns:1fr;gap:28px}}
+
+/* listor med hårlinjer */
+.lista>li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:8px 32px;padding:20px 0;border-top:1px solid var(--line)}
+.lista>li:last-child{border-bottom:1px solid var(--line)}
+.lista h3{font-size:19px}
+.lista p{color:var(--ink2)}
+@media(max-width:700px){.lista>li{grid-template-columns:1fr}}
+
+/* stegen – en sekvens, nummer i mono, anteckning till höger */
+.steg{counter-reset:s;margin-top:48px}
+.steg>li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,.9fr);gap:8px 32px;padding:26px 0;border-top:1px solid var(--line);align-items:baseline}
+.steg>li:last-child{border-bottom:1px solid var(--line)}
+.steg>li::before{counter-increment:s;content:counter(s,decimal-leading-zero);font:500 14px/1.5 var(--mono);color:var(--blue)}
+.steg h3{font-size:22px}
+.steg p{color:var(--ink2);margin-top:6px}
+.steg .note{padding-top:4px}
+@media(max-width:860px){.steg>li{grid-template-columns:44px minmax(0,1fr)}.steg .note{grid-column:2}}
+
+/* före/efter-reglage */
+.fe{position:relative;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;aspect-ratio:1280/860;background:var(--paper2);user-select:none;touch-action:pan-y}
+.fe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fe .efter{clip-path:inset(0 0 0 var(--x,50%))}
+.fe .linje{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(18,20,23,.25)}
+.fe input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;font-size:16px}
+.fe .grepp{position:absolute;top:50%;left:var(--x,50%);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.fe input:focus-visible~.grepp{outline:2px solid var(--blue);outline-offset:3px}
+.fe .et{position:absolute;top:12px;font:500 12px/1 var(--mono);background:rgba(18,20,23,.82);color:#fff;padding:7px 10px;border-radius:3px;pointer-events:none}
+.fe .et-f{left:12px}.fe .et-e{right:12px}
+.fe-cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:12px}
+
+/* löftet */
+.lofte blockquote{font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.032em;line-height:1.06;max-width:18ch}
+.inte{margin-top:8px}
+.inte li{padding:14px 0 14px 30px;border-top:1px solid var(--nline);position:relative;color:var(--ntext)}
+.inte li::before{content:"";position:absolute;left:2px;top:24px;width:14px;height:1.5px;background:#E0705A}
+.lofte:not(.night) .inte li{border-color:var(--line);color:var(--ink)}
+
+/* pristabell (en rad per steg) */
+.pt{width:100%;border-collapse:collapse;margin-top:40px}
+.pt th,.pt td{text-align:left;vertical-align:baseline;padding:22px 16px 22px 0;border-top:1px solid var(--line)}
+.pt tr:last-child td,.pt tr:last-child th{border-bottom:1px solid var(--line)}
+.pt th{font-weight:500;font-size:19px;width:28%}
+.pt td.belopp{font-size:19px;font-weight:500;white-space:nowrap;width:22%}
+.pt td{color:var(--ink2)}
+.pt .vald th,.pt .vald td.belopp{color:var(--ink)}
+.pt .vald{background:linear-gradient(90deg,var(--blue-l),transparent 70%)}
+.pt .vald th{padding-left:14px;box-shadow:inset 3px 0 0 var(--blue)}
+@media(max-width:700px){.pt,.pt tbody,.pt tr,.pt th,.pt td{display:block;width:auto}.pt tr{border-top:1px solid var(--line);padding:18px 0}.pt th,.pt td{border:0!important;padding:2px 0}.pt .vald th{padding-left:12px}}
+
+/* pris – ett kvitto */
+.kvitto{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:0 24px 48px -36px rgba(18,20,23,.4)}
+.kvitto .belopp{font-size:clamp(48px,5vw,64px);font-weight:500;letter-spacing:-.04em;line-height:1}
+.kvitto .belopp small{font-size:17px;letter-spacing:0;color:var(--ink3);font-weight:400;margin-left:8px}
+.kvitto ul{margin:22px 0 26px}
+.kvitto li{padding:10px 0 10px 28px;border-top:1px dashed var(--line);position:relative}
+.kvitto li::before{content:"";position:absolute;left:2px;top:17px;width:12px;height:7px;border-left:1.5px solid var(--ok);border-bottom:1.5px solid var(--ok);transform:rotate(-45deg)}
+
+/* formulär */
+.form{display:grid;gap:12px;max-width:560px}
+.form .rad{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.form .rad{grid-template-columns:1fr}}
+.falt{display:flex;flex-direction:column;gap:6px}
+.falt label{font:500 14px/1.3 var(--font);color:var(--ink2)}
+.night .falt label{color:var(--ntext2)}
+.falt input,.falt textarea,.falt select{width:100%;min-height:52px;padding:14px 16px;border:1px solid var(--line2);border-radius:var(--r);background:#fff;font:400 17px/1.3 var(--font);color:var(--ink);transition:border-color .2s var(--k),box-shadow .2s var(--k)}
+.falt textarea{min-height:110px;resize:vertical}
+.falt input::placeholder,.falt textarea::placeholder{color:#7A7F86}
+.falt input:focus-visible,.falt textarea:focus-visible,.falt input:focus,.falt textarea:focus{outline:2px solid var(--blue);outline-offset:2px;border-color:var(--ink)}
+.night .falt input:focus{outline-color:var(--nblue)}
+.falt input.bad{border-color:#B3261E}
+.form .btn{justify-self:start;margin-top:6px}
+.form .msg{min-height:1.4em;color:#B3261E;font-size:15px}
+.night .form .msg{color:#FF9C8C}
+.form .fa,.fa{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;font-size:16px}
+.sent{border:1px solid var(--line);border-left:3px solid var(--ok);background:var(--card);padding:22px;border-radius:var(--r);max-width:560px}
+.sent h3{font-size:20px}
+.sent p{margin-top:8px;color:var(--ink2)}
+.sent .back{display:inline-block;margin-top:12px}
+.night .sent{background:var(--night2);border-color:var(--nline);border-left-color:#5FBF86}
+.night .sent p{color:var(--ntext2)}
+.spinn{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* två val */
+.tva{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tva>div{padding:28px 32px 32px 0}
+.tva>div+div{border-left:1px solid var(--line);padding-left:32px}
+.tva .p{margin-top:10px}
+@media(max-width:700px){.tva{grid-template-columns:1fr}.tva>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+.tabwrap{overflow-x:auto}
+.nasta{counter-reset:n;display:grid;gap:12px}
+.nasta li{position:relative;padding-left:34px;color:var(--ntext2)}
+.nasta li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:1px;width:22px;height:22px;border:1px solid var(--nline);border-radius:50%;font:500 12px/20px var(--mono);text-align:center;color:var(--ntext)}
+.mejl{margin-top:24px;white-space:pre-wrap;font:400 15px/1.6 var(--mono);background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;color:var(--ink2);overflow-x:auto}
+.stormejl{margin-top:28px;font-size:clamp(22px,2.4vw,30px);font-weight:500;letter-spacing:-.02em}
+.formbox{max-width:620px}
+.night .falt input{background:#fff}
+/* frågor */
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0;font:500 19px/1.35 var(--font);min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(45deg) translateY(-3px);transition:transform .2s var(--k)}
+.faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+.faq details>div{padding:0 0 24px;color:var(--ink2);max-width:66ch}
+.faq details>div p+p{margin-top:10px}
+
+/* kapitelrubrik med anteckning */
+.kap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);column-gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:48px}
+.kap .lede{margin-top:18px}
+@media(max-width:860px){.kap{grid-template-columns:1fr;row-gap:18px}}
+
+/* sidfot */
+.fot{background:var(--night);color:var(--ntext2);padding:72px 0 40px;font-size:15px}
+.fot .mark{color:var(--ntext)}
+.fot-g{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.fot h2{font:500 13px/1.4 var(--mono);color:#8E949C;margin-bottom:12px;letter-spacing:0}
+.fot ul{display:grid;gap:2px}
+.fot a{text-decoration:none;color:var(--ntext);display:inline-block;padding:6px 0}
+@media(hover:hover) and (pointer:fine){.fot a:hover{text-decoration:underline}}
+.fot .bolag{margin-top:16px;line-height:1.6;max-width:34ch}
+.fot .ned{margin-top:56px;padding-top:20px;border-top:1px solid var(--nline);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:400 13px/1.5 var(--mono);color:#8E949C}
+@media(max-width:860px){.fot-g{grid-template-columns:1fr 1fr}.fot-g>div:first-child{grid-column:1/-1}}
+
+/* artikel (privacy m.m.) */
+.art{padding:72px 0 104px}
+.art .in{max-width:68ch}
+.art h1{font-size:clamp(36px,4.4vw,56px)}
+.art h2{font-size:24px;margin:40px 0 10px;letter-spacing:-.02em}
+.art p,.art li{color:var(--ink2);margin-top:12px}
+.art ul{list-style:disc;padding-left:22px}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+/* marginalens anteckningar: brödtext i sans, bara etiketten i mono (GPT runda 1: mono bara för metadata) */
+.marg .note{font:400 15px/1.5 var(--font);color:var(--ink2)}
+.marg .note b{display:block;font:500 12.5px/1.6 var(--mono);color:var(--ink3);margin-bottom:2px}
+.night .marg .note{color:var(--ntext2)}
+.night .marg .note b{color:#9DA3AB}
+/* runda 2 */
+.fe2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fe2 figure{margin:0}
+.fe-bild{display:block;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper2)}
+.fe-bild img{width:100%;height:auto}
+.fe2 figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:15px;color:var(--ink2)}
+.fe2 figcaption b{font-weight:600;color:var(--ink)}
+.fe2 figcaption .oppna{font:400 13px/1.6 var(--mono);color:var(--ink3)}
+.fe-not{margin-top:14px;font-size:14px}
+@media(max-width:700px){.fe2{grid-template-columns:1fr}}
+.night .fe-bild{border-color:var(--nline)}
+.pris-stor{margin-top:22px;font-size:30px;font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.pris-stor span{font-size:15px;letter-spacing:0;font-weight:400;color:var(--ink3);margin-left:8px}
+.night .pris-stor span{color:var(--ntext2)}
+.uk{margin-top:8px;font-size:15px;color:var(--ink2)}
+.viktig{margin-top:22px;padding:16px 18px;border-left:3px solid var(--blue);background:var(--card);font-size:16px;color:var(--ink);max-width:70ch}
+.vem{font:500 13px/1.4 var(--mono);color:var(--ink3);margin-bottom:16px}
+.night .vem{color:#9DA3AB}
+.byraband .act{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.pkort{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 24px 48px -36px rgba(18,20,23,.5);transition:transform .2s var(--k),box-shadow .2s var(--k)}
+.pkort-h{display:flex;justify-content:space-between;padding:12px 16px;font:400 12.5px/1.4 var(--mono);color:var(--ink3);border-bottom:1px solid var(--line)}
+.pkort img{width:100%;border-bottom:1px solid var(--line)}
+.pkort-b{display:grid;gap:4px;padding:16px;font-size:15px;color:var(--ink2)}
+.pkort-b b{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.pkort-f{display:flex;align-items:center;gap:8px;padding:14px 16px;border-top:1px solid var(--line);font-weight:600;min-height:48px}
+.pkort-f .ik{width:18px;height:18px}
+@media(hover:hover) and (pointer:fine){.pkort:hover{transform:translateY(-2px);box-shadow:0 28px 52px -34px rgba(18,20,23,.55)}}
+.steg.tre>li{grid-template-columns:64px minmax(0,1fr)}
+.order-mer{display:none}
+@media(max-width:860px){
+ .order li:nth-child(n+2){display:none}
+ .order-mer{display:block;padding:12px 18px;border-top:1px dashed var(--line);font:500 15px/1.4 var(--font)}
+ .order-mer a{display:inline-block;min-height:44px;padding-top:12px}
+}
+.ftyp{display:inline-block;vertical-align:middle;margin-left:8px;font:500 12px/1 var(--mono);padding:5px 8px;border-radius:3px;border:1px solid currentColor}
+.ftyp.fk{color:var(--ok)}
+.ftyp.fd{color:#8A5A00}
+.fakta{display:grid;gap:0;border-top:1px solid var(--line)}
+.fakta>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:8px 32px;padding:20px 0;border-bottom:1px solid var(--line)}
+.fakta dt{font-weight:600}
+.fakta dd{margin:0;color:var(--ink2)}
+@media(max-width:700px){.fakta>div{grid-template-columns:1fr}}
+.innehall{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.innehall a{font:500 14px/1 var(--font);text-decoration:none;padding:14px 14px;border:1px solid var(--line2);border-radius:22px;color:var(--ink2);min-height:44px;display:inline-flex;align-items:center}
+@media(hover:hover) and (pointer:fine){.innehall a:hover{border-color:var(--ink);color:var(--ink)}}
+@media(max-width:860px){.order.hel li:nth-child(n+2){display:grid}.order.hel .order-mer{display:none}}
+/* smala skärmar (320 px): kolumner får krympa, knapptext får brytas */
+@media(max-width:860px){.ark,.vag,.kap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:420px){.btn{white-space:normal;text-align:left;line-height:1.2;padding-block:12px;max-width:100%}.fe2 figcaption{flex-wrap:wrap}}
+
+/* runda 3: kompakt prisrad i Clipr Website-heron (mobil, där kvittot hamnar under) */
+.pris-rad{display:none;margin-top:22px;color:var(--ink2)}.pris-rad span{display:inline-flex;flex-direction:column;margin-right:32px}.pris-rad small{font:400 13px/1.3 var(--mono);color:var(--ink3)}.pris-rad b{font-size:30px;line-height:1.2;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}.pris-rad em{display:block;font-style:normal;font-size:17px;line-height:1.5;margin-top:8px}
+@media(max-width:820px){.pris-rad{display:block}}
+.order-f a{color:inherit}
+.mk-t{font-weight:inherit}

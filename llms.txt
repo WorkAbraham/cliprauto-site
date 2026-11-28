@@ -1,10 +1,10 @@
-# Clipr Website
+# CliprAuto
+> CliprAuto (Wiggle Entertainment AB, Kalmar, Sweden) rebuilds websites for small businesses and prepares sales packs for web and marketing agencies.
 
-> Clipr Website rebuilds a small business's website, every page it has today, from its current site: its photos, words and colours, made better. The design concept is free to look at; the finished website costs $199 paid once (£199 in the UK), with changes until the customer is happy and step-by-step help putting it live on their own domain. No monthly fee to us. Domain and hosting stay with the customer's own provider.
+## Services
+- [Clipr Website](https://cliprauto.com/website/): a new website from the business's own photos, words and colours. Free design concept first; $199 once (£199 in the UK) only if the customer says yes. No monthly fee.
+- [Pitch Engine](https://cliprauto.com/agencies/): sales packs for agencies (business research, website findings, design concept, before-and-after image, outreach email). Free work sample, $99 pilot (three packs), Production Partner $249 a month (up to 15 packs), website production $349 per site, optional hosting $19 a month.
+- [Sample sales pack](https://cliprauto.com/agencies/sample-pack/)
 
-## Main pages
-- [Clipr Website](https://cliprauto.com/website/): a new website for your business, every page, free to look at, $199 once (£199 in the UK)
-- [About](https://cliprauto.com/about/): facts, price and what we do not do
-
-## Contact
-- info@cliprauto.com
+## Company
+- [How we work](https://cliprauto.com/approach/) · [About](https://cliprauto.com/about/) · [Contact](https://cliprauto.com/contact/) · Email: info@cliprauto.com
